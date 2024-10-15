@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Cadastro</title>
+
+      <link rel="stylesheet" href="./style.css">
+      <link rel="stylesheet" href="../global.css">
+   </head>
+   <body>
+      <main class="container">
+         <div class="container-img"></div>
+         <div class="container-form">
+
+            <form class="form-login">
+               <h1>Login</h1>
+               <div class="input-container">
+                  <label for="username"><i data-lucide="contact" class="lucide-icons"></i></label>
+                  <input type="text" placeholder="Nome de Usuário" id="username">
+               </div>
+               <div class="input-container">
+                  <label for="password"><i data-lucide="eye" class="lucide-icons"></i></label>
+                  <input type="password" placeholder="Senha" id="password">
+               </div>
+               <span class="error">Nome de usuário e/ou Senha inválidos</span>
+               <button>Entrar</button>
+               <span>Não possuí uma conta?</span>
+               <a onclick="show_form('cadastro', 'login')">Cadastre-se</a>
+            </form>
+
+            <form class="form-cadastro">
+               <h1>Cadastro</h1>
+               <div class="form-cadastro-flex">
+                  <div class="form-cadastro-left">
+                     <div class="input-container">
+                        <label for="name"><i data-lucide="case-sensitive" class="lucide-icons"></i></label>
+                        <input type="text" placeholder="Nome" id="name">
+                     </div>
+                     <div class="input-container">
+                        <label for="sobrenome"><i data-lucide="case-sensitive" class="lucide-icons"></i></label>
+                        <input type="text" placeholder="Sobrenome" id="sobrenome">
+                     </div>
+                     <div class="input-container">
+                        <label for="username"><i data-lucide="contact" class="lucide-icons"></i></label>
+                        <input type="text" placeholder="Nome de Usuário" id="username">
+                     </div>
+                  </div>
+                  <div class="form-cadastro-right">
+                     <div class="input-container">
+                        <label for="email"><i data-lucide="at-sign" class="lucide-icons"></i></label>
+                        <input type="email" placeholder="email@email.com" id="email">
+                     </div>
+                     <div class="input-container">
+                        <label for="password"><i data-lucide="eye" class="lucide-icons"></i></label>
+                        <input type="password" placeholder="Senha" id="password">
+                     </div>
+                     <div class="input-container">
+                        <label for="conf-password"><i data-lucide="eye" class="lucide-icons"></i></label>
+                        <input type="password" placeholder="Confirmar Senha" id="conf-password">
+                     </div>
+                  </div>
+               </div>
+               <span class="error">Nome de usuário e/ou Senha inválidos</span>
+               <button>Cadastro</button>
+               <span>Já possuí uma conta?</span>
+               <a onclick="show_form('login', 'cadastro')">Login</a>
+            </form>
+
+         </div>
+      </main>
+   </body>
+</html>
+<script src="./script.js"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<script type="module">
+   lucide.createIcons()
+</script>

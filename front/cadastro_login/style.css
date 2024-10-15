@@ -1,0 +1,154 @@
+.error{
+   color: var(--error);
+   font-size: 0.8rem;
+   display: none;
+   visibility: hidden;
+}
+
+.container{
+   height: 100vh;
+   width: 100vw;
+   display: flex;
+   flex-direction: row;
+   align-items: center;
+   justify-content: center;
+}
+
+.container .container-img{
+   background-image: url('../assets/images/img-form.jpeg');
+   background-repeat: no-repeat;
+   background-size: cover;
+   width: 50%;
+   height: 100vh;
+}
+
+.container .container-form{
+   width: 50%;
+   height: 100vh;
+   background-color: var(--primary-color);
+
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+}
+
+.container .container-form form{
+   height: 50vh;
+   background-color: var(--dark-gray);
+   width: 75%;
+   text-align: center;
+   justify-content: center;
+   border-radius: 15px;
+
+   box-shadow: var(--light-secondary-color) 1.95px 1.95px 5px;
+}
+
+.container .container-form .form-login{
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+
+   gap: 1.2rem;
+}
+
+.container .container-form .form-cadastro{
+   display: none;
+   visibility: hidden;
+
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+
+   gap: 1.2rem;
+}
+
+.container .container-form .form-login, .container .container-form .form-cadastro{
+   animation: fadeIn 1s ease;
+}
+
+.container .container-form .form-cadastro .form-cadastro-flex{
+   width: 75%;
+   display: flex;
+   flex-direction: row;
+   align-items: center;
+   justify-content: space-between;
+}
+
+.container .container-form .form-cadastro .form-cadastro-flex .form-cadastro-left, .container .container-form .form-cadastro .form-cadastro-flex .form-cadastro-right{
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+   gap: 1.2rem;
+}
+
+.container .container-form .form-login button, .container .container-form .form-cadastro button{
+   border: none;
+   border-radius: 10px;
+   width: 100%;
+   max-width: 300px;
+   padding: 10px 20px;
+   background-color: var(--light-primary-color);
+   font-size: 1.05rem;
+
+   transition: .5s all ease;
+   cursor: pointer;
+}
+
+.container .container-form .form-login button:hover, .container .container-form .form-cadastro button:hover{
+   scale: 1.1;
+}
+
+.container .container-form .form-login a, .container .container-form .form-cadastro a{
+   border: none;
+   border-radius: 10px;
+   width: 100%;
+   max-width: 300px;
+   padding: 8px 10px;
+   background-color: var(--light-primary-color);
+   font-size: 1.05rem;
+
+   transition: .5s all ease;
+   cursor: pointer;
+}
+
+.container .container-form .form-login a:hover, .container .container-form .form-cadastro a:hover{
+   scale: 1.1;
+}
+
+
+.container .container-form .form-login .input-container, .container .container-form .form-cadastro .input-container{
+   position: relative;
+   width: 100%;
+   max-width: 300px; 
+}
+
+.container .container-form .form-login .input-container input, .container .container-form .form-cadastro .input-container input{
+   width: 100%;
+   padding: 10px 40px 10px 10px;
+   font-size: 16px;
+   border: none;
+   border-radius: 4px;
+   color: var(--dark-gray);
+}
+
+.container .container-form .form-login .input-container .lucide-icons, .container .container-form .form-cadastro .input-container .lucide-icons{
+   position: absolute;
+   right: 10px; 
+   top: 50%;
+   transform: translateY(-50%);
+   font-size: 18px;
+   color: #888;
+   pointer-events: none;
+}
+
+@keyframes fadeIn {
+   from{
+      opacity: 0;
+   }
+   to{
+      opacity: 1;
+   }
+}

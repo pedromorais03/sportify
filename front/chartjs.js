@@ -1,6 +1,5 @@
 const ctx = document.getElementById('freq-graph')
 const ctx2 = document.getElementById('quantity-graph').getContext('2d')
-console.log(ctx.width)
 // Grafico de Top 10 paises com mais % da populacao que mais frequentam academias
 // ref: https://www.em.com.br/app/noticia/saude-e-bem-viver/2023/01/18/interna_bem_viver,1446196/brasileiros-estao-em-2-no-ranking-mundial-dos-que-mais-vao-a-academias.shtml
 const barGraph = new Chart(ctx, {
@@ -25,6 +24,7 @@ const barGraph = new Chart(ctx, {
   }
 })
 
+// Top 10 paises com mais academias
 const barGraph2 = new Chart(ctx2, {
    type: 'bar', // Tipo de gráfico (ex: 'line', 'bar', 'pie')
    data: {

@@ -52,12 +52,12 @@
                         <input type="email" placeholder="email@email.com" id="email">
                      </div>
                      <div class="input-container">
-                        <label for="password"><i data-lucide="eye" class="lucide-icons"></i></label>
-                        <input type="password" placeholder="Senha" id="password">
+                        <label for="password" id="label-c-password"><i data-lucide="eye" class="lucide-icons"></i></label>
+                        <input type="password" placeholder="Senha" id="c-password">
                      </div>
                      <div class="input-container">
-                        <label for="conf-password"><i data-lucide="eye" class="lucide-icons"></i></label>
-                        <input type="password" placeholder="Confirmar Senha" id="conf-password">
+                        <label for="conf-password" id="label-conf-password"><i data-lucide="eye" class="lucide-icons"></i></label>
+                        <input type="password" onchange="verify_password()" placeholder="Confirmar Senha" id="conf-password">
                      </div>
                   </div>
                </div>

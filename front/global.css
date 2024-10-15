@@ -131,10 +131,25 @@
 .container .container-main .section-about{
    background-color: var(--dark-gray);
    height: 30vh;
+   /* border: 1px solid green; */
 }
 
-.container .container-main .section-about h1{
+.container .container-main .section-about article{
+   width: 75%;
+   margin: 0 auto;
+   padding: 1.2rem;
+}
+
+.container .container-main .section-about article h1{
+   display: inline-block;
+   border-bottom: 1px solid var(--light-secondary-color);
    color: var(--light-primary-color);
+   margin-top: 1%;
+   font-size: 2rem;
+}
+
+.container .container-main .section-about article p{
+   margin-top: 1%;
 }
 
 .container .container-main .section-for{
@@ -142,6 +157,37 @@
    color: var(--text-color);
 }
 
-.container .container-main .section-for h1{
+.container .container-main .section-for article{
    text-align: right;
+   width: 75%;
+   margin: 0 auto;
+   padding: 1.2rem;
+}
+
+.container .container-main .section-for article h1{
+   display: inline-block;
+   border-bottom: 1px solid var(--light-primary-color);
+   color: var(--light-secondary-color);
+   font-size: 2rem;
+}
+
+.container .container-main .section-graphic{
+   background-color: var(--dark-gray);
+}
+
+.container .container-main .section-graphic article{
+   width: 75%;
+   margin: 0 auto;
+   padding: 1.2rem;
+}
+
+.container .container-main .section-graphic article h1{
+   display: inline-block;
+   color: var(--light-primary-color);
+   border-bottom: 1px solid var(--light-secondary-color);
+   font-size: 2rem;
+}
+
+.footer{
+   background-color: var(--primary-color);
 }

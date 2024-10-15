@@ -6,7 +6,7 @@
       <title>Sportify</title>
 
       <link rel="stylesheet" href="./global.css">
-      <link rel="stylesheet" href="./index.css">
+      <link rel="stylesheet" href="./style.css">
    </head>
    <body>
       <header class="header">
@@ -16,7 +16,7 @@
                <li><a href="#about">Conheça a Sportify</a></li>
                <li><a href="#for">Pra quem é?</a></li>
             </ul>
-            <i data-lucide="log-in" class="lucide-icons"></i>
+            <i onclick="redirect_to('cadastro')" data-lucide="log-in" class="lucide-icons"></i>
          </nav>
       </header>
 
@@ -114,6 +114,7 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="https://unpkg.com/lucide@latest"></script>
 <script src="./chartjs.js"></script>
+<script src="./script.js"></script>
 <script type="module">
    lucide.createIcons()
 </script>

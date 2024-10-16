@@ -10,7 +10,9 @@
    </head>
    <body>
       <main class="container">
-         <div class="container-img"></div>
+         <div class="container-img">
+            <i onclick="window.location.href='../index.html'" data-lucide="undo-2" class="lucide-icons back-button"></i>
+         </div>
          <div class="container-form">
 
             <form class="form-login">
@@ -24,7 +26,8 @@
                   <input type="password" placeholder="Senha" id="ipt_l_password">
                </div>
                <span class="error">Nome de usuário e/ou Senha inválidos</span>
-               <button>Entrar</button>
+               <button type="submit">Entrar</button>
+               <span>Esqueci minha senha</span>
                <span>Não possuí uma conta?</span>
                <a onclick="show_form('cadastro', 'login')">Cadastre-se</a>
             </form>
@@ -69,7 +72,7 @@
                   <span class="requirement" id="span_length"><i data-lucide="chevron-right" class="lucide-icons"></i>8 caracteres</span>
                </div>
                <span id="error-cadastro" class="error"></span>
-               <button>Cadastro</button>
+               <button type="submit">Cadastro</button>
                <span>Já possuí uma conta?</span>
                <a onclick="show_form('login', 'cadastro')">Login</a>
             </form>

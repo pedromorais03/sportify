@@ -8,6 +8,11 @@ let passwordLower = false
 let passwordSpecial = false
 let passwordNumber = false
 
+formLogin.addEventListener('submit', (e) => {
+   e.preventDefault()
+   window.location.href = '../feed/index.html'
+})
+
 formCadastro.addEventListener('submit', (e) => {
    e.preventDefault()
    console.log('entrou aq')

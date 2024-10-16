@@ -19,7 +19,7 @@ formCadastro.addEventListener('submit', (e) => {
          toggleErrorCadastro('block', 'visible', 'Todos os campos devem estar devidamente preenchidos ')
       }else{
          toggleErrorCadastro('none', 'hidden', '')
-         redirect_to()
+         insert_user()
       }
       
       
@@ -109,4 +109,34 @@ const verify_requirements = () => {
       span_special.style.color = `var(--error)`
       passwordSpecial = false
    }
+}
+
+
+const insert_user = async() => {
+   const name = ipt_name.value
+   const second_name = ipt_second_name.value
+   const email = ipt_email.value
+   const username = ipt_username.value
+   const password = ipt_c_password.value
+
+   const xhr = new XMLHttpRequest
+   xhr.open('POST', 'http://localhost:3000/user', true)
+   xhr.setRequestHeader('Content-Type', 'application/json')
+
+   xhr.onload = () => {
+      if(xhr.status === 200){
+         const res = JSON.parse(xhr.responseText)
+         console.log(`Response: ${res}`)
+      }
+   }
+
+   const data = JSON.stringify({
+      name_user: name,
+      second_name_user: second_name,
+      email_user: email,
+      username: username,
+      password: password
+   })
+
+   xhr.send(data)
 }

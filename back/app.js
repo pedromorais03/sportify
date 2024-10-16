@@ -40,4 +40,37 @@ app.get('/', (req, res) => {
    })
 })
 
+app.post('/user', (req, res) => {
+   const { name_user } = req.body
+   const { second_name_user } = req.body
+   const { email_user } = req.body
+   const { username } = req.body
+   const { password } = req.body
+
+   const query = 'INSERT INTO user_data(name_user, second_name_user, email_user) VALUES (?, ?, ?)'
+   const values = [name_user, second_name_user, email_user]
+   const query2 = 'INSERT INTO user_login(username, password, fk_user_data) VALUES (?, md5(?), ?)'
+
+
+   connection.query(query, values, (err, results) => {
+      if (err) {
+         console.error('Erro ao inserir dados: ', err);
+         return;
+      }else{
+         let lastInsertedId = results.insertId
+         const values2 = [username, password, lastInsertedId]
+
+         connection.query(query2, values2, (err, results) => {
+            if(err){
+               console.error('Erro ao inserir dados: ', err);
+               return;
+            }
+         })
+
+         res.status(200).json({ message: 'Usuário inserido com sucesso' })
+      }
+   })
+
+})
+
 app.listen(port, () => console.log(`Servidor na porta ${port}`))

@@ -34,34 +34,41 @@
                <div class="form-cadastro-flex">
                   <div class="form-cadastro-left">
                      <div class="input-container">
-                        <label for="name"><i data-lucide="case-sensitive" class="lucide-icons"></i></label>
-                        <input type="text" placeholder="Nome" id="name">
+                        <label for="ipt_name"><i data-lucide="case-sensitive" class="lucide-icons"></i></label>
+                        <input type="text" placeholder="Nome" id="ipt_name">
                      </div>
                      <div class="input-container">
-                        <label for="sobrenome"><i data-lucide="case-sensitive" class="lucide-icons"></i></label>
-                        <input type="text" placeholder="Sobrenome" id="sobrenome">
+                        <label for="ipt_second_name"><i data-lucide="case-sensitive" class="lucide-icons"></i></label>
+                        <input type="text" placeholder="Sobrenome" id="ipt_second_name">
                      </div>
                      <div class="input-container">
-                        <label for="username"><i data-lucide="contact" class="lucide-icons"></i></label>
-                        <input type="text" placeholder="Nome de Usuário" id="username">
+                        <label for="ipt_username"><i data-lucide="contact" class="lucide-icons"></i></label>
+                        <input type="text" placeholder="Nome de Usuário" id="ipt_username">
                      </div>
                   </div>
                   <div class="form-cadastro-right">
                      <div class="input-container">
-                        <label for="email"><i data-lucide="at-sign" class="lucide-icons"></i></label>
-                        <input type="email" placeholder="email@email.com" id="email">
+                        <label for="ipt_email"><i data-lucide="at-sign" class="lucide-icons"></i></label>
+                        <input type="email" placeholder="email@email.com" id="ipt_email">
                      </div>
                      <div class="input-container">
-                        <label for="password" id="label-c-password"><i data-lucide="eye" class="lucide-icons"></i></label>
-                        <input type="password" placeholder="Senha" id="c-password">
+                        <label for="ipt_c_password" id="label-c-password"><i data-lucide="eye" class="lucide-icons"></i></label>
+                        <input oninput="verify_requirements()" type="text" placeholder="Senha" id="ipt_c_password">
                      </div>
                      <div class="input-container">
-                        <label for="conf-password" id="label-conf-password"><i data-lucide="eye" class="lucide-icons"></i></label>
-                        <input type="password" onchange="verify_password()" placeholder="Confirmar Senha" id="conf-password">
+                        <label for="ipt_conf_password" id="label-conf-password"><i data-lucide="eye" class="lucide-icons"></i></label>
+                        <input type="text" onchange="verify_password()" placeholder="Confirmar Senha" id="ipt_conf_password">
                      </div>
                   </div>
                </div>
-               <span class="error">Nome de usuário e/ou Senha inválidos</span>
+               <div class="requirements-password">
+                  <span class="requirement" id="span_number"><i data-lucide="chevron-right" class="lucide-icons"></i>Números</span>
+                  <span class="requirement" id="span_upper"><i data-lucide="chevron-right" class="lucide-icons"></i>Letras Maiúsculas</span>
+                  <span class="requirement" id="span_lower"><i data-lucide="chevron-right" class="lucide-icons"></i>Letras Minúsculas</span>
+                  <span class="requirement" id="span_special"><i data-lucide="chevron-right" class="lucide-icons"></i>Caracteres especiais</span>
+                  <span class="requirement" id="span_length"><i data-lucide="chevron-right" class="lucide-icons"></i>8 caracteres</span>
+               </div>
+               <span id="error-cadastro" class="error"></span>
                <button>Cadastro</button>
                <span>Já possuí uma conta?</span>
                <a onclick="show_form('login', 'cadastro')">Login</a>
@@ -71,6 +78,8 @@
       </main>
    </body>
 </html>
+<!-- link para o script "global" -->
+<script src="../script.js"></script>
 <script src="./script.js"></script>
 <script src="https://unpkg.com/lucide@latest"></script>
 <script type="module">

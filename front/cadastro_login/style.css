@@ -34,7 +34,7 @@
 }
 
 .container .container-form form{
-   height: 50vh;
+   height: 65vh;
    background-color: var(--dark-gray);
    width: 75%;
    text-align: center;
@@ -140,9 +140,27 @@
    top: 50%;
    transform: translateY(-50%);
    font-size: 18px;
-   color: #888;
+   color: var(--text-color);
    pointer-events: none;
 }
+
+.container .container-form .form-cadastro .requirements-password{
+   width: 75%;
+   display: flex;
+   flex-direction: column;
+   align-items: flex-start;
+   justify-content: center;
+}
+
+.container .container-form .form-cadastro .requirements-password span{
+   display: flex;
+   flex-direction: row;
+   align-items: center;
+   justify-content: center;
+   gap: 5px;
+   color: var(--error);
+}
+
 
 @keyframes fadeIn {
    from{

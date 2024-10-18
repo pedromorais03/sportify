@@ -2,11 +2,24 @@ const formCadastro = document.querySelector('.form-cadastro')
 const formLogin = document.querySelector('.form-login')
 const spanErroCadastro = document.getElementById('error-cadastro')
 
+const iconLoginPassword = document.querySelector('#icon_l_password')
+const inputLoginPassword = document.querySelector('#ipt_l_password')
+
 let passwordLength = false
 let passwordUpper = false
 let passwordLower = false
 let passwordSpecial = false
 let passwordNumber = false
+
+const toggle_password_icon = () => {
+   console.log('ok')
+   inputLoginPassword.type = inputLoginPassword.type == 'text' ? 'password' : 'text'
+   
+   let icon = iconLoginPassword.getAttribute('data-lucide') == 'eye-off' ? 'eye' : 'eye-off'
+
+   iconLoginPassword.setAttribute('data-lucide', icon)
+   lucide.createIcons()
+}
 
 formLogin.addEventListener('submit', (e) => {
    e.preventDefault()

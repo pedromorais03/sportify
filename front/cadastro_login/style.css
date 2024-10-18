@@ -155,7 +155,7 @@
    transform: translateY(-50%);
    font-size: 18px;
    color: var(--text-color);
-   pointer-events: none;
+   cursor: pointer;
 }
 
 .container .container-form .form-cadastro .requirements-password{

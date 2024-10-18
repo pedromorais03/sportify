@@ -25,6 +25,7 @@ formCadastro.addEventListener('submit', (e) => {
       }else{
          toggleErrorCadastro('none', 'hidden', '')
          insert_user()
+         window.location.href = './index.html'
       }
       
       

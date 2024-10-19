@@ -22,8 +22,35 @@ const toggle_password_icon = () => {
 }
 
 formLogin.addEventListener('submit', (e) => {
+   const username_login = ipt_l_username.value
+   const password_login = ipt_l_password.value
+
    e.preventDefault()
-   window.location.href = '../feed/index.html'
+   const xhr = new XMLHttpRequest
+   xhr.open('GET', 'http://localhost:3000/login', true)
+   xhr.setRequestHeader('Content-Type', 'application/json')
+
+   xhr.onload = () => {
+      if(xhr.status === 200){
+         const res = JSON.parse(xhr.responseText)
+         console.log(`Response: ${res}`)
+         let name = `${res[0].name_user} ${res[0].second_name_user}`
+         localStorage.setItem('username', res[0].username)
+         localStorage.setItem('user_id', res[0].id_user)
+         localStorage.setItem('name_user', name)
+         window.location.href = '../feed/index.html'
+         
+      }else{
+         console.log(xhr.status)
+      }
+   }
+
+   const data = JSON.stringify({
+      username: username_login,
+      password: password_login
+   })
+
+   xhr.send(data)
 })
 
 formCadastro.addEventListener('submit', (e) => {

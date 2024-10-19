@@ -90,7 +90,28 @@ app.post('/user', (req, res) => {
 
 app.get('/login', (req, res) => {
    const { username, password } = req.body
-   const query = `SELECT * FROM user_login WHERE username = ${username}}`
+   const query = `SELECT * FROM vw_user_data WHERE username = ?`
+   const value = [username]
+
+   connection.query(query, value, (err, result) => {
+      if(err){
+         return res.status(500).json({ message: err})
+      }
+
+      if(result.length === 0){
+         return res.status(404).json({ message: 'Usuário não encontrado' })
+      }
+
+      const user = result[0]
+      const cryptedPassword = cryptPassword(password)
+
+      if(user.password === cryptedPassword){
+         return res.status(200).json({ message: 'usuário logado com sucesso' })
+      }else{
+         return res.status(401).json({ message: 'Senha inválida' })
+      }
+
+   })
 
    res.status(200).json({ message: 'Logado com sucesso'})
 })

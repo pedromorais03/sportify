@@ -130,7 +130,6 @@ const verify_requirements = () => {
    }
 }
 
-
 const insert_user = async() => {
    const name = ipt_name.value
    const second_name = ipt_second_name.value

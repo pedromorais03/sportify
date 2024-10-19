@@ -3,6 +3,7 @@ require('dotenv').config()
 const express = require('express')
 const mysql = require('mysql2')
 const cors = require('cors')
+const { cryptPassword } = require('./plugins/crypto')
 
 const app = express()
 const port = process.env.PORT || 3000
@@ -49,7 +50,7 @@ app.post('/user', (req, res) => {
 
    const query = 'INSERT INTO user_data(name_user, second_name_user, email_user) VALUES (?, ?, ?)'
    const values = [name_user, second_name_user, email_user]
-   const query2 = 'INSERT INTO user_login(username, password, fk_user_data) VALUES (?, md5(?), ?)'
+   const query2 = 'INSERT INTO user_login(username, password, fk_user_data) VALUES (?, ?, ?)'
 
 
    connection.query(query, values, (err, results) => {
@@ -58,7 +59,8 @@ app.post('/user', (req, res) => {
          return;
       }else{
          let lastInsertedId = results.insertId
-         const values2 = [username, password, lastInsertedId]
+         const passwordHash = cryptPassword(password)
+         const values2 = [username, passwordHash, lastInsertedId]
 
          connection.query(query2, values2, (err, results) => {
             if(err){

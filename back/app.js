@@ -1,21 +1,8 @@
 require('dotenv').config()
-
 const express = require('express')
 const mysql = require('mysql2')
 const cors = require('cors')
 const { cryptPassword } = require('./plugins/crypto')
-
-const http = require('https')
-const options = {
-	method: 'GET',
-	hostname: 'community-food2fork.p.rapidapi.com',
-	port: null,
-	path: '/get?key=169aa2b82fmsh8cb5ec56f6289b1p1fee9fjsn46ec96886af7',
-	headers: {
-		'x-rapidapi-key': '169aa2b82fmsh8cb5ec56f6289b1p1fee9fjsn46ec96886af7',
-		'x-rapidapi-host': 'community-food2fork.p.rapidapi.com'
-	}
-}
 
 const app = express()
 const port = process.env.PORT || 3000
@@ -55,7 +42,7 @@ app.get('/', (req, res) => {
 
 app.get('/recipes', (req, res) => {
    let recipes = []
-   connection.query('SELECT * FROM recipes', (err, results, fields) => {
+   connection.query('SELECT * FROM vw_recipe_user', (err, results, fields) => {
       if(err){
          console.error('Erro ao executar select', err)
          return;
@@ -63,7 +50,6 @@ app.get('/recipes', (req, res) => {
 
       recipes = results
       console.log(fields)
-      console.log(recipes)
       res.status(200).json(recipes)
    })
 })
@@ -100,6 +86,13 @@ app.post('/user', (req, res) => {
       }
    })
 
+})
+
+app.get('/login', (req, res) => {
+   const { username, password } = req.body
+   const query = `SELECT * FROM user_login WHERE username = ${username}}`
+
+   res.status(200).json({ message: 'Logado com sucesso'})
 })
 
 app.listen(port, () => console.log(`Servidor na porta ${port}`))

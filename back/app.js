@@ -5,6 +5,18 @@ const mysql = require('mysql2')
 const cors = require('cors')
 const { cryptPassword } = require('./plugins/crypto')
 
+const http = require('https')
+const options = {
+	method: 'GET',
+	hostname: 'community-food2fork.p.rapidapi.com',
+	port: null,
+	path: '/get?key=169aa2b82fmsh8cb5ec56f6289b1p1fee9fjsn46ec96886af7',
+	headers: {
+		'x-rapidapi-key': '169aa2b82fmsh8cb5ec56f6289b1p1fee9fjsn46ec96886af7',
+		'x-rapidapi-host': 'community-food2fork.p.rapidapi.com'
+	}
+}
+
 const app = express()
 const port = process.env.PORT || 3000
 const connection = mysql.createConnection({
@@ -38,6 +50,21 @@ app.get('/', (req, res) => {
       users = results
       console.log(fields)
       res.status(200).json(users)
+   })
+})
+
+app.get('/recipes', (req, res) => {
+   let recipes = []
+   connection.query('SELECT * FROM recipes', (err, results, fields) => {
+      if(err){
+         console.error('Erro ao executar select', err)
+         return;
+      }
+
+      recipes = results
+      console.log(fields)
+      console.log(recipes)
+      res.status(200).json(recipes)
    })
 })
 

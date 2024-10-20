@@ -88,10 +88,13 @@ app.post('/user', (req, res) => {
 
 })
 
-app.get('/login', (req, res) => {
-   const { username, password } = req.body
+app.get('/login/:username/:password', (req, res) => {
+   const { username } = req.params
+   const { password } = req.params
    const query = `SELECT * FROM vw_user_data WHERE username = ?`
    const value = [username]
+
+   console.log(username, password)
 
    connection.query(query, value, (err, result) => {
       if(err){
@@ -99,6 +102,7 @@ app.get('/login', (req, res) => {
       }
 
       if(result.length === 0){
+         console.log('tamanho 0')
          return res.status(404).json({ message: 'Usuário não encontrado' })
       }
 
@@ -106,14 +110,14 @@ app.get('/login', (req, res) => {
       const cryptedPassword = cryptPassword(password)
 
       if(user.password === cryptedPassword){
-         return res.status(200).json({ message: 'usuário logado com sucesso' })
+         console.log('senha igual')
+         return res.status(200).json(user)
       }else{
+         console.log('senha n igual')
          return res.status(401).json({ message: 'Senha inválida' })
       }
 
    })
-
-   res.status(200).json({ message: 'Logado com sucesso'})
 })
 
 app.listen(port, () => console.log(`Servidor na porta ${port}`))

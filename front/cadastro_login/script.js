@@ -1,6 +1,7 @@
 const formCadastro = document.querySelector('.form-cadastro')
 const formLogin = document.querySelector('.form-login')
 const spanErroCadastro = document.getElementById('error-cadastro')
+const spanErroLogin = document.getElementById('error-login')
 
 const iconLoginPassword = document.querySelector('#icon_l_password')
 const inputLoginPassword = document.querySelector('#ipt_l_password')
@@ -22,35 +23,42 @@ const toggle_password_icon = () => {
 }
 
 formLogin.addEventListener('submit', (e) => {
-   const username_login = ipt_l_username.value
-   const password_login = ipt_l_password.value
+   const username = ipt_l_username.value
+   const password = ipt_l_password.value
+   console.log(username)
+   console.log(password)
 
    e.preventDefault()
    const xhr = new XMLHttpRequest
-   xhr.open('GET', 'http://localhost:3000/login', true)
+   xhr.open('GET', `http://localhost:3000/login/${username}/${password}`, true)
    xhr.setRequestHeader('Content-Type', 'application/json')
 
    xhr.onload = () => {
       if(xhr.status === 200){
          const res = JSON.parse(xhr.responseText)
          console.log(`Response: ${res}`)
-         let name = `${res[0].name_user} ${res[0].second_name_user}`
-         localStorage.setItem('username', res[0].username)
-         localStorage.setItem('user_id', res[0].id_user)
+         let name = `${res.name_user} ${res.second_name_user}`
+         localStorage.setItem('username', res.username)
+         localStorage.setItem('user_id', res.id_user)
          localStorage.setItem('name_user', name)
          window.location.href = '../feed/index.html'
          
       }else{
-         console.log(xhr.status)
+         localStorage.clear()
+         spanErroLogin.style.display = 'block' 
+         spanErroLogin.style.visibility = 'visible' 
+         spanErroLogin.style.color = 'var(--error)' 
+         ipt_l_password.style.border = '1px solid var(--error)'
+         ipt_l_username.style.border = '1px solid var(--error)'
       }
    }
 
-   const data = JSON.stringify({
-      username: username_login,
-      password: password_login
-   })
+   // const data = JSON.stringify({
+   //    username: username,
+   //    password: password
+   // })
 
-   xhr.send(data)
+   xhr.send()
 })
 
 formCadastro.addEventListener('submit', (e) => {

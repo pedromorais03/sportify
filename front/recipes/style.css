@@ -14,6 +14,14 @@
   justify-content: center;
 }
 
+.header .navbar .profile{
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
 .header .navbar .input-search .input-container{
   position: relative;
   width: 100%;

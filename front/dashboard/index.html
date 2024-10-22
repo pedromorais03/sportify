@@ -8,7 +8,37 @@
       <link rel="stylesheet" href="../global.css">
    </head>
    <body>
-      <h1>Dashboard</h1>
+      <header class="header">
+         <nav class="navbar">
+            <div class="input-search">
+               <img src="../assets/images/sportify_logo.png" alt="Sportify Logo">
+               <div class="input-container">
+                  <i data-lucide="search" class="lucide-icons"></i>
+                  <input type="text" placeholder="O que está procurando">
+               </div>
+            </div>
+            <div class="profile">
+               <div id="profile_text"></div>
+               <a href="../profile/index.html" ><i data-lucide="user" class="lucide-icons"></i></a>
+            </div>
+         </nav>
+      </header>
+
+      <div class="container">
+         <aside class="container-aside">
+            <ul>
+               <li><a href="../feed/index.html"><i data-lucide="newspaper" class="lucide-icons aside-icons"></i>Feed</a></li>
+               <li><a href="../profile/index.html"><i data-lucide="user" class="lucide-icons aside-icons"></i>Perfil</a></li>
+               <li><a href="./index.html"><i data-lucide="chart-spline" class="lucide-icons aside-icons"></i>Dashboard</a></li>
+               <li><a href=""><i data-lucide="biceps-flexed" class="lucide-icons aside-icons"></i>Treinos</a></li>
+               <li><a href="../recipes/index.html"><i data-lucide="cooking-pot" class="lucide-icons aside-icons"></i>Receitas</a></li>
+               <li><a href="../songs/index.html"><i data-lucide="music" class="lucide-icons aside-icons"></i>Músicas</a></li>
+            </ul>
+         </aside>
+         <main class="container-main">
+
+         </main>
+      </div>
    </body>
 </html>
 <script src="https://unpkg.com/lucide@latest"></script>

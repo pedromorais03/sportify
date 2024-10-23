@@ -2,6 +2,9 @@ const formCadastro = document.querySelector('.form-cadastro')
 const formLogin = document.querySelector('.form-login')
 const spanErroCadastro = document.getElementById('error-cadastro')
 const spanErroLogin = document.getElementById('error-login')
+const toast = document.querySelector('.toast')
+const toastText = document.querySelector('.toast-text')
+const toastTimer = document.querySelector('.toast-timer')
 
 const iconLoginPassword = document.querySelector('#icon_l_password')
 const inputLoginPassword = document.querySelector('#ipt_l_password')
@@ -73,7 +76,7 @@ formCadastro.addEventListener('submit', (e) => {
       }else{
          toggleErrorCadastro('none', 'hidden', '')
          insert_user()
-         window.location.href = './index.html'
+         show_form('login', 'cadastro')
       }
       
       
@@ -192,4 +195,12 @@ const insert_user = async() => {
    })
 
    xhr.send(data)
+}
+
+function show_toast(text, color){
+   toast.classList.add('show')
+   toastText.innerText = text
+   toastTimer.style.backgroundColor = `var(--${color})`
+
+   setTimeout(() => toast.classList.remove('show'), 3000)
 }

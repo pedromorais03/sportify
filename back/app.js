@@ -54,6 +54,26 @@ app.get('/recipes', (req, res) => {
    })
 })
 
+app.post('/recipes', (req, res) => {
+   const { title }  = req.body
+   const { description } = req.body
+   const { ingredients } = req.body
+   const { prep_method } = req.body
+   const { id_user } = req.body 
+
+   const query = 'INSERT INTO recipes(name_recipe, description, ingredients_recipes, prep_method, fk_user) VALUES (?, ?, ?, ?, ?)'
+   const values = [title, description, ingredients, prep_method, Number(id_user)]
+
+   connection.query(query, values, (err, results) => {
+      if (err) {
+         console.error('Erro ao inserir dados: ', err);
+         return;
+      }
+
+      res.status(200).json({ message: 'Receita inserida com sucesso' })
+   })
+})
+
 app.post('/user', (req, res) => {
    const { name_user } = req.body
    const { second_name_user } = req.body

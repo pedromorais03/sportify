@@ -47,19 +47,25 @@
             <!-- Conteúdo do modal -->
             <div class="modal-content">
                <h2>Cadastrar receita</h2>
-               <form class="form-receita">
-                  <input type="text" placeholder="Título">
-                  <input type="text" placeholder="Descrição">
-                  <textarea name="" id="" placeholder="Ingredientes..."></textarea>
-               </form>
+               <div class="form-receita">
+                  <input type="text" id="ipt_title_recipe" placeholder="Título">
+                  <input type="text" id="ipt_desc_recipe" placeholder="Descrição">
+                  <textarea id="ipt_ingredients_recipe" placeholder="Ingredientes..."></textarea>
+                  <textarea id="ipt_prep_recipe" placeholder="Modo de preparo"></textarea>
+               </div>
                <div class="modal-buttons">
-                  <button class="insert-btn" onclick="">Inserir receita</button>
+                  <button class="insert-btn" onclick="insert_recipe()">Inserir receita</button>
                   <button class="close-btn" onclick="close_recipe_modal()">Fechar</button>
                </div>               
             </div>
          </div>
          
-
+         <div class="toast" id="toast">
+            <div class="toast-text">
+            </div>
+            <div class="toast-timer"></div>
+         </div>
+         
       </div>
    </body>
 </html>

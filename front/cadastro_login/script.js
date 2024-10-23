@@ -183,6 +183,9 @@ const insert_user = async() => {
       if(xhr.status === 200){
          const res = JSON.parse(xhr.responseText)
          console.log(`Response: ${res}`)
+         show_toast('Usuário cadastrado com sucesso', 'success')
+      }else{
+         show_toast('Erro ao cadastrar usuário', 'error')
       }
    }
 

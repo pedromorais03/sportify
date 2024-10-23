@@ -2,7 +2,10 @@ const containerMain = document.querySelector('.container-main')
 const profileText = document.querySelector('#profile_text')
 const nameUser = localStorage.getItem('name_user')
 
+const recipeModal = document.querySelector('#modal-recipe')
+
 window.document.addEventListener('DOMContentLoaded', () => {
+   recipeModal.style.display = 'none'
    profileText.innerHTML = `${localStorage.getItem('name_user')}`
 
    const xhr = new XMLHttpRequest
@@ -43,5 +46,10 @@ window.document.addEventListener('DOMContentLoaded', () => {
 })
 
 
+const show_recipe_modal = () => {
+   recipeModal.style.display = 'flex'
+}
 
-
+const close_recipe_modal = () => {
+   recipeModal.style.display = 'none'
+}

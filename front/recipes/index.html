@@ -36,8 +36,29 @@
             </ul>
          </aside>
          <main class="container-main">
-            
+            <div class="container-add-recipe">
+               <button onclick="show_recipe_modal()">
+                  <i data-lucide="circle-plus" class="lucide-icons add"></i>
+               </button>
+            </div>
          </main>
+
+         <div id="modal-recipe" class="modal-overlay">
+            <!-- Conteúdo do modal -->
+            <div class="modal-content">
+               <h2>Cadastrar receita</h2>
+               <form class="form-receita">
+                  <input type="text" placeholder="Título">
+                  <input type="text" placeholder="Descrição">
+                  <textarea name="" id="" placeholder="Ingredientes..."></textarea>
+               </form>
+               <div class="modal-buttons">
+                  <button class="insert-btn" onclick="">Inserir receita</button>
+                  <button class="close-btn" onclick="close_recipe_modal()">Fechar</button>
+               </div>               
+            </div>
+         </div>
+         
 
       </div>
    </body>

@@ -3,8 +3,9 @@ const profile = document.querySelector('.profile')
 const profileOption = document.querySelector('.profile-option')
 
 window.document.addEventListener('DOMContentLoaded', () => {
-   profileText.innerHTML = `${localStorage.getItem('name_user')}`
-   // console.log(nameUser)
+   if(nameUser) {
+      profileText.innerHTML = `${localStorage.getItem('name_user')}`
+   }
 })
 
 profile.addEventListener('click', () => {

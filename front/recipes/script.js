@@ -1,6 +1,7 @@
 const containerMain = document.querySelector('.container-main')
 const profileText = document.querySelector('#profile_text')
 const nameUser = localStorage.getItem('name_user')
+
 const toast = document.querySelector('.toast')
 const toastText = document.querySelector('.toast-text')
 const toastTimer = document.querySelector('.toast-timer')
@@ -9,7 +10,9 @@ const recipeModal = document.querySelector('#modal-recipe')
 
 window.document.addEventListener('DOMContentLoaded', () => {
    recipeModal.style.display = 'none'
-   profileText.innerHTML = `${localStorage.getItem('name_user')}`
+   if(nameUser) {
+      profileText.innerHTML = `${localStorage.getItem('name_user')}`
+   }
 
    const xhr = new XMLHttpRequest
    xhr.open('GET', 'http://localhost:3000/recipes', true)

@@ -49,7 +49,6 @@ app.get('/recipes', (req, res) => {
       }
 
       recipes = results
-      console.log(fields)
       res.status(200).json(recipes)
    })
 })
@@ -80,10 +79,10 @@ app.post('/user', (req, res) => {
    const { email_user } = req.body
    const { username } = req.body
    const { password } = req.body
-
-   const query = 'INSERT INTO user_data(name_user, second_name_user, email_user) VALUES (?, ?, ?)'
-   const values = [name_user, second_name_user, email_user]
-   const query2 = 'INSERT INTO user_login(username, password, fk_user_data) VALUES (?, ?, ?)'
+   const passwordHash = cryptPassword(password)
+   const query = 'CALL p_insert_data_login(?, ?, ?, ?, ?)'
+   const values = [name_user, second_name_user, email_user, username, passwordHash]
+   // const query2 = 'INSERT INTO user_login(username, password, fk_user_data) VALUES (?, ?, ?)'
 
 
    connection.query(query, values, (err, results) => {
@@ -91,16 +90,16 @@ app.post('/user', (req, res) => {
          console.error('Erro ao inserir dados: ', err);
          return;
       }else{
-         let lastInsertedId = results.insertId
-         const passwordHash = cryptPassword(password)
-         const values2 = [username, passwordHash, lastInsertedId]
+         // let lastInsertedId = results.insertId
+         
+         // const values2 = [username, passwordHash, lastInsertedId]
 
-         connection.query(query2, values2, (err, results) => {
-            if(err){
-               console.error('Erro ao inserir dados: ', err);
-               return;
-            }
-         })
+         // connection.query(query2, values2, (err, results) => {
+         //    if(err){
+         //       console.error('Erro ao inserir dados: ', err);
+         //       return;
+         //    }
+         // })
 
          res.status(200).json({ message: 'Usuário inserido com sucesso' })
       }
@@ -114,15 +113,12 @@ app.get('/login/:username/:password', (req, res) => {
    const query = `SELECT * FROM vw_user_data WHERE username = ?`
    const value = [username]
 
-   console.log(username, password)
-
    connection.query(query, value, (err, result) => {
       if(err){
          return res.status(500).json({ message: err})
       }
 
       if(result.length === 0){
-         console.log('tamanho 0')
          return res.status(404).json({ message: 'Usuário não encontrado' })
       }
 
@@ -130,10 +126,8 @@ app.get('/login/:username/:password', (req, res) => {
       const cryptedPassword = cryptPassword(password)
 
       if(user.password === cryptedPassword){
-         console.log('senha igual')
          return res.status(200).json(user)
       }else{
-         console.log('senha n igual')
          return res.status(401).json({ message: 'Senha inválida' })
       }
 

@@ -5,6 +5,8 @@ const profileOption = document.querySelector('.profile-option')
 window.document.addEventListener('DOMContentLoaded', () => {
    if(localStorage.getItem('name_user')) {
       profileText.innerHTML = `${localStorage.getItem('name_user')}`
+   }else{
+      window.location.href = '../index.html'
    }
 })
 

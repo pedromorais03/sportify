@@ -4,8 +4,10 @@ const profileOption = document.querySelector('.profile-option')
 const nameUser = localStorage.getItem('name_user')
 
 window.document.addEventListener('DOMContentLoaded', () => {
-   if(nameUser) {
+   if(localStorage.getItem('name_user')) {
       profileText.innerHTML = `${localStorage.getItem('name_user')}`
+   }else{
+      window.location.href = '../index.html'
    }
 })
 

@@ -14,6 +14,8 @@ window.document.addEventListener('DOMContentLoaded', () => {
    recipeModal.style.display = 'none'
    if(localStorage.getItem('name_user')) {
       profileText.innerHTML = `${localStorage.getItem('name_user')}`
+   }else{
+      window.location.href = '../index.html'
    }
 
    const xhr = new XMLHttpRequest

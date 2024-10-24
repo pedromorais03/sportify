@@ -1,5 +1,7 @@
 const containerMain = document.querySelector('.container-main')
 const profileText = document.querySelector('#profile_text')
+const profile = document.querySelector('.profile')
+const profileOption = document.querySelector('.profile-option')
 const nameUser = localStorage.getItem('name_user')
 
 const toast = document.querySelector('.toast')
@@ -51,6 +53,16 @@ window.document.addEventListener('DOMContentLoaded', () => {
    xhr.send()
 })
 
+profile.addEventListener('click', () => {
+   if(getComputedStyle(profileOption).display == 'none'){
+      profileOption.style.display = 'block'
+   }else{
+      profileOption.style.display = 'none'
+   }
+   
+})
+
+
 const insert_recipe = () => {
    const title = ipt_title_recipe.value
    const description = ipt_desc_recipe.value
@@ -96,10 +108,15 @@ const close_recipe_modal = () => {
    recipeModal.style.display = 'none'
 }
 
-function show_toast(text, color){
+const show_toast = (text, color) => {
    toast.classList.add('show')
    toastText.innerText = text
    toastTimer.style.backgroundColor = `var(--${color})`
 
    setTimeout(() => toast.classList.remove('show'), 3000)
+}
+
+const logout = () => {
+   localStorage.clear()
+   window.location.href = '../index.html'
 }

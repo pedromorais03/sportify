@@ -20,6 +20,12 @@
             <div class="profile">
                <div id="profile_text"></div>
                <a href="../profile/index.html" ><i data-lucide="user" class="lucide-icons"></i></a>
+            </div> 
+            <div class="profile-option">
+               <ul>
+                  <li><a href="../profile/index.html" ><i data-lucide="user" class="lucide-icons"></i>Perfil</a></li>
+                  <li><i onclick="logout()" data-lucide="log-out" class="lucide-icons"></i>Sair</li>
+               </ul>
             </div>
          </nav>
       </header>
@@ -44,7 +50,6 @@
          </main>
 
          <div id="modal-recipe" class="modal-overlay">
-            <!-- Conteúdo do modal -->
             <div class="modal-content">
                <h2>Cadastrar receita</h2>
                <div class="form-receita">

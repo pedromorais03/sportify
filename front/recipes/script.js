@@ -10,7 +10,9 @@ const recipeModal = document.querySelector('#modal-recipe')
 
 window.document.addEventListener('DOMContentLoaded', () => {
    recipeModal.style.display = 'none'
-   profileText.innerHTML = `${localStorage.getItem('name_user')}`
+   if(nameUser) {
+      profileText.innerHTML = `${localStorage.getItem('name_user')}`
+   }
 
    const xhr = new XMLHttpRequest
    xhr.open('GET', 'http://localhost:3000/recipes', true)

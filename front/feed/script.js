@@ -3,7 +3,7 @@ const profile = document.querySelector('.profile')
 const profileOption = document.querySelector('.profile-option')
 
 window.document.addEventListener('DOMContentLoaded', () => {
-   if(nameUser) {
+   if(localStorage.getItem('name_user')) {
       profileText.innerHTML = `${localStorage.getItem('name_user')}`
    }
 })

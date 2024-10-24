@@ -1,6 +1,7 @@
 const containerMain = document.querySelector('.container-main')
 const profileText = document.querySelector('#profile_text')
 const nameUser = localStorage.getItem('name_user')
+
 const toast = document.querySelector('.toast')
 const toastText = document.querySelector('.toast-text')
 const toastTimer = document.querySelector('.toast-timer')

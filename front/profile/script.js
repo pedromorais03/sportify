@@ -2,7 +2,7 @@ const profileText = document.querySelector('#profile_text')
 const profile = document.querySelector('.profile')
 const profileOption = document.querySelector('.profile-option')
 
-window.document.addEventListener('DOMContentLoaded', () => {
+window.document.addEventListener('DOMContentLoaded', () => {   
    if(localStorage.getItem('name_user')) {
       console.log(localStorage.getItem('name_user'))
       profileText.innerHTML = `${localStorage.getItem('name_user')}`

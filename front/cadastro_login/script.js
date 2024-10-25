@@ -8,23 +8,13 @@ const toastTimer = document.querySelector('.toast-timer')
 
 const iconLoginPassword = document.querySelector('#icon_l_password')
 const inputLoginPassword = document.querySelector('#ipt_l_password')
+const currentIcon = inputLoginPassword.getAttribute('data-lucide')
 
 let passwordLength = false
 let passwordUpper = false
 let passwordLower = false
 let passwordSpecial = false
 let passwordNumber = false
-
-const toggle_password_icon = () => {
-   console.log('ok')
-   inputLoginPassword.type = inputLoginPassword.type == 'text' ? 'password' : 'text'
-   
-   let icon = iconLoginPassword.getAttribute('data-lucide') == 'eye-off' ? 'eye' : 'eye-off'
-   console.log(icon)
-
-   iconLoginPassword.setAttribute('data-lucide', icon)
-   lucide.createIcons()
-}
 
 formLogin.addEventListener('submit', (e) => {
    const username = ipt_l_username.value
@@ -57,11 +47,6 @@ formLogin.addEventListener('submit', (e) => {
       }
    }
 
-   // const data = JSON.stringify({
-   //    username: username,
-   //    password: password
-   // })
-
    xhr.send()
 })
 
@@ -85,6 +70,13 @@ formCadastro.addEventListener('submit', (e) => {
       toggleErrorCadastro('block', 'visible', 'A senha deve atender aos requisitos mínimos<br>')
    }
 })
+
+const toggle_password_icon = () => {
+   inputLoginPassword.type = inputLoginPassword.type == 'text' ? 'password' : 'text'
+
+   iconLoginPassword.setAttribute('data-lucide', currentIcon === 'eye-off' ? 'eye' : 'eye-off')
+   lucide.createIcons()
+}
 
 const toggleErrorCadastro = (display, visibility, msg) => {
    spanErroCadastro.style.display = display

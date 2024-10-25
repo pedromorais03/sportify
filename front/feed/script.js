@@ -9,11 +9,11 @@ const toastTimer = document.querySelector('.toast-timer')
 const postModal = document.querySelector('#modal-post')
 
 window.document.addEventListener('DOMContentLoaded', () => {
-   // if(localStorage.getItem('name_user')) {
-   //    profileText.innerHTML = `${localStorage.getItem('name_user')}`
-   // }else{
-   //    window.location.href = '../index.html'
-   // }
+   if(localStorage.getItem('name_user')){
+      profileText.innerHTML = `${localStorage.getItem('name_user')}`
+   }else{
+      window.location.href = '../index.html'
+   }
 })
 
 profile.addEventListener('click', () => {

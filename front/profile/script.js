@@ -1,12 +1,13 @@
 const profileText = document.querySelector('#profile_text')
 const profile = document.querySelector('.profile')
 const profileOption = document.querySelector('.profile-option')
-const nameUser = localStorage.getItem('name_user')
 
 window.document.addEventListener('DOMContentLoaded', () => {
    if(localStorage.getItem('name_user')) {
+      console.log(localStorage.getItem('name_user'))
       profileText.innerHTML = `${localStorage.getItem('name_user')}`
    }else{
+      console.log('Não há nome de usuário salvo')
       window.location.href = '../index.html'
    }
 })

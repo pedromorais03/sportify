@@ -20,6 +20,7 @@ const toggle_password_icon = () => {
    inputLoginPassword.type = inputLoginPassword.type == 'text' ? 'password' : 'text'
    
    let icon = iconLoginPassword.getAttribute('data-lucide') == 'eye-off' ? 'eye' : 'eye-off'
+   console.log(icon)
 
    iconLoginPassword.setAttribute('data-lucide', icon)
    lucide.createIcons()

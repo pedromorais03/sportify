@@ -48,9 +48,9 @@
 }
 
 .container .container-form form{
-   height: 65vh;
+   min-height: 80vh;
    background-color: var(--dark-gray);
-   width: 75%;
+   width: 80%;
    text-align: center;
    justify-content: center;
    border-radius: 15px;
@@ -70,7 +70,7 @@
 .container .container-form .form-cadastro{
    display: none;
    visibility: hidden;
-
+   
    flex-direction: column;
    align-items: center;
    justify-content: center;

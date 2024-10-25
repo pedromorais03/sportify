@@ -74,6 +74,9 @@ formCadastro.addEventListener('submit', (e) => {
 const toggle_password_icon = () => {
    inputLoginPassword.type = inputLoginPassword.type == 'text' ? 'password' : 'text'
 
+   lucide.createIcons()
+   inputLoginPassword.type = inputLoginPassword.type == 'text' ? 'password' : 'text'
+
    iconLoginPassword.setAttribute('data-lucide', currentIcon === 'eye-off' ? 'eye' : 'eye-off')
    lucide.createIcons()
 }

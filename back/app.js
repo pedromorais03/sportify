@@ -53,6 +53,19 @@ app.get('/recipes', (req, res) => {
    })
 })
 
+app.get('/posts', (req, res) => {
+   let posts = []
+   connection.query('SELECT * FROM vw_post_user', (err, results, fields) => {
+      if(err){
+         console.log('Erro ao executar select', err)
+         return;
+      }
+
+      posts = results
+      res.status(200).json(posts)
+   })
+})
+
 app.post('/recipes', (req, res) => {
    const { title }  = req.body
    const { description } = req.body
@@ -82,7 +95,6 @@ app.post('/user', (req, res) => {
    const passwordHash = cryptPassword(password)
    const query = 'CALL p_insert_data_login(?, ?, ?, ?, ?)'
    const values = [name_user, second_name_user, email_user, username, passwordHash]
-   // const query2 = 'INSERT INTO user_login(username, password, fk_user_data) VALUES (?, ?, ?)'
 
 
    connection.query(query, values, (err, results) => {
@@ -90,21 +102,28 @@ app.post('/user', (req, res) => {
          console.error('Erro ao inserir dados: ', err);
          return;
       }else{
-         // let lastInsertedId = results.insertId
-         
-         // const values2 = [username, passwordHash, lastInsertedId]
-
-         // connection.query(query2, values2, (err, results) => {
-         //    if(err){
-         //       console.error('Erro ao inserir dados: ', err);
-         //       return;
-         //    }
-         // })
-
          res.status(200).json({ message: 'Usuário inserido com sucesso' })
       }
    })
 
+})
+
+app.post('/posts', (req, res) => {
+   const { title } = req.body
+   const { content } = req.body
+   const { id_user } = req.body 
+
+   const query = 'INSERT INTO posts VALUES(?, ?, ?)'
+   const values = [title, content, id_user]
+
+   connection.query(query, values, values, (err, results) => {
+      if(err){
+         console.log('Erro ao inserir post', err)
+         return
+      }else{
+         res.status.json({ message: 'Post inserido com sucesso' })
+      }
+   })
 })
 
 app.get('/login/:username/:password', (req, res) => {

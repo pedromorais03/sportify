@@ -13,6 +13,10 @@ const barGraph = new Chart(ctx, {
                '#CB2D6F'
             ],
          
+      },{
+         label: '% da População em situação de obesidade',
+         data: [3.9, 22.1, 28.3, 6.2, 29, 20.6, 22.2, 28.9, 23.8, 27.8],
+         backgroundColor: ['#13A098']
       }]
   },
   options: {

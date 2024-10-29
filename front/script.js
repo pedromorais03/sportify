@@ -2,6 +2,7 @@ window.document.addEventListener('DOMContentLoaded', () => {
    if(localStorage.getItem('name_user')){
       window.location.href = './feed/index.html'
    }
+
 })
 
 const redirect_to = (page) =>{

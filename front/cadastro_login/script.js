@@ -55,19 +55,19 @@ formCadastro.addEventListener('submit', (e) => {
    console.log('entrou aq')
 
    if(passwordLength && passwordLower && passwordSpecial && passwordNumber && passwordUpper){
-      toggleErrorCadastro('none', 'hidden', '')
+      toggle_error_cadastro('none', 'hidden', '')
 
       if(ipt_second_name.value == '' || ipt_second_name.value == undefined || ipt_name.value == '' || ipt_name.value == undefined || ipt_email.value == '' || ipt_email.value == undefined || ipt_username.value == '' || ipt_username.value == undefined){
-         toggleErrorCadastro('block', 'visible', 'Todos os campos devem estar devidamente preenchidos ')
+         toggle_error_cadastro('block', 'visible', 'Todos os campos devem estar devidamente preenchidos ')
       }else{
-         toggleErrorCadastro('none', 'hidden', '')
+         toggle_error_cadastro('none', 'hidden', '')
          insert_user()
          show_form('login', 'cadastro')
       }
       
       
    }else{
-      toggleErrorCadastro('block', 'visible', 'A senha deve atender aos requisitos mínimos<br>')
+      toggle_error_cadastro('block', 'visible', 'A senha deve atender aos requisitos mínimos<br>')
    }
 })
 
@@ -78,7 +78,7 @@ const toggle_password_icon = () => {
    lucide.createIcons()
 }
 
-const toggleErrorCadastro = (display, visibility, msg) => {
+const toggle_error_cadastro = (display, visibility, msg) => {
    spanErroCadastro.style.display = display
    spanErroCadastro.style.visibility = visibility
    spanErroCadastro.innerHTML = msg
@@ -105,7 +105,7 @@ const verify_password = () => {
       confPassword.style.border = '1px solid var(--error)'
       confPassword.style.color = 'var(--error)'
 
-      // toggleErrorCadastro('block', 'visible', 'As senhas devem ser iguais')
+      // toggle_error_cadastro('block', 'visible', 'As senhas devem ser iguais')
    }else{
       password.style.border = 'none'
       password.style.color = 'var(--dark-gray)'
@@ -113,7 +113,7 @@ const verify_password = () => {
       confPassword.style.border = 'none'
       confPassword.style.color = 'var(--dark-gray)'
 
-      // toggleErrorCadastro('none', 'hidden', '')
+      // toggle_error_cadastro('none', 'hidden', '')
    }
 }
 

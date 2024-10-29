@@ -42,11 +42,6 @@
             </ul>
          </aside>
          <main class="container-main">
-            <div class="container-add-post">
-               <button onclick="show_post_modal()">
-                  <i data-lucide="circle-plus" class="lucide-icons add"></i>
-               </button>
-            </div>
             <div class="post">
                <h1 class="post-title">Título do Post</h1>
                <div class="post-content">
@@ -67,22 +62,7 @@
                </div>
             </div>
          </main>
-      </div>
-
-      <div id="modal-post" class="modal-overlay">
-         <div class="modal-content">
-            <h2>Cadastrar receita</h2>
-            <div class="form-post">
-               <input type="text" id="ipt_title_recipe" placeholder="Título">
-               <input type="text" id="ipt_desc_recipe" placeholder="Descrição">
-            </div>
-            <div class="modal-buttons">
-               <button class="insert-btn" onclick="insert_post()">Postar</button>
-               <button class="close-btn" onclick="close_post_modal()">Fechar</button>
-            </div>               
-         </div>
-      </div>
-      
+      </div>      
       <div class="toast" id="toast">
          <div class="toast-text">
          </div>

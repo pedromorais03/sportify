@@ -25,15 +25,6 @@ profile.addEventListener('click', () => {
    
 })
 
-const show_post_modal = () => {
-   postModal.style.display = 'flex'
-}
-
-const close_post_modal = () => {
-   postModal.style.display = 'none'
-}
-
-
 const logout = () => {
    localStorage.clear()
    window.location.href = '../index.html'

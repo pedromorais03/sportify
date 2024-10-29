@@ -199,6 +199,9 @@
 
 .container .container-main .post .comments-section .comment-form{
    margin-top: 20px;
+   display: flex;
+   flex-direction: column;
+   align-items: flex-end;
 }
 
 .container .container-main .post .comments-section .comment-form textarea{
@@ -211,6 +214,7 @@
 }
 
 .container .container-main .post .comments-section .comment-form button{
+   width: 240px;
    margin-top: 10px;
    background-color: var(--light-secondary-color);
    color: var(--text-color);
@@ -218,11 +222,13 @@
    border-radius: 4px;
    padding: 10px 15px;
    cursor: pointer;
-   transition: .3s all;
+   transition: .5s all;
+   align-self: flex-end;
 }
 
 .container .container-main .post .comments-section .comment-form button:hover{
    background-color: var(--light-primary-color);
+   scale: 1.1;
 }
 
 .container .container-main .post .post-comments .comment:not(:last-child){

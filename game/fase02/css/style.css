@@ -1,0 +1,153 @@
+html,
+body {
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  margin: 0;
+  font: 16px sans-serif;
+}
+
+.wrap {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+header {
+  text-align: center;
+  background: black;
+  color: #fff;
+  padding: 10px;
+}
+
+footer {
+  padding: 10px;
+  text-align: center;
+  font-size: 11px;
+  background: black;
+  color: white;
+}
+
+.game-wrapper {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #222;
+}
+.game {
+  width: 800px;
+  height: 600px;
+  background-image: url(../img/fundo01_fase02.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  /*animation: scroll-background 5s linear infinite;*/
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  position: relative;
+}
+
+@keyframes scroll-background {
+  from {
+    background-position-y: 0px;
+  }
+  to {
+    background-position-y: 256px;
+  }
+}
+
+.game .enemy {
+  position: absolute;
+  margin-left: -20px;
+  margin-top: -18px;
+  width: 40px;
+}
+
+.game .player {
+  position: absolute;
+  margin-left: -20px;
+  width: 40px;
+}
+
+.game .laser {
+  position: absolute;
+  margin-left: -2.5px;
+  height: 30px;
+}
+
+.game .enemy-laser {
+  position: absolute;
+  margin-left: -2.5px;
+  height: 30px;
+}
+
+.congratulations {
+  display: none;
+  position: absolute;
+  background: #c7a526;
+  color: white;
+  padding: 20px 50px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  text-align: center;
+  animation: pop-in 1s;
+}
+
+.game-over {
+  display: none;
+  position: absolute;
+  background: #6b1818;
+  color: white;
+  padding: 20px 50px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  text-align: center;
+  animation: pop-in 1s;
+}
+
+.btn-lose {
+  border: 2px solid white;
+  border-radius: 20px;
+  box-shadow: 0 2px rgba(0, 0, 0, 0.15);
+  background-color: #6b1818;
+  color: white;
+  padding: 10px 40px;
+  font: 14px sans-serif;
+}
+
+.btn-lose:hover{
+  opacity: 0.7;
+  transition: all ease 0.2s;
+}
+
+.btn-win{
+  border: 2px solid white;
+  border-radius: 20px;
+  box-shadow: 0 2px rgba(0, 0, 0, 0.15);
+  background-color: #c7a526;
+  color: white;
+  padding: 10px 40px;
+  font: 14px sans-serif;
+}
+
+.btn-win:hover{
+  opacity: 0.7;
+  transition: all ease 0.2s;
+}
+
+@keyframes pop-in {
+  0% {
+    opacity: 0;
+    transform: translate(0, -100px);
+  }
+  10% {
+    opacity: 1;
+  }
+  50% {
+    transform: translate(0, 30px);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Corona Invasion</title>
+  <link rel="stylesheet" href="css/main.css">
+</head>
+
+<body>
+  <div class="wrap">
+    <header>Corona Invasion</header>
+    <div class="game-wrapper">
+      <div class="game"></div>
+      <div class="next-phase">
+        <h1>PARABÉNS!</h1>
+        <h2>Você avançou para a próxima fase!</h2>
+        <button class="btn btn-win" onclick="window.location.href='../fase02/index.html'">Avançar de Nível</button>
+      </div>
+      <div class="game-over">
+        <h1>GAME OVER</h1>
+        <h2>Você foi erradicado!!!</h2>
+        <button class="btn btn-lose" onclick="window.location.reload()">Tentar Novamente</button>
+      </div>
+    </div>
+  </div>
+  <script src="js/game.js"></script>
+</body>
+
+</html>

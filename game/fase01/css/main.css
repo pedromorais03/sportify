@@ -41,7 +41,8 @@ footer {
 .game {
   width: 800px;
   height: 600px;
-  background-image: url(../img/fundo01_fase01.png);
+  background-image: url('../assets/images/fundo01_fase01.png');
+  /* background-image: url('../../assets/images/estagio_1.png'); */
   background-size: cover;
   background-repeat: no-repeat;
   /*animation: scroll-background 5s linear infinite;*/

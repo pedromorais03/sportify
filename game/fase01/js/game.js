@@ -119,7 +119,7 @@ function createLaser($container, x, y) {
   $container.appendChild($element);
   const laser = { x, y, $element };
   GAME_STATE.lasers.push(laser);
-  const audio = new Audio("../assets/sounds/gosma_tiro.mp3");
+  const audio = new Audio("../assets/sounds/projetil.mp3");
   audio.play();
   audio.volume = audio.volume - 0.9;
   setPosition($element, x, y);

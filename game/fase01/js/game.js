@@ -19,6 +19,8 @@ const ENEMY_COOLDOWN = 7.5;
 
 const $player = document.createElement("img");
 
+let score = 100
+
 const GAME_STATE = {
   lastTime: Date.now(),
   leftPressed: false,
@@ -192,6 +194,9 @@ function updateEnemies(dt, $container) {
 
 function destroyEnemy($container, enemy) {
   $container.removeChild(enemy.$element);
+  score += 100;
+  console.log(score)
+  div_score.innerText = score
   enemy.isDead = true;
 }
 

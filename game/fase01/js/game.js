@@ -19,7 +19,9 @@ const ENEMY_COOLDOWN = 7.5;
 
 const $player = document.createElement("img");
 
-let score = 100
+
+let baseScore = 100
+let score = 0
 let minutes = 0
 let seconds = 0
 let interval
@@ -197,7 +199,7 @@ function updateEnemies(dt, $container) {
 
 function destroyEnemy($container, enemy) {
   $container.removeChild(enemy.$element);
-  score += 100;
+  score += baseScore;
   console.log(score)
   div_score.innerText = score
   enemy.isDead = true;
@@ -259,6 +261,8 @@ function updateTime(){
     seconds = 0
     minutes++
   }
+
+  baseScore = Math.max(10, baseScore - 10)
 
   let formattedMinutes = minutes < 10 ? "0" + minutes : minutes
   let formattedSeconds = seconds < 10 ? "0" + seconds : seconds

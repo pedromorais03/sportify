@@ -20,6 +20,9 @@ const ENEMY_COOLDOWN = 7.5;
 const $player = document.createElement("img");
 
 let score = 100
+let minutes = 0
+let seconds = 0
+let interval
 
 const GAME_STATE = {
   lastTime: Date.now(),
@@ -232,6 +235,10 @@ function updateEnemyLasers(dt, $container) {
 }
 
 function init() {
+  if(!interval){
+    interval = setInterval(() => updateTime(), 1000)
+  }
+
   const $container = document.querySelector(".game");
   createPlayer($container);
 
@@ -244,6 +251,31 @@ function init() {
       createEnemy($container, x, y);
     }
   }
+}
+
+function updateTime(){
+  seconds++
+  if (seconds === 60) {
+    seconds = 0
+    minutes++
+  }
+
+  let formattedMinutes = minutes < 10 ? "0" + minutes : minutes
+  let formattedSeconds = seconds < 10 ? "0" + seconds : seconds
+  console.log(formattedMinutes, formattedSeconds)
+  div_stopwatch.innerHTML = `${formattedMinutes}:${formattedSeconds}`
+}
+
+function pauseTime(){
+  clearInterval(interval)
+  interval = null
+}
+
+function resetTime(){
+  clearInterval(interval)
+  seconds = 0
+  minutes = 0
+  div_stopwatch.innerText = '00:00'
 }
 
 

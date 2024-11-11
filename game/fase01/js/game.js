@@ -9,7 +9,7 @@ const PLAYER_WIDTH = 20
 const PLAYER_MAX_SPEED = 300.0
 const LASER_MAX_SPEED_PLAYER = 250.0
 const LASER_MAX_SPEED_ENEMY = 150.0
-const LASER_COOLDOWN = 0.5
+const LASER_COOLDOWN = 0.1
 
 const ENEMIES_PER_ROW = 10
 const ENEMY_HORIZONTAL_PADDING = 80
@@ -314,7 +314,6 @@ function update(e) {
     audio.volume -= 0.9
     audio.play()
     localStorage.setItem("points", score)
-    localStorage.setItem("time_phase_1", `${formattedMinutes}:${formattedSeconds}`)
     return
   }
 

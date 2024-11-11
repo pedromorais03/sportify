@@ -311,6 +311,8 @@ function update(e) {
     const audio = new Audio("../assets/sounds/som_passafase.mp3")
     audio.volume -= 0.9
     audio.play()
+    localStorage.setItem("points", score)
+    localStorage.setItem("time_phase_1", `${formattedMinutes}:${formattedSeconds}`)
     return
   }
 

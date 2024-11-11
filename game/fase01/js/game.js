@@ -307,6 +307,7 @@ function update(e) {
 
   if (playerHasWon()) {
     document.querySelector(".next-phase").style.display = "block"
+    pauseTime()
     const audio = new Audio("../assets/sounds/som_passafase.mp3")
     audio.volume -= 0.9
     audio.play()

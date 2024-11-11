@@ -120,6 +120,19 @@ footer {
   animation: pop-in 1s;
 }
 
+.markers{
+  position: absolute;
+  height: 240px;
+  top: calc(50%- 120px);
+  right: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 20px;
+  color: white;
+}
+
 .btn-lose {
   border: 2px solid white;
   border-radius: 20px;

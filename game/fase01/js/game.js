@@ -199,7 +199,7 @@ function updateEnemies(dt, $container) {
 function destroyEnemy($container, enemy) {
   $container.removeChild(enemy.$element)
   score += baseScore
-  div_score.innerText = parseFloat(score.toFixed(2))
+  div_score.innerText = `Pontuação: ${parseFloat(score.toFixed(2))}`
   enemy.isDead = true
 }
 
@@ -268,7 +268,7 @@ function updateTime(){
   let formattedMinutes = minutes < 10 ? "0" + minutes : minutes
   let formattedSeconds = seconds < 10 ? "0" + seconds : seconds
   console.log(formattedMinutes, formattedSeconds)
-  div_stopwatch.innerHTML = `${formattedMinutes}:${formattedSeconds}`
+  div_stopwatch.innerHTML = `Tempo: ${formattedMinutes}:${formattedSeconds}`
 }
 
 function pauseTime(){

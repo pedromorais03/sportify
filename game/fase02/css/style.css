@@ -40,7 +40,7 @@ footer {
 .game {
   width: 800px;
   height: 600px;
-  background-image: url(../img/fundo01_fase02.png);
+  background-image: url("../assets/images/fundo_02.png");
   background-size: cover;
   background-repeat: no-repeat;
   /*animation: scroll-background 5s linear infinite;*/

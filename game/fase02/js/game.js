@@ -69,7 +69,7 @@ function createPlayer($container) {
   GAME_STATE.playerX = GAME_WIDTH / 2;
   GAME_STATE.playerY = GAME_HEIGHT - 50;
   //const $player = document.createElement("img");
-  $player.src = "img/corona_idle.jpg";
+  $player.src = "../assets/images/estagio_2.png"
   $player.className = "player";
   $container.appendChild($player);
   setPosition($player, GAME_STATE.playerX, GAME_STATE.playerY);
@@ -78,7 +78,7 @@ function createPlayer($container) {
 function destroyPlayer($container, player) {
   $container.removeChild(player);
   GAME_STATE.gameOver = true;
-  const audio = new Audio("sound/morte1.mp3");
+  const audio = new Audio("../assets/sounds/morte1.mp3");
   audio.volume -= 0.9;
   audio.play();
 }
@@ -100,11 +100,11 @@ function updatePlayer(dt, $container) {
   if (GAME_STATE.spacePressed && GAME_STATE.playerCooldown <= 0) {
     createLaser($container, GAME_STATE.playerX, GAME_STATE.playerY);
     GAME_STATE.playerCooldown = LASER_COOLDOWN; 
-    $player.src = "img/corona_ataque.jpg";
+    $player.src = "../assets/images/estagio_2_acao.png";
     $player.className = "player";
   }
   if(!GAME_STATE.spacePressed && GAME_STATE.playerCooldown <= 0){
-    $player.src = "img/corona_idle.jpg";
+    $player.src = "../assets/images/estagio_2.png";
     $player.className = "player";
   }
   if (GAME_STATE.playerCooldown > 0) {
@@ -117,12 +117,12 @@ function updatePlayer(dt, $container) {
 
 function createLaser($container, x, y) {
   const $element = document.createElement("img");
-  $element.src = "img/projetil_corona.png";
+  $element.src = "../assets/images/projetil_2.png";
   $element.className = "laser";
   $container.appendChild($element);
   const laser = { x, y, $element };
   GAME_STATE.lasers.push(laser);
-  const audio = new Audio("sound/gosma_tiro.mp3");
+  const audio = new Audio("../assets/sounds/gosma_tiro.mp3");
   audio.play();
   audio.volume = audio.volume - 0.9;
   setPosition($element, x, y);
@@ -165,7 +165,7 @@ function destroyLaser($container, laser) {
 
 function createEnemy($container, x, y) {
   const $element = document.createElement("img");
-  $element.src = "img/inimigo_fase02.png";
+  $element.src = "../assets/images/inimigo_01.png";
   $element.className = "enemy";
   $container.appendChild($element);
   const enemy = {
@@ -204,7 +204,7 @@ function destroyEnemy($container, enemy) {
 
 function createEnemyLaser($container, x, y) {
   const $element = document.createElement("img");
-  $element.src = "img/projetil_fase02.png";
+  $element.src = "../assets/images/projetil_2.png";
   $element.className = "enemy-laser";
   $container.appendChild($element);
   const laser = { x, y, $element };
@@ -251,10 +251,10 @@ function init() {
 
 function updateCoronaImg(estado){
   if(estado == true){
-    $player.src = "img/corona_ataque.jpg";
+    $player.src = "../assets/images/estagio_2_acao.png";
     $player.className = "player";
   }else if(estado == false){
-    $player.src = "img/corona_idle.jpg";
+    $player.src = "../assets/images/estagio_2.png";
     $player.className = "player";
   }
 }
@@ -274,7 +274,7 @@ function update(e) {
 
   if (playerHasWon()) {
     document.querySelector(".congratulations").style.display = "block";
-    const audio = new Audio("sound/som_vitoria.mp3");
+    const audio = new Audio("../assets/sounds/som_vitoria.mp3");
     audio.volume -= 0.9;
     audio.play();
     return;

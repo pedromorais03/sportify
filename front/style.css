@@ -1,17 +1,17 @@
-article{
+article {
    animation: fadeIn 2s ease;
 }
 
-.container{
+.container {
    background-color: var(--light-primary-color);
    height: fit-content;
 }
 
-.container .container-main{
+.container .container-main {
    height: fit-content;
 }
 
-.container .container-main .section-intro{
+.container .container-main .section-intro {
    background-image: url('./assets/images/bg-landing-page.jpeg');
    background-size: cover;
    background-repeat: no-repeat;
@@ -25,7 +25,7 @@ article{
    height: 80vh;
 }
 
-.container .container-main .section-intro article{
+.container .container-main .section-intro article {
    display: flex;
    flex-direction: column;
    align-items: center;
@@ -33,16 +33,16 @@ article{
    gap: 1.5rem;
 }
 
-.container .container-main .section-intro article h1{
+.container .container-main .section-intro article h1 {
    color: var(--light-secondary-color);
    font-size: 2rem;
 }
 
-.container .container-main .section-intro article p{
+.container .container-main .section-intro article p {
    font-size: 1.2rem;
 }
 
-.container .container-main .section-intro article a{
+.container .container-main .section-intro article a {
    text-decoration: none;
    background-color: var(--light-secondary-color);
    padding: 10px 20px;
@@ -50,22 +50,22 @@ article{
    transition: .5s all ease;
 }
 
-.container .container-main .section-intro article a:hover{
+.container .container-main .section-intro article a:hover {
    scale: 1.1;
 }
 
-.container .container-main .section-about{
+.container .container-main .section-about {
    background-color: var(--dark-gray);
    height: fit-content;
 }
 
-.container .container-main .section-about article{
+.container .container-main .section-about article {
    width: 75%;
    margin: 0 auto;
    padding: 1.2rem;
 }
 
-.container .container-main .section-about article h1{
+.container .container-main .section-about article h1 {
    display: inline-block;
    border-bottom: 1px solid var(--light-secondary-color);
    color: var(--light-primary-color);
@@ -73,11 +73,11 @@ article{
    font-size: 2rem;
 }
 
-.container .container-main .section-about article p{
+.container .container-main .section-about article p {
    margin-top: 1%;
 }
 
-.container .container-main .section-about article .about-cards{
+.container .container-main .section-about article .about-cards {
    display: flex;
    flex-direction: row;
    align-items: center;
@@ -88,7 +88,7 @@ article{
    gap: 15px;
 }
 
-.container .container-main .section-about article .about-cards .card{
+.container .container-main .section-about article .about-cards .card {
    width: 100%;
    height: 300px;
    padding: 10px;
@@ -97,65 +97,106 @@ article{
    border-radius: 10px;
 }
 
-.container .container-main .section-about article .about-cards .card h4{
+.container .container-main .section-about article .about-cards .card h4 {
    display: inline-block;
    border-bottom: 1px solid var(--secondary-color);
 }
 
-.container .container-main .section-about article .about-cards .card ul li{
+.container .container-main .section-about article .about-cards .card ul li {
    list-style: none;
 }
 
-.container .container-main .section-for{
+.container .container-main .section-for {
    background-color: var(--primary-color);
    color: var(--text-color);
 }
 
-.container .container-main .section-for article{
+.container .container-main .section-for article {
    text-align: right;
    width: 75%;
    margin: 0 auto;
    padding: 1.2rem;
 }
 
-.container .container-main .section-for article h1{
+.container .container-main .section-for article h1 {
    display: inline-block;
    border-bottom: 1px solid var(--light-primary-color);
    color: var(--light-secondary-color);
    font-size: 2rem;
 }
 
-.container .container-main .section-for article p{
+.container .container-main .section-for article p {
    margin-top: 1%;
    text-align: justify;
 }
 
-.container .container-main .section-graphic{
+.container .container-main .section-graphic {
    background-color: var(--dark-gray);
 }
 
-.container .container-main .section-graphic article{
+.container .container-main .section-graphic article {
    width: 75%;
    margin: 0 auto;
    padding: 1.2rem;
 }
 
-.container .container-main .section-graphic article h1{
+.container .container-main .section-graphic article h1 {
    display: inline-block;
    color: var(--light-primary-color);
    border-bottom: 1px solid var(--light-secondary-color);
    font-size: 2rem;
 }
 
-.container .container-main .section-graphic .graphic-content{
+.container .container-main .section-graphic .graphic-content {
    margin-top: 1.5rem
 }
 
-.container .container-main .section-graphic .graphic-content canvas:first-of-type{
+.container .container-main .section-graphic .graphic-content canvas:first-of-type {
    margin-bottom: 3rem;
 }
 
-.container .container-main .section-graphic .graphic-content span{
+.container .container-main .section-graphic .graphic-content span {
    font-size: 1.5rem;
    font-weight: 700;
+}
+
+@media (max-width: 768px) {
+   .header{
+      height: 10vh;
+   }
+   
+   .header .navbar img {
+      width: 100px;
+   }
+
+   .container .container-main .section-intro {
+      height: 60vh;
+   }
+
+   .container .container-main .section-about article .about-cards{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+   }
+
+   .container .container-main .section-about article .about-cards .card{
+      height: fit-content;
+   }
+
+   .footer .footer-main {
+      flex-direction: column;
+      align-items: center;
+   }
+}
+
+@media (max-width: 480px) {
+   .header .navbar img {
+      width: 80px;
+   }
+
+
+   .footer .footer-footer {
+      font-size: 0.9rem;
+   }
 }

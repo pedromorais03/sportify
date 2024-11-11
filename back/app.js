@@ -153,4 +153,22 @@ app.get('/login/:username/:password', (req, res) => {
    })
 })
 
+app.post('/game', (req, res) => {
+   const { score }  = req.body
+   const { id_user } = req.body
+   const { id_game } = req.body
+
+   const query = 'INSERT INTO run_data VALUES (default, ?, ?, ?, default)'
+   const values = [score, id_user, id_game]
+
+   connection.query(query, values, (err, results) => {
+      if (err) {
+         console.error('Erro ao inserir dados: ', err);
+         return;
+      }
+
+      res.status(200).json({ message: 'Resultado do jogo inserido com sucesso' })
+   })
+})
+
 app.listen(port, () => console.log(`Servidor na porta ${port}`))

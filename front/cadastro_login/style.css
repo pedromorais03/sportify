@@ -36,6 +36,15 @@
    opacity: 1;
 }
 
+.container-img.small .back-button{
+   display: none;
+}
+
+.container-img.small .back-button:hover{
+   scale: 1.1;
+   opacity: 1;
+}
+
 .container .container-form{
    width: 50%;
    height: 100vh;

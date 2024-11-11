@@ -1,24 +1,24 @@
-.lucide-icons-2{
+.lucide-icons-2 {
    color: var(--dark-gray);
 }
 
-.aside-icons, .lucide-icons{
+.aside-icons, .lucide-icons {
    border-bottom: 1px solid var(--light-secondary-color);
 }
 
-.header{
+.header {
    position: sticky;
    top: 0;
 }
 
-.header .navbar .input-search{
+.header .navbar .input-search {
    display: flex;
    flex-direction: row;
    align-items: center;
    justify-content: center;
 }
 
-.header .navbar .profile{
+.header .navbar .profile {
    display: flex;
    flex-direction: row-reverse;
    align-items: center;
@@ -27,7 +27,7 @@
    cursor: pointer;
 }
 
-.header .navbar .profile-option{
+.header .navbar .profile-option {
    display: none;
    position: absolute;
    top: 8vh;
@@ -41,7 +41,7 @@
    animation: fadeIn 0.5s ease;
 }
 
-.header .navbar .profile-option ul{
+.header .navbar .profile-option ul {
    width: 100%;
    list-style: none;
    display: flex;
@@ -50,26 +50,26 @@
    gap: 1rem;
 }
 
-.header .navbar .profile-option ul li{
+.header .navbar .profile-option ul li {
    display: flex;
    flex-direction: row;
    align-items: center;
 }
 
-.header .navbar .profile-option ul li a{
+.header .navbar .profile-option ul li a {
    text-decoration: none;
    display: flex;
    flex-direction: row;
    align-items: center;
 }
 
-.header .navbar .input-search .input-container{
+.header .navbar .input-search .input-container {
    position: relative;
    width: 100%;
-   max-width: 300px; 
+   max-width: 300px;
 }
 
-.header .navbar .input-search .input-container input{
+.header .navbar .input-search .input-container input {
    width: 100%;
    padding: 10px 10px 10px 40px;
    font-size: 16px;
@@ -78,9 +78,9 @@
    color: var(--dark-gray);
 }
 
-.header .navbar .input-search .input-container .lucide-icons{
+.header .navbar .input-search .input-container .lucide-icons {
    position: absolute;
-   left: 10px; 
+   left: 10px;
    top: 50%;
    transform: translateY(-50%);
    font-size: 18px;
@@ -89,25 +89,25 @@
    border: none;
 }
 
-.container{
+.container {
    display: flex;
    flex-direction: row;
    background-color: var(--dark-gray);
    height: fit-content;
 }
 
-.container .container-aside{
+.container .container-aside {
    position: sticky;
    top: 10vh;
 }
 
-.container .container-aside, .container .container-aside ul{
+.container .container-aside, .container .container-aside ul {
    height: 90vh;
    width: 20%;
    max-width: 480px;
 }
 
-.container .container-aside ul{
+.container .container-aside ul {
    display: flex;
    flex-direction: column;
    align-items: flex-start;
@@ -117,7 +117,7 @@
    padding: 2rem 0 0 2rem;
 }
 
-.container .container-aside ul li a{
+.container .container-aside ul li a {
    display: flex;
    flex-direction: row;
    align-items: center;
@@ -125,17 +125,17 @@
    text-decoration: none;
 }
 
-.container .container-main{
+.container .container-main {
    width: 80%;
    padding-top: 2rem;
    margin-right: 10rem;
 }
 
-.container .container-main .container-add-post{
+.container .container-main .container-add-post {
    position: fixed;
    bottom: 50px;
    right: 50px;
- 
+
    display: flex;
    flex-direction: column;
    align-items: center;
@@ -146,20 +146,20 @@
    border-radius: 50%;
    cursor: pointer;
    transition: .5s all ease;
- }
- 
- .container .container-main .container-add-post:hover{
+}
+
+.container .container-main .container-add-post:hover {
    scale: 1.1;
- }
- 
- .container .container-main .container-add-post button{
+}
+
+.container .container-main .container-add-post button {
    background-color: transparent;
    border: none;
    padding-top: 4px;
    cursor: pointer;
- }
+}
 
-.container .container-main .post{
+.container .container-main .post {
    background-color: var(--dark-gray);
    border-radius: 5px;
    box-shadow: 0 2px 5px var(--light-secondary-color);
@@ -167,44 +167,44 @@
    margin-bottom: 20px;
 }
 
-.container .container-main .post .post-title{
+.container .container-main .post .post-title {
    font-size: 2em;
    margin-bottom: 10px;
    color: var(--text-color);
 }
 
-.container .container-main .post .post-content{
+.container .container-main .post .post-content {
    font-size: 1em;
    line-height: 1.6;
    color: var(--text-color) !important;
 }
 
-.container .container-main .post .comments-section{
+.container .container-main .post .comments-section {
    margin-top: 20px;
    border-top: 1px solid var(--light-primary-color);
    padding-top: 10px;
 }
 
-.container .container-main .post .comments-section h2{
+.container .container-main .post .comments-section h2 {
    font-size: 1.5em;
    color: var(--text-color);
 }
 
-.container .container-main .post .comments-section .comment{
+.container .container-main .post .comments-section .comment {
    margin: 10px 0;
    padding: 10px;
    background-color: var(--dark-gray);
    border-left: 4px solid var(--light-primary-color);
 }
 
-.container .container-main .post .comments-section .comment-form{
+.container .container-main .post .comments-section .comment-form {
    margin-top: 20px;
    display: flex;
    flex-direction: column;
    align-items: flex-end;
 }
 
-.container .container-main .post .comments-section .comment-form textarea{
+.container .container-main .post .comments-section .comment-form textarea {
    width: 100%;
    height: 80px;
    border: 1px solid var(--text-color);
@@ -213,7 +213,7 @@
    resize: none;
 }
 
-.container .container-main .post .comments-section .comment-form button{
+.container .container-main .post .comments-section .comment-form button {
    width: 240px;
    margin-top: 10px;
    background-color: var(--light-secondary-color);
@@ -226,27 +226,27 @@
    align-self: flex-end;
 }
 
-.container .container-main .post .comments-section .comment-form button:hover{
+.container .container-main .post .comments-section .comment-form button:hover {
    background-color: var(--light-primary-color);
    scale: 1.1;
 }
 
-.container .container-main .post .post-comments .comment:not(:last-child){
+.container .container-main .post .post-comments .comment:not(:last-child) {
    margin-bottom: 1.2rem;
 }
 
-.container .container-main .post .post-comments .comment span:first-child{
+.container .container-main .post .post-comments .comment span:first-child {
    display: inline-block;
    width: fit-content;
    border-bottom: 1px solid var(--light-primary-color);
    margin-bottom: 1.2rem;
 }
 
-.container .container-main .post .post-comments .comment span{
+.container .container-main .post .post-comments .comment span {
    color: var(--dark-gray);
 }
 
- .toast{
+.toast {
    visibility: hidden;
    min-width: 250px;
    margin-left: -125px;
@@ -257,57 +257,61 @@
    z-index: 1;
    right: 30px;
    bottom: 30px;
- 
+
    display: flex;
    flex-direction: column;
    align-items: center;
    justify-content: space-between;
- }
- 
- .toast .toast-text{
+}
+
+.toast .toast-text {
    padding: 16px;
    color: var(--dark-gray);
- }
- 
- .toast .toast-timer{
+}
+
+.toast .toast-timer {
    width: calc(100%);
    height: 3px;
    /* background-color: var(--success); */
    /* margin-bottom: 1px; */
- }
- 
- .toast.show{
+}
+
+.toast.show {
    visibility: visible;
    animation: fadeIn 0.5s, fadeOut 0.5s 2.5s;
- }
- 
- .toast.show .toast-timer{
+}
+
+.toast.show .toast-timer {
    animation: countDown 2.8s;
- }
- 
- @keyframes fadeIn {
-   from{
+}
+
+
+@keyframes fadeIn {
+   from {
       opacity: 0;
    }
-   to{
+
+   to {
       opacity: 1;
    }
- }
- 
- @keyframes fadeOut {
-   from{
+}
+
+@keyframes fadeOut {
+   from {
       opacity: 1;
    }
-   to{
+
+   to {
       opacity: 0;
    }
- }
- 
- @keyframes countDown{
-   from{
+}
+
+@keyframes countDown {
+   from {
       width: 100%;
    }
-   to{
+
+   to {
       width: 0%;
    }
- }
+}

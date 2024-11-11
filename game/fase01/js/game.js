@@ -9,7 +9,7 @@ const PLAYER_WIDTH = 20
 const PLAYER_MAX_SPEED = 300.0
 const LASER_MAX_SPEED_PLAYER = 250.0
 const LASER_MAX_SPEED_ENEMY = 150.0
-const LASER_COOLDOWN = 0.1
+const LASER_COOLDOWN = 0.5
 
 const ENEMIES_PER_ROW = 10
 const ENEMY_HORIZONTAL_PADDING = 80
@@ -267,7 +267,6 @@ function updateTime(){
 
   let formattedMinutes = minutes < 10 ? "0" + minutes : minutes
   let formattedSeconds = seconds < 10 ? "0" + seconds : seconds
-  console.log(formattedMinutes, formattedSeconds)
   div_stopwatch.innerHTML = `Tempo: ${formattedMinutes}:${formattedSeconds}`
 }
 
@@ -284,7 +283,7 @@ function resetTime(){
 }
 
 
-function updateCoronaImg(estado){
+function updatePlayerImg(estado){
   if(estado == true){
     $player.src = "../assets/images/estagio_1_acao.png"
     $player.className = "player"
@@ -334,7 +333,7 @@ function onKeyDown(e) {
     GAME_STATE.rightPressed = true
   } else if (e.keyCode === KEY_CODE_SPACE) {
     GAME_STATE.spacePressed = true
-    updateCoronaImg(true)
+    updatePlayerImg(true)
   }
 }
 
@@ -345,7 +344,7 @@ function onKeyUp(e) {
     GAME_STATE.rightPressed = false
   } else if (e.keyCode === KEY_CODE_SPACE) {
     GAME_STATE.spacePressed = false
-    updateCoronaImg(false)
+    updatePlayerImg(false)
   }
 }
 

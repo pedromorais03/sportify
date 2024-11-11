@@ -199,8 +199,7 @@ function updateEnemies(dt, $container) {
 function destroyEnemy($container, enemy) {
   $container.removeChild(enemy.$element)
   score += baseScore
-  console.log(score)
-  div_score.innerText = score
+  div_score.innerText = parseFloat(score.toFixed(2))
   enemy.isDead = true
 }
 
@@ -261,7 +260,10 @@ function updateTime(){
     minutes++
   }
 
-  baseScore = Math.max(10, baseScore - 10)
+  if(seconds % 2 == 0 ){
+    baseScore = Math.max(10, baseScore - (Math.random() * 10))
+  }
+  
 
   let formattedMinutes = minutes < 10 ? "0" + minutes : minutes
   let formattedSeconds = seconds < 10 ? "0" + seconds : seconds

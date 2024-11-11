@@ -88,6 +88,7 @@
    flex-direction: row;
    align-items: center;
    justify-content: space-between;
+   gap: 1rem;
 }
 
 .container .container-form .form-cadastro .form-cadastro-flex .form-cadastro-left, .container .container-form .form-cadastro .form-cadastro-flex .form-cadastro-right{
@@ -220,6 +221,91 @@
    }
    to{
       opacity: 1;
+   }
+}
+
+@media (max-width: 768px) {
+   .container {
+      flex-direction: column;
+   }
+
+   .container .container-img {
+      display: none;
+   }
+
+   .container .container-form {
+      width: 100%;
+      padding: 1rem;
+   }
+
+   .container .container-form form {
+      min-height: auto;
+      width: 100%;
+      padding: 1rem;
+   }
+
+   .container .container-form .form-cadastro-flex {
+      flex-direction: column;
+      width: 100%;
+   }
+
+   .container .container-form .form-cadastro-left,
+   .container .container-form .form-cadastro-right {
+      width: 100%;
+      gap: 1rem;
+   }
+
+   .container .container-form .form-login button,
+   .container .container-form .form-cadastro button {
+      max-width: 100%;
+      padding: 10px;
+   }
+
+   .container .container-form .form-login a,
+   .container .container-form .form-cadastro a {
+      max-width: 100%;
+      padding: 8px;
+   }
+
+   .container .container-form .form-cadastro .requirements-password {
+      width: 100%;
+      align-items: center;
+      justify-content: center;
+   }
+}
+
+@media (max-width: 480px) {
+   .container .container-form .form-login,
+   .container .container-form .form-cadastro {
+      gap: 0.8rem;
+   }
+
+   .container .container-form .form-login h1,
+   .container .container-form .form-cadastro h1 {
+      font-size: 1.5rem;
+   }
+
+   .container .container-form .form-cadastro .input-container{
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1.2rem;
+   }
+
+   .container .container-form .form-login .input-container input,
+   .container .container-form .form-cadastro .input-container input {
+      padding: 10px 20px;
+      font-size: 14px;
+   }
+
+   .toast {
+      min-width: 200px;
+      right: 10px;
+      bottom: 10px;
+   }
+
+   .container .container-form .form-cadastro .requirements-password span {
+      font-size: 0.9rem;
    }
 }
 

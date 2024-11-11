@@ -164,7 +164,7 @@ function destroyLaser($container, laser) {
 
 function createEnemy($container, x, y) {
   const $element = document.createElement("img")
-  $element.src = "../assets/images/inimigo_fase01.png"
+  $element.src = "../assets/images/inimigo_01.png"
   $element.className = "enemy"
   $container.appendChild($element)
   const enemy = {
@@ -206,7 +206,7 @@ function destroyEnemy($container, enemy) {
 
 function createEnemyLaser($container, x, y) {
   const $element = document.createElement("img")
-  $element.src = "../assets/images/projetil_2.png"
+  $element.src = "../assets/images/projetil_inimigo_1.png"
   $element.className = "enemy-laser"
   $container.appendChild($element)
   const laser = { x, y, $element }

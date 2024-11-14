@@ -92,9 +92,9 @@ const insert_recipe = () => {
    }
 
    const data = JSON.stringify({
-      title: title,
-      description: description,
-      ingredients: ingredients,
+      score: title,
+      id_user: description,
+      id_game: ingredients,
       prep_method: prep_method,
       id_user: id
    })

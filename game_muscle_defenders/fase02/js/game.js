@@ -317,6 +317,24 @@ function update(e) {
     const audio = new Audio("../assets/sounds/som_vitoria.mp3")
     audio.volume -= 0.9
     audio.play()
+
+    const xhr = new XMLHttpRequest
+    xhr.open('POST', 'http://localhost:3000/game', true)
+    xhr.setRequestHeader('Content-Type', 'application/json')
+
+    xhr.onload = () => {
+        if(xhr.status === 200){
+          const res = JSON.parse(xhr.responseText)
+        }
+    }
+
+    const data = JSON.stringify({
+      score: parseFloat(score.toFixed(2)),
+      id_user: parseInt(localStorage.getItem('user_id')),
+      id_game: 1,
+    })
+
+    xhr.send(data)
     return
   }
 

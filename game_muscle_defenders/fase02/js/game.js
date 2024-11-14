@@ -123,7 +123,7 @@ function updatePlayer(dt, $container) {
 
 function createLaser($container, x, y) {
   const $element = document.createElement("img")
-  $element.src = "../assets/images/projetil_2.png"
+  $element.src = "../assets/images/projetil_halter.png"
   $element.className = "laser"
   $container.appendChild($element)
   const laser = { x, y, $element }
@@ -212,7 +212,7 @@ function destroyEnemy($container, enemy) {
 
 function createEnemyLaser($container, x, y) {
   const $element = document.createElement("img")
-  $element.src = "../assets/images/projetil_2.png"
+  $element.src = "../assets/images/projetil_inimigo_1.png"
   $element.className = "enemy-laser"
   $container.appendChild($element)
   const laser = { x, y, $element }

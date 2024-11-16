@@ -7,7 +7,43 @@
       <link rel="stylesheet" href="./style.css">
    </head>
    <body>
-      
+      <header class="header">
+         <nav class="navbar">
+            <div class="input-search">
+               <img src="../assets/images/sportify_logo.png" alt="Sportify Logo">
+               <div class="input-container">
+                  <i data-lucide="search" class="lucide-icons"></i>
+                  <input type="text" placeholder="O que está procurando">
+               </div>
+            </div>
+            <div class="profile">
+               <div id="profile_text"></div>
+               <a href="../profile/index.html" ><i data-lucide="user" class="lucide-icons"></i></a>
+            </div>
+            <div class="profile-option">
+               <ul>
+                  <li><a href="../profile/index.html" ><i data-lucide="user" class="lucide-icons"></i>Perfil</a></li>
+                  <li><i onclick="logout()" data-lucide="log-out" class="lucide-icons"></i>Sair</li>
+               </ul>
+            </div>
+         </nav>
+      </header>
+      <main class="container">
+         <aside class="container-aside">
+            <ul>
+               <li><a href="./index.html"><i data-lucide="newspaper" class="lucide-icons aside-icons"></i>Feed</a></li>
+               <li><a href="../profile/index.html"><i data-lucide="user" class="lucide-icons aside-icons"></i>Perfil</a></li>
+               <li><a href="../dashboard/index.html"><i data-lucide="chart-spline" class="lucide-icons aside-icons"></i>Dashboard</a></li>
+               <li><a href=""><i data-lucide="biceps-flexed" class="lucide-icons aside-icons"></i>Treinos</a></li>
+               <li><a href="../recipes/index.html"><i data-lucide="cooking-pot" class="lucide-icons aside-icons"></i>Receitas</a></li>
+               <li><a href="../songs/index.html"><i data-lucide="music" class="lucide-icons aside-icons"></i>Músicas</a></li>
+               <li><a href="../../game_muscle_defenders/fase01/index.html"><i data-lucide="gamepad-2" class="lucide-icons aside-icons"></i>Jogos</a></li>
+            </ul>
+         </aside>
+         <div class="container-main">
+            <h1 class="container-title"></h1>
+         </div>
+      </main>
    </body>
 </html>
 <script src="./script.js"></script>

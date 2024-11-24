@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Muscle Defendersn</title>
-  <link rel="stylesheet" href="./css/main.css">
+  <link rel="stylesheet" href="./css/style.css">
 </head>
 
 <body>
@@ -23,11 +23,20 @@
         <h2>Você avançou para a próxima fase!</h2>
         <button class="btn btn-win" onclick="window.location.href='../fase02/index.html'">Avançar de Nível</button>
       </div>
+
       <div class="game-over">
-        <h1>GAME OVER</h1>
-        <h2>Você foi consumido!!!</h2>
+        <div class="top">
+          <div class="left">
+            <img src="../assets/images/personagem_derrota.png" alt="">
+          </div>
+          <div class="right">
+            <h1>GAME OVER</h1>
+            <h2>Você foi consumido!!!</h2>
+          </div>
+        </div>
         <button class="btn btn-lose" onclick="window.location.reload()">Tentar Novamente</button>
       </div>
+      
     </div>
   </div>
   <script src="js/game.js"></script>

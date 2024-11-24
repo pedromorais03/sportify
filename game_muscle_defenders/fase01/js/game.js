@@ -17,7 +17,7 @@ const ENEMY_VERTICAL_PADDING = 70
 const ENEMY_VERTICAL_SPACING = 80
 const ENEMY_COOLDOWN = 7.5
 
-const $player = document.createElement("img")
+const player_character = document.createElement("img")
 
 let baseScore = 100
 let score = 0
@@ -68,25 +68,25 @@ function rand(min, max) {
   return min + Math.random() * (max - min)
 }
 
-function createPlayer($container) {
+function createPlayer(container) {
   GAME_STATE.playerX = GAME_WIDTH / 2
   GAME_STATE.playerY = GAME_HEIGHT - 50
-  //const $player = document.createElement("img")
-  $player.src = "../assets/images/estagio_1.png"
-  $player.className = "player"
-  $container.appendChild($player)
-  setPosition($player, GAME_STATE.playerX, GAME_STATE.playerY)
+  //const player_character = document.createElement("img")
+  player_character.src = "../assets/images/estagio_1.png"
+  player_character.className = "player"
+  container.appendChild(player_character)
+  setPosition(player_character, GAME_STATE.playerX, GAME_STATE.playerY)
 }
 
-function destroyPlayer($container, player) {
-  $container.removeChild(player)
+function destroyPlayer(container, player) {
+  container.removeChild(player)
   GAME_STATE.gameOver = true
   const audio = new Audio("../assets/sounds/morte1.mp3")
   audio.volume -= 0.9
   audio.play()
 }
 
-function updatePlayer(dt, $container) {
+function updatePlayer(dt, container) {
   if (GAME_STATE.leftPressed) {
     GAME_STATE.playerX -= dt * PLAYER_MAX_SPEED
   }
@@ -101,14 +101,14 @@ function updatePlayer(dt, $container) {
   )
 
   if (GAME_STATE.spacePressed && GAME_STATE.playerCooldown <= 0) {
-    createLaser($container, GAME_STATE.playerX, GAME_STATE.playerY)
+    createLaser(container, GAME_STATE.playerX, GAME_STATE.playerY)
     GAME_STATE.playerCooldown = LASER_COOLDOWN 
-    $player.src = "../assets/images/estagio_1_acao.png"
-    $player.className = "player"
+    player_character.src = "../assets/images/estagio_1_acao.png"
+    player_character.className = "player"
   }
   if(!GAME_STATE.spacePressed && GAME_STATE.playerCooldown <= 0){
-    $player.src = "../assets/images/estagio_1.png"
-    $player.className = "player"
+    player_character.src = "../assets/images/estagio_1.png"
+    player_character.className = "player"
   }
   if (GAME_STATE.playerCooldown > 0) {
     GAME_STATE.playerCooldown -= dt
@@ -118,11 +118,11 @@ function updatePlayer(dt, $container) {
   setPosition(player, GAME_STATE.playerX, GAME_STATE.playerY)
 }
 
-function createLaser($container, x, y) {
+function createLaser(container, x, y) {
   const $element = document.createElement("img")
   $element.src = "../assets/images/projetil_halter.png"
   $element.className = "laser"
-  $container.appendChild($element)
+  container.appendChild($element)
   const laser = { x, y, $element }
   GAME_STATE.lasers.push(laser)
   const audio = new Audio("../assets/sounds/projetil.mp3")
@@ -131,13 +131,13 @@ function createLaser($container, x, y) {
   setPosition($element, x, y)
 }
 
-function updateLasers(dt, $container) {
+function updateLasers(dt, container) {
   const lasers = GAME_STATE.lasers
   for (let i = 0; i < lasers.length; i++) {
     const laser = lasers[i]
     laser.y -= dt * LASER_MAX_SPEED_PLAYER
     if (laser.y < 0) {
-      destroyLaser($container, laser)
+      destroyLaser(container, laser)
     }
     setPosition(laser.$element, laser.x, laser.y)
     const r1 = laser.$element.getBoundingClientRect()
@@ -148,8 +148,8 @@ function updateLasers(dt, $container) {
       const r2 = enemy.$element.getBoundingClientRect()
       if (rectsIntersect(r1, r2)) {
         //Inimigo tomou hit
-        destroyEnemy($container, enemy)
-        destroyLaser($container, laser)
+        destroyEnemy(container, enemy)
+        destroyLaser(container, laser)
         break
       }
     }
@@ -157,16 +157,16 @@ function updateLasers(dt, $container) {
   GAME_STATE.lasers = GAME_STATE.lasers.filter(e => !e.isDead)
 }
 
-function destroyLaser($container, laser) {
-  $container.removeChild(laser.$element)
+function destroyLaser(container, laser) {
+  container.removeChild(laser.$element)
   laser.isDead = true
 }
 
-function createEnemy($container, x, y) {
+function createEnemy(container, x, y) {
   const $element = document.createElement("img")
   $element.src = "../assets/images/inimigo_02.png"
   $element.className = "enemy"
-  $container.appendChild($element)
+  container.appendChild($element)
   const enemy = {
     x,
     y,
@@ -177,7 +177,7 @@ function createEnemy($container, x, y) {
   setPosition($element, x, y)
 }
 
-function updateEnemies(dt, $container) {
+function updateEnemies(dt, container) {
   const dx = Math.sin(GAME_STATE.lastTime / 1000.0) * 50
   const dy = Math.cos(GAME_STATE.lastTime / 1000.0) * 10
 
@@ -189,37 +189,37 @@ function updateEnemies(dt, $container) {
     setPosition(enemy.$element, x, y)
     enemy.cooldown -= dt
     if (enemy.cooldown <= 0) {
-      createEnemyLaser($container, x, y)
+      createEnemyLaser(container, x, y)
       enemy.cooldown = ENEMY_COOLDOWN
     }
   }
   GAME_STATE.enemies = GAME_STATE.enemies.filter(e => !e.isDead)
 }
 
-function destroyEnemy($container, enemy) {
-  $container.removeChild(enemy.$element)
+function destroyEnemy(container, enemy) {
+  container.removeChild(enemy.$element)
   score += baseScore
   div_score.innerText = `Pontuação: ${parseFloat(score.toFixed(2))}`
   enemy.isDead = true
 }
 
-function createEnemyLaser($container, x, y) {
+function createEnemyLaser(container, x, y) {
   const $element = document.createElement("img")
   $element.src = "../assets/images/projetil_2.png"
   $element.className = "enemy-laser"
-  $container.appendChild($element)
+  container.appendChild($element)
   const laser = { x, y, $element }
   GAME_STATE.enemyLasers.push(laser)
   setPosition($element, x, y)
 }
 
-function updateEnemyLasers(dt, $container) {
+function updateEnemyLasers(dt, container) {
   const lasers = GAME_STATE.enemyLasers
   for (let i = 0; i < lasers.length; i++) {
     const laser = lasers[i]
     laser.y += dt * LASER_MAX_SPEED_ENEMY
     if (laser.y > GAME_HEIGHT) {
-      destroyLaser($container, laser)
+      destroyLaser(container, laser)
     }
     setPosition(laser.$element, laser.x, laser.y)
     const r1 = laser.$element.getBoundingClientRect()
@@ -227,7 +227,7 @@ function updateEnemyLasers(dt, $container) {
     const r2 = player.getBoundingClientRect()
     if (rectsIntersect(r1, r2)) {
       //Player tomou hit
-      destroyPlayer($container, player)
+      destroyPlayer(container, player)
       break
     }
   }
@@ -239,8 +239,8 @@ function init() {
     interval = setInterval(() => updateTime(), 1000)
   }
 
-  const $container = document.querySelector(".game")
-  createPlayer($container)
+  const container = document.querySelector(".game")
+  createPlayer(container)
 
   const enemySpacing =
     (GAME_WIDTH - ENEMY_HORIZONTAL_PADDING * 2) / (ENEMIES_PER_ROW - 1)
@@ -248,7 +248,7 @@ function init() {
     const y = ENEMY_VERTICAL_PADDING + j * ENEMY_VERTICAL_SPACING
     for (let i = 0; i < ENEMIES_PER_ROW; i++) {
       const x = i * enemySpacing + ENEMY_HORIZONTAL_PADDING
-      createEnemy($container, x, y)
+      createEnemy(container, x, y)
     }
   }
 }
@@ -285,11 +285,11 @@ function resetTime(){
 
 function updatePlayerImg(estado){
   if(estado == true){
-    $player.src = "../assets/images/estagio_1_acao.png"
-    $player.className = "player"
+    player_character.src = "../assets/images/estagio_1_acao.png"
+    player_character.className = "player"
   }else if(estado == false){
-    $player.src = "../assets/images/estagio_1.png"
-    $player.className = "player"
+    player_character.src = "../assets/images/estagio_1.png"
+    player_character.className = "player"
   }
 }
 
@@ -316,11 +316,11 @@ function update(e) {
     return
   }
 
-  const $container = document.querySelector(".game")
-  updatePlayer(dt, $container)
-  updateLasers(dt, $container)
-  updateEnemies(dt, $container)
-  updateEnemyLasers(dt, $container)
+  const container = document.querySelector(".game")
+  updatePlayer(dt, container)
+  updateLasers(dt, container)
+  updateEnemies(dt, container)
+  updateEnemyLasers(dt, container)
 
   GAME_STATE.lastTime = currentTime
   window.requestAnimationFrame(update)

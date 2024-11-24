@@ -17,6 +17,8 @@
 
 => passar a API para TypeScript
 
+=> implementar rankemento dos usuários (iniciante, intermediario, avançado) ** se der tempo
+
 --------
 
 => implementar coletáveis

@@ -16,3 +16,8 @@
 => implementar a tabela de interações?
 
 => passar a API para TypeScript
+
+----
+=> implementar coletáveis
+   * wheyzinho que aumenta o atq_speed
+   * creatina para ganhar shield

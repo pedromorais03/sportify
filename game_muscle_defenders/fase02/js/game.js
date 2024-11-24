@@ -313,7 +313,7 @@ function update(e) {
   }
 
   if (playerHasWon()) {
-    document.querySelector(".congratulations").style.display = "block"
+    document.querySelector(".congratulations").style.display = "flex"
     const audio = new Audio("../assets/sounds/som_vitoria.mp3")
     audio.volume -= 0.9
     audio.play()

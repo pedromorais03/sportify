@@ -120,6 +120,21 @@ footer {
   border-radius: 10px;
   text-align: center;
   animation: pop-in 1s;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.congratulations .top{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.congratulations .top .left img{
+  width: 240px;
 }
 
 .game-over {

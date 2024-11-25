@@ -3,6 +3,7 @@ const book = document.querySelector('.book')
 const firstPage= document.querySelector('.first-page')
 const previousButton = document.querySelector('#previous-recipe')
 const nextButton = document.querySelector('#next-recipe')
+const downloadButton = document.querySelector('#download-book')
 const profileText = document.querySelector('#profile_text')
 const profile = document.querySelector('.profile')
 const profileOption = document.querySelector('.profile-option')
@@ -16,6 +17,7 @@ const recipeModal = document.querySelector('#modal-recipe')
 
 let currentPage = 0
 let pages
+let pagesObject = []
 
 window.document.addEventListener('DOMContentLoaded', () => {
 
@@ -75,6 +77,13 @@ window.document.addEventListener('DOMContentLoaded', () => {
                                  <span class='current-page'> ${counterPage} </span>
                               </div>
                               `
+            pagesObject.push({
+               user: `${data.name_user} ${data.second_name_user}`,
+               title: data.name_recipe,
+               description: data.description,
+               ingredients: data.ingredients_recipes,
+               prep_method: data.prep_method
+            })
          })
 
          pages = document.querySelectorAll('.page')
@@ -155,6 +164,49 @@ previousButton.addEventListener('click', () => {
    if(currentPage === 0){
       previousButton.disabled = true
    }
+})
+
+downloadButton.addEventListener('click', () => {
+   // if(response.ok){
+   //    const blob = response.blob();
+   //    const url = window.URL.createObjectURL(blob);
+   //    const a = document.createElement('a');
+   //    a.href = url;
+   //    a.download = 'dados.pdf';
+   //    document.body.appendChild(a);
+   //    a.click();
+   //    a.remove();
+   // }else {
+   //    alert('Erro ao gerar PDF');
+   // }
+
+
+   const xhr = new XMLHttpRequest
+   xhr.open('POST', 'http://localhost:3000/recipes/download', true)
+   xhr.responseType = 'blob'
+   xhr.setRequestHeader('Content-Type', 'application/json')
+
+   xhr.onload = () => {
+      if (xhr.status === 200) {
+         const blob = new Blob([xhr.response], { type: 'application/pdf' })
+         const url = window.URL.createObjectURL(blob)
+         
+         const a = document.createElement('a');
+         a.href = url;
+         a.download = 'dados.pdf'; // Nome do arquivo
+         document.body.appendChild(a);
+         a.click();
+         a.remove()
+      } else {
+         alert('Erro ao gerar PDF')
+      }
+   }
+
+   const data = JSON.stringify({
+      pages: pagesObject
+   })
+
+   xhr.send(data)
 })
 
 const show_recipe_modal = () => {

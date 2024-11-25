@@ -1,5 +1,6 @@
 require('dotenv').config()
 const express = require('express')
+const PDFDocument = require('pdfkit')
 const mysql = require('mysql2')
 const cors = require('cors')
 const { cryptPassword } = require('./plugins/crypto')
@@ -191,6 +192,32 @@ app.get('/rankings', (req, res) => {
 
       res.status(200).json(results)
    })
+})
+
+app.post('/recipes/download', (req, res) => {
+   console.log(req.body)
+   const { pages } = req.body
+   const doc = new PDFDocument()
+   res.setHeader('Content-Type', 'application/pdf')
+   res.setHeader('Content-Disposition', 'attachment; filename="book.pdf"')
+
+   doc.pipe(res)
+
+   doc.fontSize(18).text('Teste', {align: 'center'}).moveDown()
+
+   pages.forEach((item, index) => {
+      // doc.fontSize(12).text(`Item ${index + 1}:`);
+
+      Object.entries(item).forEach(([key, value]) => {
+          doc.text(`${key}: ${value}`)
+         // console.log(key, value)
+      })
+
+      doc.moveDown()
+      // console.log(item, index)
+   })
+
+   doc.end()
 })
 
 app.listen(port, () => console.log(`Servidor na porta ${port}`))

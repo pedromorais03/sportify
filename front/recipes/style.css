@@ -130,11 +130,38 @@
   width: 80%;
   padding-top: 2rem;
   margin-right: 10rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.container .container-main .container-buttons{
+  padding-top: 2rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 80%;
+  gap: 2rem;
+}
+
+.container .container-main .container-buttons button{
+  border: none;
+  padding: 10px 20px;
+  background-color: var(--secondary-color);
+  border-radius: 5px;
+  transition: .5s all ease;
+}
+
+.container .container-main .container-buttons button:hover{
+  scale: 1.1;
+  cursor: pointer;
 }
 
 .container .container-main .book{
   position: relative;
-  width: 100%;
+  width: 500px;
   height: 50%;
   perspective: 1000px;
 }
@@ -148,14 +175,17 @@
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   transform-origin: left;
   backface-visibility: hidden;
+  border-radius: 10px;
   transition: transform 0.8s ease;
 }
 
 .container .container-main .recipe{
-  border: 2px solid var(--secondary-color);
+  border: 2px solid var(--light-secondary-color);
+  background-color: var(--secondary-color);
   padding: 2rem 3rem;
   margin-bottom: 2rem;
   border-radius: 10px;
+  height: 100%;
 }
 
 .container .container-main .recipe .recipe-header{

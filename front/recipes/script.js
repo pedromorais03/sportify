@@ -1,5 +1,6 @@
 const containerMain = document.querySelector('.container-main')
 const book = document.querySelector('.book')
+const firstPage= document.querySelector('.first-page')
 const previousButton = document.querySelector('#previous-recipe')
 const nextButton = document.querySelector('#next-recipe')
 const profileText = document.querySelector('#profile_text')
@@ -30,7 +31,12 @@ window.document.addEventListener('DOMContentLoaded', () => {
    xhr.onload = () => {
       if (xhr.status === 200) {
          const res = JSON.parse(xhr.responseText)
-         let currentPage = 0
+         let counterPage = 1
+         book.innerHTML += `
+                              <div class='page first-page' id='page${counterPage}' style='z-index: ${res.length}'> 
+                                       Teste de primeira página
+                              </div>
+                           `
          res.forEach(data => {
             // containerMain.innerHTML += `
             //                            <div class="recipe">
@@ -57,11 +63,11 @@ window.document.addEventListener('DOMContentLoaded', () => {
             //                               </div>
             //                            </div>
             //                            `
-            var zindex = res.length - currentPage
-            currentPage++
             // console.log(currentPage, zindex, res.length)
+            var zindex = res.length - counterPage
+            counterPage++
             book.innerHTML += `
-                              <div class='page' id='page${currentPage}' style='z-index: ${zindex}'> 
+                              <div class='page' id='page${counterPage}' style='z-index: ${zindex}'> 
                                  <div class="recipe">
                                     <div class="recipe-header">
                                        <div class="recipe-header-user">
@@ -153,8 +159,8 @@ nextButton.addEventListener('click', () => {
 
 previousButton.addEventListener('click', () => {
    if(currentPage > 0){
-      pages[currentPage].style.transform = 'rotateY(0deg)'
       currentPage--
+      pages[currentPage].style.transform = 'rotateY(0deg)'
    }
 })
 

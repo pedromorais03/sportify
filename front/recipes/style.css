@@ -162,7 +162,7 @@
 .container .container-main .book{
   position: relative;
   width: 500px;
-  height: 50%;
+  height: 75%;
   perspective: 1000px;
 }
 
@@ -177,6 +177,26 @@
   backface-visibility: hidden;
   border-radius: 10px;
   transition: transform 0.8s ease;
+}
+
+.container .container-main .book .page.first-page{
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid var(--light-secondary-color);
+  background-color: var(--secondary-color);
+}
+
+.container .container-main .book .page.first-page img{
+  width: 240px;
+  transition: 1s all;
+}
+
+.container .container-main .book .page.first-page img:hover{
+  rotate: 360deg;
+  scale: 1.1;
 }
 
 .container .container-main .recipe{

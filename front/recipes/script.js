@@ -18,6 +18,11 @@ let currentPage = 0
 let pages
 
 window.document.addEventListener('DOMContentLoaded', () => {
+
+   if(currentPage == 0) {
+      previousButton.disabled = true
+   }
+
    recipeModal.style.display = 'none'
    if (localStorage.getItem('name_user')) {
       profileText.innerHTML = `${localStorage.getItem('name_user')}`
@@ -34,36 +39,12 @@ window.document.addEventListener('DOMContentLoaded', () => {
          let counterPage = 1
          book.innerHTML += `
                               <div class='page first-page' id='page${counterPage}' style='z-index: ${res.length}'> 
-                                       Teste de primeira página
+                                 <h1> Livro de receitas Sportify </h1>
+                                 <img src='../assets/images/sportify_logo.png' />
+                                 <span> Uma colaboração da comunidade maromba ❤</span>
                               </div>
                            `
          res.forEach(data => {
-            // containerMain.innerHTML += `
-            //                            <div class="recipe">
-            //                               <div class="recipe-header">
-            //                                  <div class="recipe-header-user">
-            //                                     <span>Postado por:</span>
-            //                                     <span class="user">${data.name_user} ${data.second_name_user}</span>
-            //                                  </div>
-            //                                  <span class="title">${data.name_recipe}</span>
-            //                               </div>
-            //                               <div class="recipe-text">
-            //                                  <div class="recipe-desc">
-            //                                     <span>Descrição</span>
-            //                                     <p>${data.description}</p>
-            //                                  </div>
-            //                                  <div class="recipe-ingredients">
-            //                                     <span>Ingredientes</span>
-            //                                     <p>${data.ingredients_recipes}</p>
-            //                                  </div>
-            //                                  <div class="recipe-method">
-            //                                     <span>Modo de preparo</span>
-            //                                     <p>${data.prep_method}</p>
-            //                                  </div>
-            //                               </div>
-            //                            </div>
-            //                            `
-            // console.log(currentPage, zindex, res.length)
             var zindex = res.length - counterPage
             counterPage++
             book.innerHTML += `
@@ -96,7 +77,6 @@ window.document.addEventListener('DOMContentLoaded', () => {
          })
 
          pages = document.querySelectorAll('.page')
-         console.log(pages)
       }
    }
 
@@ -154,6 +134,10 @@ nextButton.addEventListener('click', () => {
    if(currentPage < pages.length - 1){
       pages[currentPage].style.transform = 'rotateY(-180deg)'
       currentPage++
+   }
+
+   if(currentPage == pages.length - 1){
+      nextButton.disabled = true
    }
 })
 

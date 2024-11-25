@@ -131,6 +131,8 @@ const insert_recipe = () => {
 }
 
 nextButton.addEventListener('click', () => {
+   previousButton.disabled = false
+
    if(currentPage < pages.length - 1){
       pages[currentPage].style.transform = 'rotateY(-180deg)'
       currentPage++
@@ -142,9 +144,15 @@ nextButton.addEventListener('click', () => {
 })
 
 previousButton.addEventListener('click', () => {
+   nextButton.disabled = false
+
    if(currentPage > 0){
       currentPage--
       pages[currentPage].style.transform = 'rotateY(0deg)'
+   }
+
+   if(currentPage === 0){
+      previousButton.disabled = true
    }
 })
 

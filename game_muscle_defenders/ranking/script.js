@@ -70,5 +70,5 @@ profile.addEventListener('click', () => {
 
 const logout = () => {
    localStorage.clear()
-   window.location.href = '../index.html'
+   window.location.href = '../../front/index.html'
 }

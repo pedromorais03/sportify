@@ -13,6 +13,8 @@
       * será que é possível gerar playlist na API do spotify com o python?
    * criar um drag and drop para selecionar os tipos musicais que a pessoa deseja
 
+=> implementar JWT
+
 => implementar a tabela de interações?
 
 => passar a API para TypeScript

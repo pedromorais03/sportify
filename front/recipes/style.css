@@ -179,6 +179,12 @@
   transition: transform 0.8s ease;
 }
 
+.container .container-main .book .page .current-page{
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+}
+
 .container .container-main .book .page.first-page{
   height: 100%;
   display: flex;

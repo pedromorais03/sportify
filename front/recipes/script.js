@@ -72,6 +72,7 @@ window.document.addEventListener('DOMContentLoaded', () => {
                                        </div>
                                     </div>
                                  </div>
+                                 <span class='current-page'> ${counterPage} </span>
                               </div>
                               `
          })

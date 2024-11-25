@@ -191,12 +191,12 @@ downloadButton.addEventListener('click', () => {
          const blob = new Blob([xhr.response], { type: 'application/pdf' })
          const url = window.URL.createObjectURL(blob)
          
-         const a = document.createElement('a');
-         a.href = url;
-         a.download = 'dados.pdf'; // Nome do arquivo
-         document.body.appendChild(a);
-         a.click();
-         a.remove()
+         const anchor = document.createElement('a')
+         anchor.href = url
+         anchor.download = 'dados.pdf'
+         document.body.appendChild(anchor)
+         anchor.click()
+         anchor.remove()
       } else {
          alert('Erro ao gerar PDF')
       }

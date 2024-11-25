@@ -161,7 +161,7 @@ const verify_requirements = () => {
    }
 }
 
-const insert_user = async() => {
+const insert_user = () => {
    const name = ipt_name.value
    const second_name = ipt_second_name.value
    const email = ipt_email.value
@@ -193,7 +193,7 @@ const insert_user = async() => {
    xhr.send(data)
 }
 
-function show_toast(text, color){
+const show_toast = (text, color) => {
    toast.classList.add('show')
    toastText.innerText = text
    toastTimer.style.backgroundColor = `var(--${color})`

@@ -129,8 +129,20 @@
    width: 80%;
    padding-top: 2rem;
    margin-right: 10rem;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: flex-start;
 }
 
-.container .container-main .container-title{
-   
+.container .container-main .ranking-table{
+   width: 100%;
+   border: 1px solid var(--light-secondary-color);
+   border-radius: 5px;
+}
+
+.container .container-main .ranking-table td, .container .container-main .ranking-table th{
+   padding: 10px 20px;
+   text-align: center;
+   border: 1px solid var(--light-secondary-color);
 }

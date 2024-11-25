@@ -3,7 +3,7 @@
 => fazer os posts
 
 => Livro de receitas na listagem (fazer uma animação css)
-   * incluir filtro por receita e por quem postou
+   * incluir filtro por receita e por quem postou - ok
    * possibilidade de exportar as receitas para um livro .pdf
 
 => sistema de amizade

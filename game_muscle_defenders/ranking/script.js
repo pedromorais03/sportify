@@ -2,6 +2,7 @@
 const profileText = document.querySelector('#profile_text')
 const profile = document.querySelector('.profile')
 const profileOption = document.querySelector('.profile-option')
+const rankingTable = document.querySelector('.ranking-table')
 const nameUser = localStorage.getItem('name_user')
 
 window.document.addEventListener('DOMContentLoaded', () => {
@@ -10,6 +11,37 @@ window.document.addEventListener('DOMContentLoaded', () => {
    }else{
       window.location.href = '../index.html'
    }
+
+   const xhr = new XMLHttpRequest
+   xhr.open('GET', 'http://localhost:3000/rankings', true)
+   xhr.setRequestHeader('Content-Type', 'application/json')
+
+   xhr.onload = () => {
+      if (xhr.status === 200) {
+         const res = JSON.parse(xhr.responseText)
+         console.log(res)
+         res.forEach(game => {
+            let date = new Date(game.dt_run)
+            let fomatted_date = `${date.getDate().toString().padStart(2, '0')}-${(date.getMonth() + 1).toString().padStart(2, '0')}-${date.getFullYear()}`
+            // getDate(): Obtém o dia do mês (1–31).
+            // getMonth(): Obtém o índice do mês (0–11). Por isso, adicionamos 1 para ter o mês correto.
+            // getFullYear(): Obtém o ano completo (ex.: 2024).
+            // padStart(2, '0'): Garante que o dia e o mês tenham dois dígitos, adicionando um 0 à esquerda, se necessário.
+            
+            rankingTable.innerHTML += `
+                                       <tr>
+                                          <td>${game.name_user}</td>
+                                          <td>${game.score}</td>
+                                          <td>${fomatted_date.replaceAll('-', '/')}</td>
+                                       </tr>
+                                      `
+         });
+      } else {
+         console.error("Falha ao buscar ranqueamento")
+      }
+   }
+
+   xhr.send()
 })
 
 profile.addEventListener('click', () => {

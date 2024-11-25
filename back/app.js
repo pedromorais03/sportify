@@ -171,4 +171,26 @@ app.post('/game', (req, res) => {
    })
 })
 
+app.get('/rankings', (req, res) => {
+   const query = `
+                  SELECT 
+	                  CONCAT(ud.name_user, ' ', ud.second_name_user) AS name_user,
+                     rd.score,
+                     rd.dt_run
+                  FROM run_data AS rd
+                  JOIN user_data AS ud
+                  ON rd.fk_user = ud.id_user
+                  ORDER BY rd.score DESC;
+                 `
+
+   connection.query(query, (err, results) => {
+      if (err) {
+         console.error('Erro ao inserir dados: ', err);
+         return;
+      }
+
+      res.status(200).json(results)
+   })
+})
+
 app.listen(port, () => console.log(`Servidor na porta ${port}`))

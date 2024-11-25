@@ -12,6 +12,7 @@ window.document.addEventListener('DOMContentLoaded', () => {
       window.location.href = '../index.html'
    }
 
+   let row = 1
    const xhr = new XMLHttpRequest
    xhr.open('GET', 'http://localhost:3000/rankings', true)
    xhr.setRequestHeader('Content-Type', 'application/json')
@@ -21,6 +22,16 @@ window.document.addEventListener('DOMContentLoaded', () => {
          const res = JSON.parse(xhr.responseText)
          console.log(res)
          res.forEach(game => {
+            let image = ''
+
+            if(row == 1){
+               image = `<img src='../../front/assets/images/gold_medal.png' />`
+            }else if(row == 2){
+               image = `<img src='../../front/assets/images/silver_medal.png' />`
+            }else if(row == 3){
+               image = `<img src='../../front/assets/images/bronze_medal.png' />`
+            }
+
             let date = new Date(game.dt_run)
             let fomatted_date = `${date.getDate().toString().padStart(2, '0')}-${(date.getMonth() + 1).toString().padStart(2, '0')}-${date.getFullYear()}`
             // getDate(): Obtém o dia do mês (1–31).
@@ -30,11 +41,15 @@ window.document.addEventListener('DOMContentLoaded', () => {
             
             rankingTable.innerHTML += `
                                        <tr>
-                                          <td>${game.name_user}</td>
+                                          <td>
+                                             ${image}
+                                             ${game.name_user}
+                                          </td>
                                           <td>${game.score}</td>
                                           <td>${fomatted_date.replaceAll('-', '/')}</td>
                                        </tr>
                                       `
+            row++
          });
       } else {
          console.error("Falha ao buscar ranqueamento")

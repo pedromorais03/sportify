@@ -143,6 +143,15 @@
 
 .container .container-main .ranking-table td, .container .container-main .ranking-table th{
    padding: 10px 20px;
-   text-align: center;
+   text-align: left;
+   justify-items: auto;
    border: 1px solid var(--light-secondary-color);
+}
+
+.container .container-main .ranking-table td{
+   
+}
+
+.container .container-main .ranking-table td img{
+   width: 40px;
 }

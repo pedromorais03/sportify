@@ -1,4 +1,7 @@
 const containerMain = document.querySelector('.container-main')
+const book = document.querySelector('.book')
+const previousButton = document.querySelector('#previous-recipe')
+const nextButton = document.querySelector('#next-recipe')
 const profileText = document.querySelector('#profile_text')
 const profile = document.querySelector('.profile')
 const profileOption = document.querySelector('.profile-option')
@@ -10,11 +13,14 @@ const toastTimer = document.querySelector('.toast-timer')
 
 const recipeModal = document.querySelector('#modal-recipe')
 
+let currentPage = 0
+let pages
+
 window.document.addEventListener('DOMContentLoaded', () => {
    recipeModal.style.display = 'none'
-   if(localStorage.getItem('name_user')) {
+   if (localStorage.getItem('name_user')) {
       profileText.innerHTML = `${localStorage.getItem('name_user')}`
-   }else{
+   } else {
       window.location.href = '../index.html'
    }
 
@@ -22,33 +28,69 @@ window.document.addEventListener('DOMContentLoaded', () => {
    xhr.open('GET', 'http://localhost:3000/recipes', true)
 
    xhr.onload = () => {
-      if(xhr.status === 200){
+      if (xhr.status === 200) {
          const res = JSON.parse(xhr.responseText)
+         let currentPage = 0
          res.forEach(data => {
-            containerMain.innerHTML += `<div class="recipe">
-                                          <div class="recipe-header">
-                                             <div class="recipe-header-user">
-                                                <span>Postado por:</span>
-                                                <span class="user">${data.name_user} ${data.second_name_user}</span>
-                                             </div>
-                                             <span class="title">${data.name_recipe}</span>
-                                          </div>
-                                          <div class="recipe-text">
-                                             <div class="recipe-desc">
-                                                <span>Descrição</span>
-                                                <p>${data.description}</p>
-                                             </div>
-                                             <div class="recipe-ingredients">
-                                                <span>Ingredientes</span>
-                                                <p>${data.ingredients_recipes}</p>
-                                             </div>
-                                             <div class="recipe-method">
-                                                <span>Modo de preparo</span>
-                                                <p>${data.prep_method}</p>
-                                             </div>
-                                          </div>
-                                       </div>`
+            // containerMain.innerHTML += `
+            //                            <div class="recipe">
+            //                               <div class="recipe-header">
+            //                                  <div class="recipe-header-user">
+            //                                     <span>Postado por:</span>
+            //                                     <span class="user">${data.name_user} ${data.second_name_user}</span>
+            //                                  </div>
+            //                                  <span class="title">${data.name_recipe}</span>
+            //                               </div>
+            //                               <div class="recipe-text">
+            //                                  <div class="recipe-desc">
+            //                                     <span>Descrição</span>
+            //                                     <p>${data.description}</p>
+            //                                  </div>
+            //                                  <div class="recipe-ingredients">
+            //                                     <span>Ingredientes</span>
+            //                                     <p>${data.ingredients_recipes}</p>
+            //                                  </div>
+            //                                  <div class="recipe-method">
+            //                                     <span>Modo de preparo</span>
+            //                                     <p>${data.prep_method}</p>
+            //                                  </div>
+            //                               </div>
+            //                            </div>
+            //                            `
+            var zindex = res.length - currentPage
+            currentPage++
+            // console.log(currentPage, zindex, res.length)
+            book.innerHTML += `
+                              <div class='page' id='page${currentPage}' style='z-index: ${zindex}'> 
+                                 <div class="recipe">
+                                    <div class="recipe-header">
+                                       <div class="recipe-header-user">
+                                          <span>Postado por:</span>
+                                          <span class="user">${data.name_user} ${data.second_name_user}</span>
+                                       </div>
+                                       <span class="title">${data.name_recipe}</span>
+                                    </div>
+                                    <div class="recipe-text">
+                                       <div class="recipe-desc">
+                                          <span>Descrição</span>
+                                          <p>${data.description}</p>
+                                       </div>
+                                       <div class="recipe-ingredients">
+                                          <span>Ingredientes</span>
+                                          <p>${data.ingredients_recipes}</p>
+                                       </div>
+                                       <div class="recipe-method">
+                                          <span>Modo de preparo</span>
+                                          <p>${data.prep_method}</p>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                              `
          })
+
+         pages = document.querySelectorAll('.page')
+         console.log(pages)
       }
    }
 
@@ -56,12 +98,12 @@ window.document.addEventListener('DOMContentLoaded', () => {
 })
 
 profile.addEventListener('click', () => {
-   if(getComputedStyle(profileOption).display == 'none'){
+   if (getComputedStyle(profileOption).display == 'none') {
       profileOption.style.display = 'block'
-   }else{
+   } else {
       profileOption.style.display = 'none'
    }
-   
+
 })
 
 
@@ -77,7 +119,7 @@ const insert_recipe = () => {
    xhr.setRequestHeader('Content-Type', 'application/json')
 
    xhr.onload = () => {
-      if(xhr.status === 200){
+      if (xhr.status === 200) {
          const res = JSON.parse(xhr.responseText)
          console.log(`Response: ${res}`)
          ipt_title_recipe.value = ''
@@ -86,7 +128,7 @@ const insert_recipe = () => {
          ipt_prep_recipe.value = ''
          close_recipe_modal()
          show_toast('Receita inserida com sucesso', 'success')
-      }else{
+      } else {
          show_toast('Erro ao inserir receita', 'error')
       }
    }
@@ -101,6 +143,20 @@ const insert_recipe = () => {
 
    xhr.send(data)
 }
+
+nextButton.addEventListener('click', () => {
+   if(currentPage < pages.length - 1){
+      pages[currentPage].style.transform = 'rotateY(-180deg)'
+      currentPage++
+   }
+})
+
+previousButton.addEventListener('click', () => {
+   if(currentPage > 0){
+      pages[currentPage].style.transform = 'rotateY(0deg)'
+      currentPage--
+   }
+})
 
 const show_recipe_modal = () => {
    recipeModal.style.display = 'flex'

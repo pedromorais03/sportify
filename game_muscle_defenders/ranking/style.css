@@ -135,17 +135,27 @@
    justify-content: flex-start;
 }
 
+.container .container-main .container-title{
+   margin-bottom: 2%;
+}
+
 .container .container-main .ranking-table{
    width: 100%;
    border: 1px solid var(--light-secondary-color);
-   border-radius: 5px;
+   margin: 0 auto;
+   border-collapse: collapse;
+}
+
+.container .container-main .ranking-table th{
+   background-color: var(--light-primary-color);
+   color: var(--text-color);
 }
 
 .container .container-main .ranking-table td, .container .container-main .ranking-table th{
    padding: 10px 20px;
    text-align: left;
-   justify-items: auto;
-   border: 1px solid var(--light-secondary-color);
+   justify-content: auto;
+   border: 1px solid var(--light-primary-color);
 }
 
 .container .container-main .ranking-table td img{

@@ -19,8 +19,6 @@ let passwordNumber = false
 formLogin.addEventListener('submit', (e) => {
    const username = ipt_l_username.value
    const password = ipt_l_password.value
-   console.log(username)
-   console.log(password)
 
    e.preventDefault()
    const xhr = new XMLHttpRequest
@@ -30,9 +28,10 @@ formLogin.addEventListener('submit', (e) => {
    xhr.onload = () => {
       if(xhr.status === 200){
          const res = JSON.parse(xhr.responseText)
-         console.log(`Response: ${res}`)
          let name = `${res.name_user} ${res.second_name_user}`
-         localStorage.setItem('username', res.username)
+         localStorage.setItem('email', res.email_user)
+         localStorage.setItem('created_at', res.created_at)
+         localStorage.setItem('username', username)
          localStorage.setItem('user_id', res.id_user)
          localStorage.setItem('name_user', name)
          window.location.href = '../feed/index.html'

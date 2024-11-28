@@ -24,7 +24,7 @@ connection.connect((err) => {
       console.error('Erro ao conectar ao MySQL: ', err);
       return;
    }
-   console.log('Conexão com MySQL estabelecida com sucesso!');
+   console.log('   Conexão com MySQL estabelecida com sucesso!');
 })
 
 app.get('/', (req, res) => {
@@ -245,15 +245,11 @@ app.post('/recipes/download', (req, res) => {
 })
 
 app.listen(port, () => console.log(`
-
    ███████╗██████╗  ██████╗ ██████╗ ████████╗██╗███████╗██╗   ██╗
    ██╔════╝██╔══██╗██╔═══██╗██╔══██╗╚══██╔══╝██║██╔════╝╚██╗ ██╔╝
    ███████╗██████╔╝██║   ██║██████╔╝   ██║   ██║█████╗   ╚████╔╝ 
    ╚════██║██╔═══╝ ██║   ██║██╔══██╗   ██║   ██║██╔══╝    ╚██╔╝  
    ███████║██║     ╚██████╔╝██║  ██║   ██║   ██║██║        ██║   
-   ╚══════╝╚═╝      ╚═════╝ ╚═╝  ╚═╝   ╚═╝   ╚═╝╚═╝        ╚═╝   
-                                                                 
-   
-
-Servidor rodando na porta ${port}
+   ╚══════╝╚═╝      ╚═════╝ ╚═╝  ╚═╝   ╚═╝   ╚═╝╚═╝        ╚═╝                                                             
+   Servidor rodando na porta ${port}
 `))

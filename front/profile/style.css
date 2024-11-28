@@ -127,3 +127,104 @@
   padding-top: 2rem;
   margin-right: 10rem;
 }
+
+.container .container-main .profile-header{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  border: 1px solid var(--light-secondary-color);
+  padding: 10px 20px;
+  border-radius: 10px;
+}
+
+.container .container-main .profile-header .side{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.container .container-main .profile-header .input-container{
+  position: relative;
+  width: 100%;
+  max-width: 300px;
+  margin: 1rem 2rem;
+}
+
+.container .container-main .profile-header .input-container input{
+  width: 100%;
+  padding: 10px 40px 10px 10px;
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+  color: var(--text-color);
+}
+
+.container .container-main .profile-header .input-container .lucide-icons{
+  position: absolute;
+  right: 10px; 
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 18px;
+  color: var(--text-color);
+  cursor: pointer;
+}
+
+.container .container-main .profile-header .profile-button{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2rem;
+  gap: 4rem;
+}
+
+.container .container-main .profile-header .profile-button button{
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  transition: .5s all ease;
+  width: 300px;
+  height: 50px;
+  color: var(--dark-gray);
+}
+
+.container .container-main .profile-header .profile-button button:hover{
+  scale: 1.1;
+  cursor: pointer;
+}
+
+.container .container-main .profile-header .profile-button button.btn-change-password{
+  background-color: var(--error);
+  color: var(--text-color);
+}
+
+.container .container-main .profile-header .profile-button button.btn-update-data{
+  background-color: var(--success);
+}
+
+.container .container-main .profile-activity{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin-top: 2rem;
+}
+
+.container .container-main .profile-activity .profile-posts,
+.container .container-main .profile-activity .profile-recipes{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 50%;
+}
+
+.container .container-main .profile-activity .profile-posts{
+  border-right: 1px solid var(--light-secondary-color);
+}

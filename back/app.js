@@ -17,6 +17,7 @@ const connection = mysql.createConnection({
 
 app.use(express.json())
 app.use(cors())
+app.use('/static', express.static('public'))
 // app.use('api/')
 
 connection.connect((err) => {

@@ -20,6 +20,11 @@ formLogin.addEventListener('submit', (e) => {
    const username = ipt_l_username.value
    const password = ipt_l_password.value
 
+   if(username == undefined || password == undefined){
+      show_toast('Usuário e senha devem ser preenchidos', 'error')
+      return
+   }
+
    e.preventDefault()
    const xhr = new XMLHttpRequest
    xhr.open('GET', `http://localhost:3000/login/${username}/${password}`, true)

@@ -78,6 +78,74 @@ html {
    scale: 1.1;
 }
 
+.header .navbar .right-options{
+   width: 360px;
+   display: flex;
+   flex-direction: row;
+   align-items: center;
+   justify-content: space-around;
+}
+
+.header .navbar .right-options .language-selector{
+   position: relative;
+   width: 200px;
+   cursor: pointer;
+}
+
+.header .navbar .right-options .language-selector .selected-language{
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   padding: 10px;
+   border: 1px solid var(--text-color);
+   background-color: transparent;
+   border-radius: 5px;
+   color: var(--dark-gray);
+}
+
+.header .navbar .right-options .language-selector .selected-language img{
+   width: 20px;
+   height: 15px;
+   margin-right: 10px;
+}
+
+.header .navbar .right-options .language-selector .language-options{
+   position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  border-radius: 5px;
+  display: none;
+}
+
+.header .navbar .right-options .language-selector .language-options.show{
+   display: block;
+   
+}
+
+.header .navbar .right-options .language-selector .language-options li{
+   display: flex;
+   align-items: center;
+   padding: 10px;
+   cursor: pointer;
+   color: var(--dark-gray);
+}
+
+.header .navbar .right-options .language-selector .language-options li:hover{
+   background-color: var(--text-color);
+}
+
+.header .navbar .right-options .language-selector .language-options img{
+   width: 20px;
+   height: 15px;
+   margin-right: 10px;
+}
+
 .footer{
    background-color: var(--primary-color);
    height: fit-content;

@@ -54,6 +54,22 @@ app.get('/recipes', (req, res) => {
    })
 })
 
+app.get('/recipes/:id_user', (req, res) => {
+   const { id_user } = req.params
+   let recipes = []
+   const query = 'SELECT name_recipe, ingredients_recipes, description, prep_method FROM recipes WHERE fk_user = ?'
+   const values = [id_user]
+   connection.query(query, values, (err, results, fields) => {
+      if(err){
+         console.error('Erro ao executar select', err)
+         return;
+      }
+
+      recipes = results
+      res.status(200).json(recipes)
+   })
+})
+
 app.get('/posts', (req, res) => {
    let posts = []
    connection.query('SELECT * FROM vw_post_user', (err, results, fields) => {
@@ -67,8 +83,25 @@ app.get('/posts', (req, res) => {
    })
 })
 
+app.get('/posts/:id_user', (req, res) => {
+   const { id_user } = req.params
+   let posts = []
+   const query = 'SELECT title, description FROM posts WHERE fk_user = ?'
+   const values = [id_user]
+   connection.query(query, values, (err, results, fields) => {
+      if(err){
+         console.error('Erro ao executar select', err)
+         return;
+      }
+
+      posts = results
+      res.status(200).json(posts)
+   })
+})
+
+
 app.post('/recipes', (req, res) => {
-   const { title }  = req.body
+   const { title }  = req.body 
    const { description } = req.body
    const { ingredients } = req.body
    const { prep_method } = req.body

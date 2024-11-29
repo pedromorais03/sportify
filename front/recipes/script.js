@@ -169,7 +169,6 @@ previousButton.addEventListener('click', () => {
 })
 
 downloadButton.addEventListener('click', () => {
-   console.log(pagesObject)
    const opt = {
       margin:       1,
       filename:     'book.pdf',

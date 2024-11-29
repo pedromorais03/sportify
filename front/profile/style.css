@@ -239,6 +239,7 @@
   box-shadow: 0 2px 5px var(--light-secondary-color);
   padding: 20px;
   margin: 0 20px 20px 0;
+  width: 100%;
 }
 
 .container .container-main .profile-activity .profile-posts .post .post-title{
@@ -260,6 +261,7 @@
   box-shadow: 0 2px 5px var(--light-secondary-color);
   padding: 20px;
   margin: 0 0 20px 20px;
+  width: 100%;
 }
 
 .container .container-main .profile-activity .profile-recipes .recipes .recipe-title{
@@ -269,8 +271,21 @@
   text-align: center;
 }
 
+.container .container-main .profile-activity .profile-recipes .recipes .recipe-title.error{
+  font-size: 1.2em;
+  margin-bottom: 10px;
+  color: var(--text-color);
+  text-align: center;
+}
+
 .container .container-main .profile-activity .profile-recipes .recipes .recipe-content{
   font-size: 1em;
   line-height: 1.6;
   color: var(--text-color) !important;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 15px;
 }

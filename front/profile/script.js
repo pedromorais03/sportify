@@ -2,8 +2,8 @@ const profileText = document.querySelector('#profile_text')
 const profile = document.querySelector('.profile')
 const profileOption = document.querySelector('.profile-option')
 
-const divRecipes = document.querySelector('.recipes')
-const divPosts = document.querySelector('.post')
+const divRecipes = document.querySelector('.profile-recipes')
+const divPosts = document.querySelector('.profile-posts')
 
 window.document.addEventListener('DOMContentLoaded', () => {   
    if(localStorage.getItem('name_user')) {
@@ -42,19 +42,24 @@ const load_recipes = () => {
          const res = JSON.parse(xhr.responseText)
 
          if(res.length == 0){
-            divRecipes.innerHTML = `<h3 class="recipe-title error">Que pena, parece que você ainda não possuí nenhuma receita...</h3>`
+            divRecipes.innerHTML += `
+                                    <div class="recipes">
+                                       <h3 class="recipe-title error">Que pena, parece que você ainda não possuí nenhuma receita...</h3>
+                                    </div>
+                                   `
          }
 
          res.forEach(data => {
             divRecipes.innerHTML +=`
-                                    <h1 class="recipe-title">${data.name_recipe}</h1>
-                                    <div class="recipe-content">
-                                       <span class="span_description"> <b>Descrição:</b> ${data.description}</span>
-                                       <span class="span_ingredients"> <b>Ingredientes:</b> ${data.ingredients_recipes}</span>
-                                       <span class="span_method" ><b>Método de preparo:</b> ${data.prep_method}</span>
+                                    <div class="recipes">
+                                       <h1 class="recipe-title">${data.name_recipe}</h1>
+                                       <div class="recipe-content">
+                                          <span class="span_description"> <b>Descrição:</b> ${data.description}</span>
+                                          <span class="span_ingredients"> <b>Ingredientes:</b> ${data.ingredients_recipes}</span>
+                                          <span class="span_method" ><b>Método de preparo:</b> ${data.prep_method}</span>
+                                       </div>
                                     </div>
                                    `
-            console.log(data)
          });
          
       } else {
@@ -76,17 +81,22 @@ const load_posts = () => {
          const res = JSON.parse(xhr.responseText)
 
          if(res.length == 0){
-            divPosts.innerHTML = `<h3 class="recipe-title error">Que pena, parece que você ainda não possuí nenhum post...</h3>`
+            divPosts.innerHTML += `
+                                    <div class="post">
+                                       <h3 class="recipe-title error">Que pena, parece que você ainda não possuí nenhum post...</h3>
+                                    </div
+                                 `
          }
 
          res.forEach(data => {
             divPosts.innerHTML +=`
-                                    <h1 class="post-title">${data.title}</h1>
-                                    <div class="post-content">
-                                       <span>${data.description}</span>
+                                    <div class="post">
+                                       <h1 class="post-title">${data.title}</h1>
+                                       <div class="post-content">
+                                          <span>${data.description}</span>
+                                       </div>
                                     </div>
                                    `
-            console.log(data)
          });
          
       } else {

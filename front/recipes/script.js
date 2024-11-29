@@ -45,6 +45,7 @@ window.document.addEventListener('DOMContentLoaded', () => {
                                  <img src='../assets/images/sportify_logo.png' />
                                  <span> Uma colaboração da comunidade maromba ❤</span>
                               </div>
+                              <div class='html2pdf__page-break'></div>
                            `
          res.forEach(data => {
             var zindex = res.length - counterPage
@@ -76,6 +77,7 @@ window.document.addEventListener('DOMContentLoaded', () => {
                                  </div>
                                  <span class='current-page'> ${counterPage} </span>
                               </div>
+                              <div class='html2pdf__page-break'></div>
                               `
             pagesObject.push({
                user: `${data.name_user} ${data.second_name_user}`,
@@ -167,46 +169,15 @@ previousButton.addEventListener('click', () => {
 })
 
 downloadButton.addEventListener('click', () => {
-   // if(response.ok){
-   //    const blob = response.blob();
-   //    const url = window.URL.createObjectURL(blob);
-   //    const a = document.createElement('a');
-   //    a.href = url;
-   //    a.download = 'dados.pdf';
-   //    document.body.appendChild(a);
-   //    a.click();
-   //    a.remove();
-   // }else {
-   //    alert('Erro ao gerar PDF');
-   // }
-
-
-   const xhr = new XMLHttpRequest
-   xhr.open('POST', 'http://localhost:3000/recipes/download', true)
-   xhr.responseType = 'blob'
-   xhr.setRequestHeader('Content-Type', 'application/json')
-
-   xhr.onload = () => {
-      if (xhr.status === 200) {
-         const blob = new Blob([xhr.response], { type: 'application/pdf' })
-         const url = window.URL.createObjectURL(blob)
-         
-         const anchor = document.createElement('a')
-         anchor.href = url
-         anchor.download = 'dados.pdf'
-         document.body.appendChild(anchor)
-         anchor.click()
-         anchor.remove()
-      } else {
-         alert('Erro ao gerar PDF')
-      }
+   console.log(pagesObject)
+   const opt = {
+      margin:       1,
+      filename:     'book.pdf',
+      image:        { type: 'jpeg', quality: 0.98 },
+      html2canvas:  { scale: 2 },
+      jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
    }
-
-   const data = JSON.stringify({
-      pages: pagesObject
-   })
-
-   xhr.send(data)
+   html2pdf().set(opt).from(book).save()
 })
 
 const show_recipe_modal = () => {

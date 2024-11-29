@@ -18,7 +18,6 @@ const connection = mysql.createConnection({
 app.use(express.json())
 app.use(cors())
 app.use('/static', express.static('public'))
-// app.use('api/')
 
 connection.connect((err) => {
    if (err) {
@@ -193,56 +192,6 @@ app.get('/rankings', (req, res) => {
 
       res.status(200).json(results)
    })
-})
-
-app.post('/recipes/download', (req, res) => {
-   const { pages } = req.body
-   const doc = new PDFDocument()
-   res.setHeader('Content-Type', 'application/pdf')
-   res.setHeader('Content-Disposition', 'attachment; filename="book.pdf"')
-
-   doc.pipe(res)
-
-   
-   let pageWidth = doc.page.width
-   let pageHeight = doc.page.height
-
-   doc.rect(0, 0, pageWidth, pageHeight).fill('#501F3A')
-   doc.fillColor('#CCCCCC').fontSize(18).text('Livro de receitas Sportify', {align: 'center'}).moveDown()
-   doc.image('../front/assets/images/sportify_logo.png', {
-      fit: [200, 300], 
-      align: 'center',
-      valign: 'center',
-   })
-
-
-   pages.forEach((item, index) => {
-      // doc.fontSize(12).text(`Item ${index + 1}:`);
-      let i = 0
-      let k = ''
-      
-      doc.addPage()
-      Object.entries(item).forEach(([key, value]) => {
-
-         if(i == 0){
-            k = 'Usuários'
-         }else if(i == 1){
-            k = 'Título da receita'
-         }else if(i == 2){
-            k = 'Descrição da receita'
-         }else if(i == 3){
-            k = 'Ingredientes'
-         }else if(i == 4){
-            k = 'Modo de preparo'
-         }
-
-         doc.fillColor('#CCCCCC').fontSize(14).text(`${k}: ${value}`)
-         i++
-      })
-      // console.log(item, index)
-   })
-
-   doc.end()
 })
 
 app.listen(port, () => console.log(`

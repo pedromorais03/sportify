@@ -16,30 +16,32 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `posts`
+-- Table structure for table `interaction`
 --
 
-DROP TABLE IF EXISTS `posts`;
+DROP TABLE IF EXISTS `interaction`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `posts` (
-  `id_post` int NOT NULL AUTO_INCREMENT,
-  `title` varchar(45) DEFAULT NULL,
-  `description` varchar(500) DEFAULT NULL,
+CREATE TABLE `interaction` (
+  `id_interaction` int NOT NULL AUTO_INCREMENT,
+  `type` varchar(50) DEFAULT NULL,
   `fk_user` int DEFAULT NULL,
-  PRIMARY KEY (`id_post`),
-  KEY `fk_user_post` (`fk_user`),
-  CONSTRAINT `fk_user_post` FOREIGN KEY (`fk_user`) REFERENCES `user_data` (`id_user`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `dt_interaction` datetime DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id_interaction`),
+  KEY `fk_user_interaction` (`fk_user`),
+  CONSTRAINT `fk_user_interaction` FOREIGN KEY (`fk_user`) REFERENCES `user_data` (`id_user`),
+  CONSTRAINT `interaction_chk_1` CHECK ((`type` in (_utf8mb4'post',_utf8mb4'recipe',_utf8mb4'game',_utf8mb4'like',_utf8mb4'comment')))
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `posts`
+-- Dumping data for table `interaction`
 --
 
-LOCK TABLES `posts` WRITE;
-/*!40000 ALTER TABLE `posts` DISABLE KEYS */;
-/*!40000 ALTER TABLE `posts` ENABLE KEYS */;
+LOCK TABLES `interaction` WRITE;
+/*!40000 ALTER TABLE `interaction` DISABLE KEYS */;
+INSERT INTO `interaction` VALUES (1,'recipe',27,'2024-11-28 22:51:32');
+/*!40000 ALTER TABLE `interaction` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 

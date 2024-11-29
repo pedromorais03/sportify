@@ -107,8 +107,9 @@ app.post('/recipes', (req, res) => {
    const { prep_method } = req.body
    const { id_user } = req.body 
 
-   const query = 'INSERT INTO recipes(name_recipe, description, ingredients_recipes, prep_method, fk_user) VALUES (?, ?, ?, ?, ?)'
-   const values = [title, description, ingredients, prep_method, Number(id_user)]
+   // const query = 'INSERT INTO recipes(name_recipe, description, ingredients_recipes, prep_method, fk_user) VALUES (?, ?, ?, ?, ?)'
+   const query = 'CALL p_insert_recipe_interaction(?, ?, ?, ?, ?)'
+   const values = [title, ingredients, description, prep_method, Number(id_user)]
 
    connection.query(query, values, (err, results) => {
       if (err) {

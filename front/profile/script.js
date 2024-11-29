@@ -33,7 +33,6 @@ profile.addEventListener('click', () => {
 })
 
 const load_recipes = () => {
-   console.log("receitas")
    const xhr = new XMLHttpRequest
    xhr.open('GET', `http://localhost:3000/recipes/${localStorage.getItem('user_id')}`, true)
    xhr.setRequestHeader('Content-Type', 'application/json')
@@ -41,7 +40,6 @@ const load_recipes = () => {
    xhr.onload = () => {
       if (xhr.status === 200) {
          const res = JSON.parse(xhr.responseText)
-         console.log(`Response: ${res}`)
 
          if(res.length == 0){
             divRecipes.innerHTML = `<h3 class="recipe-title error">Que pena, parece que você ainda não possuí nenhuma receita...</h3>`
@@ -76,7 +74,6 @@ const load_posts = () => {
    xhr.onload = () => {
       if (xhr.status === 200) {
          const res = JSON.parse(xhr.responseText)
-         console.log(`Response: ${res}`)
 
          if(res.length == 0){
             divPosts.innerHTML = `<h3 class="recipe-title error">Que pena, parece que você ainda não possuí nenhum post...</h3>`

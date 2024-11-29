@@ -4,7 +4,6 @@ const profileOption = document.querySelector('.profile-option')
 
 window.document.addEventListener('DOMContentLoaded', () => {   
    if(localStorage.getItem('name_user')) {
-      console.log(localStorage.getItem('name_user'))
       profileText.innerHTML = `${localStorage.getItem('name_user')}`
       let date = new Date(localStorage.getItem('created_at'))
       let fomatted_date = `${date.getDate().toString().padStart(2, '0')}-${(date.getMonth() + 1).toString().padStart(2, '0')}-${date.getFullYear()}`
@@ -14,7 +13,6 @@ window.document.addEventListener('DOMContentLoaded', () => {
       ipt_email.value = localStorage.getItem('email')
       ipt_username.value = localStorage.getItem('username')
    }else{
-      console.log('Não há nome de usuário salvo')
       window.location.href = '../index.html'
    }
 })

@@ -7,6 +7,12 @@ window.document.addEventListener('DOMContentLoaded', () => {
       window.location.href = './feed/index.html'
    }
 
+   if(localStorage.getItem('lang') == 'pt'){
+      selected.innerHTML = `<img src="./assets/images/br-flag.png" alt="Português" class="flag"><span>Português</span>`
+   }else{
+      selected.innerHTML = `<img src="./assets/images/usa-flag.png" alt="Inglês" class="flag"><span>Inglês</span>`
+   }
+
 })
 
 selected.addEventListener('click', () => {
@@ -22,6 +28,7 @@ languageOptions.addEventListener('click', (e) => {
 
       selected.innerHTML = `<img src="${flag}" alt="${language}" class="flag"><span>${language}</span>`
       languageOptions.classList.remove('show')
+      localStorage.setItem("lang", langCode)
    }
 })
 

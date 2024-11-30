@@ -193,7 +193,7 @@ app.post('/game', (req, res) => {
    const { id_user } = req.body
    const { id_game } = req.body
 
-   const query = 'INSERT INTO run_data VALUES (default, ?, ?, ?, default)'
+   const query = 'CALL p_insert_game_interaction(?, ?, ?)'
    const values = [score, id_user, id_game]
 
    connection.query(query, values, (err, results) => {

@@ -1,5 +1,5 @@
-const { GoogleGenerativeAI } = require("@google/generative-ai")
 require("dotenv").config()
+const { GoogleGenerativeAI } = require("@google/generative-ai")
 
 const chatIA = new GoogleGenerativeAI(process.env.GOOGLE_API_KEY)
 
@@ -16,11 +16,11 @@ async function generatePlaylist(genres){
                                                 comece a resposta já com a primeira música, não traga números para ordenar as músicas,
                                                 no final de cada música, coloque um ponto de exclamação (!)
                                               `)
-    // console.log(result.response.text())
+
     return result.response.text()
   } catch (err) {
-    console.error(err)
-    throw err
+      console.error(err)
+      throw err
   }
 }
 

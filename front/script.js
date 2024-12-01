@@ -1,8 +1,10 @@
 const languageSelector = document.querySelector('.language-selector')
 const selected = document.querySelector('.selected-language')
 const languageOptions = document.querySelector('.language-options')
+const language = localStorage.getItem('lang')
 
 window.document.addEventListener('DOMContentLoaded', () => {
+   console.log(languages[language].banner)
    if (localStorage.getItem('name_user')) {
       window.location.href = './feed/index.html'
    }
@@ -12,6 +14,8 @@ window.document.addEventListener('DOMContentLoaded', () => {
    }else{
       selected.innerHTML = `<img src="./assets/images/usa-flag.png" alt="Inglês" class="flag"><span>Inglês</span>`
    }
+
+   set_texts()
 
 })
 
@@ -29,6 +33,7 @@ languageOptions.addEventListener('click', (e) => {
       selected.innerHTML = `<img src="${flag}" alt="${language}" class="flag"><span>${language}</span>`
       languageOptions.classList.remove('show')
       localStorage.setItem("lang", langCode)
+      window.location.reload()
    }
 })
 
@@ -44,4 +49,11 @@ const redirect_to = (page) => {
    } else {
       window.location.href = './index.html'
    }
+}
+
+const set_texts = () => {
+   banner_text.innerHTML += `<strong> ${languages[language].banner} </strong>`
+   register_button.innerText += `${languages[language].banner_button}`
+   header_item1.innerText += `${languages[language].header_item1}`
+   header_item2.innerText += `${languages[language].header_item2}`
 }

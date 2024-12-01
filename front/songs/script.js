@@ -28,7 +28,7 @@ columns.forEach((column) => {
       const applyAfter = getNewPosition(column, e.clientY)
 
       if(applyAfter){
-         applyAfter.insertAdjcentElement("afterend", dragging)
+         applyAfter.insertAdjacentElement("afterend", dragging)
       }else{
          column.prepend(dragging)
       }
@@ -58,5 +58,24 @@ buttonGenerate.addEventListener("click", () => {
    selectedGenres.forEach(genre => {
       genres.push(genre.getAttribute("data-genre"))
    })
+
+   const xhr = new XMLHttpRequest
+   xhr.open('POST', 'http://localhost:3000/songs', true)
+   xhr.setRequestHeader('Content-Type', 'application/json')
+
+   xhr.onload = () => {
+      if (xhr.status === 200) {
+         const res = JSON.parse(xhr.responseText)
+         let playlist = res.clearedPlaylist
+
+         console.log(playlist)
+      }
+   }
+
+   const data = JSON.stringify({
+      genres
+   })
+
+   xhr.send(data)
 
 })

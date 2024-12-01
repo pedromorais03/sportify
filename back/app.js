@@ -4,6 +4,7 @@ const PDFDocument = require('pdfkit')
 const mysql = require('mysql2')
 const cors = require('cors')
 const { cryptPassword } = require('./plugins/crypto')
+const { generatePlaylist } = require('./plugins/gemini')
 
 const app = express()
 const port = process.env.PORT || 3000
@@ -226,6 +227,18 @@ app.get('/rankings', (req, res) => {
 
       res.status(200).json(results)
    })
+})
+
+app.post('/songs', async (req, res) => {
+   const { genres } = req.body
+   let playlist = await generatePlaylist(genres)
+
+   let splittedPlaylist = playlist.split("!")
+   let clearedPlaylist = []
+   splittedPlaylist.forEach(song => {
+      clearedPlaylist.push(song.replace("\n", "").replace("-", ""))
+   })
+   res.status(200).json({clearedPlaylist})
 })
 
 app.listen(port, () => console.log(`

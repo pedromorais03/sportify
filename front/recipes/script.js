@@ -38,6 +38,7 @@ window.document.addEventListener('DOMContentLoaded', () => {
    xhr.onload = () => {
       if (xhr.status === 200) {
          const res = JSON.parse(xhr.responseText)
+         console.log(res)
          let counterPage = 1
          book.innerHTML += `
                               <div class='page first-page' id='page${counterPage}' style='z-index: ${res.length}'> 

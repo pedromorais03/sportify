@@ -46,5 +46,30 @@ const languages = {
       graph1_label: '% of the Population Attending Gyms',
       graph2_label: 'Number of Gyms Opened',
       footer: 'All rights reserved to Sportify<sup>©</sup> - 2024'
-   }
+   },
+   es: {
+      header_item1: 'Descubre Sportify',
+      header_item2: '¿Para quién es?',
+      banner: 'Tu viaje comienza aquí',
+      banner_button: 'Regístrate',
+      discover_title: 'Descubre Sportify',
+      discover_text: `Sportify es una red social dedicada al culturismo y los deportes, creada para conectar a entusiastas de todas las edades y niveles de experiencia. Nuestra plataforma ofrece un espacio acogedor donde los usuarios pueden compartir entrenamientos, intercambiar consejos, seguir su progreso y encontrar motivación en una comunidad vibrante e inspiradora. Ya seas principiante o un atleta experimentado, Sportify es el lugar perfecto para alcanzar tus metas de manera saludable y eficiente.`,
+      mission_title: 'Misión',
+      mission_text: 'Promover un ambiente inclusivo y motivador para los entusiastas del culturismo y los deportes, facilitando el intercambio de conocimientos y experiencias que impulsen el crecimiento personal y físico de nuestros usuarios.',
+      vision_title: 'Visión',
+      vision_text: `Ser la principal red social para los amantes del culturismo y los deportes, reconocida por su comunidad comprometida y herramientas innovadoras que ayudan a los usuarios a alcanzar sus objetivos y mejorar su calidad de vida.`,
+      values_title: 'Valores',
+      values_text1: 'Inclusión: Valoramos la diversidad y damos la bienvenida a todas las personas, sin importar su nivel de experiencia.',
+      values_text2: 'Colaboración: Creemos en la fuerza de la comunidad y fomentamos el intercambio de conocimientos y el apoyo mutuo.',
+      values_text3: 'Salud: Promovemos un estilo de vida saludable, priorizando el bienestar físico y mental de nuestros usuarios.',
+      who_is: '¿Para quién es?',
+      who_is_text: `Sportify es una red social para todos los amantes del culturismo y los deportes, desde principiantes hasta atletas avanzados. Es un espacio para compartir entrenamientos, seguir el progreso y conectar con personas con intereses similares.  
+                      <br>  
+                      Además, la plataforma beneficia a entrenadores y profesionales, permitiéndoles ampliar sus redes y ofrecer orientación personalizada. Con una comunidad solidaria, Sportify ayuda a todos a alcanzar sus metas de manera saludable.`,
+      graph_title: 'Gráficos',
+      graph1_label: '% de la Población que Asiste a Gimnasios',
+      graph2_label: 'Número de Gimnasios Abiertos',
+      footer: 'Todos los derechos reservados a Sportify<sup>©</sup> - 2024'
+  }
+  
 }

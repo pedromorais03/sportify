@@ -12,7 +12,7 @@ window.document.addEventListener('DOMContentLoaded', () => {
    if(localStorage.getItem('lang') == 'pt'){
       selected.innerHTML = `<img src="./assets/images/br-flag.png" alt="Português" class="flag"><span>Português</span>`
    }else{
-      selected.innerHTML = `<img src="./assets/images/usa-flag.png" alt="Inglês" class="flag"><span>Inglês</span>`
+      selected.innerHTML = `<img src="./assets/images/usa-flag.png" alt="English" class="flag"><span>English</span>`
    }
 
    set_texts()

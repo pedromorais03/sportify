@@ -54,19 +54,19 @@
                   </p>
                   <div class="about-cards">
                      <div class="card">
-                        <h4>Missão</h4>
-                        <p>Promover um ambiente inclusivo e motivador para entusiastas de musculação e esportes, facilitando a troca de conhecimentos e experiências que impulsionam o crescimento pessoal e físico de nossos usuários.</p>
+                        <h4 id="mission_title"></h4>
+                        <p id="mission_text"></p>
                      </div>
                      <div class="card">
-                        <h4>Visão</h4>
-                        <p>Ser a principal rede social para amantes de musculação e esportes, reconhecida por sua comunidade engajada e pelas ferramentas inovadoras que ajudam os usuários a atingir seus objetivos e melhorar sua qualidade de vida.</p>
+                        <h4 id="vision_title"></h4>
+                        <p id="vision_text"></p>
                      </div>
                      <div class="card">
-                        <h4>Valores</h4>
+                        <h4 id="values_title"></h4>
                         <ul>
-                           <li>Inclusão: Valorizamos a diversidade e acolhemos todos os indivíduos, independentemente de seu nível de experiência.</li>
-                           <li>Colaboração: Acreditamos na força da comunidade e incentivamos a troca de conhecimento e apoio mútuo.</li>
-                           <li>Saúde: Promovemos um estilo de vida saudável, priorizando o bem-estar físico e mental de nossos usuários.</li>
+                           <li id="values_text1"></li>
+                           <li id="values_text2"></li>
+                           <li id="values_text3"></li>
                         </ul>
                      </div>
                   </div>
@@ -75,22 +75,19 @@
 
             <section id="for" class="section-for">
                <article>
-                  <h1>Pra quem é a Sportify?</h1>
-                  <p>
-                     A Sportify é uma rede social para todos que amam musculação e esportes, desde iniciantes até atletas avançados. É um espaço para compartilhar treinos, acompanhar progressos e se conectar com pessoas com interesses semelhantes.
-                     <br>
-                     Além disso, a plataforma beneficia treinadores e profissionais, permitindo a expansão de redes de contatos e a oferta de orientações personalizadas. Com uma comunidade de apoio, a Sportify ajuda todos a alcançar seus objetivos de forma saudável.
+                  <h1 id="who_is"></h1>
+                  <p id="who_is_text">
                   </p>
                </article>
             </section>
 
             <section id="graphic" class="section-graphic">
                <article>
-                  <h1>Gráficos</h1>
+                  <h1 id="graph_title"></h1>
                   <div class="graphic-content">
-                     <span>% da População frequentando academias</span>
+                     <span id="graph1"></span>
                      <canvas class="freq-graph" id="freq-graph" width="400" height="200"></canvas>
-                     <span>Quantidade de academias abertas</span>
+                     <span id="graph2"></span>
                      <canvas class="quantity-graph" id="quantity-graph" width="400" height="200"></canvas>
                   </div>
                </article>
@@ -101,9 +98,9 @@
       <footer class="footer">
          <div class="footer-main">
             <div class="footer-infos">
-               <a href="">Conheça a Sportify</a>
-               <a href="">Pra quem é?</a>
-               <a href="">Cadastre-se</a>
+               <a href="#about" id="footer_link1"></a>
+               <a href="#for" id="footer_link2"></a>
+               <a href="./cadastro_login/index.html" id="footer_link3"></a>
             </div>
             <div class="footer-icons">
                <div>
@@ -120,8 +117,8 @@
                </div>
             </div>
          </div>
-         <div class="footer-footer">
-            Todos direitos reservados para Sportify<sup>©</sup> - 2024
+         <div class="footer-footer" id="footer">
+            
          </div>
       </footer>
    </body>

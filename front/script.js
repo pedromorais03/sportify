@@ -9,10 +9,12 @@ window.document.addEventListener('DOMContentLoaded', () => {
       window.location.href = './feed/index.html'
    }
 
-   if(localStorage.getItem('lang') == 'pt'){
+   if(language == 'pt'){
       selected.innerHTML = `<img src="./assets/images/br-flag.png" alt="Português" class="flag"><span>Português</span>`
-   }else{
+   }else if(language == 'en'){
       selected.innerHTML = `<img src="./assets/images/usa-flag.png" alt="English" class="flag"><span>English</span>`
+   }else{
+      selected.innerHTML = `<img src="./assets/images/spain-flag.png" alt="Español" class="flag"><span>Español</span>`
    }
 
    set_texts()

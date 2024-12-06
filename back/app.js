@@ -241,10 +241,47 @@ app.get('/dashboard/interactions', (req, res) => {
 
    connection.query(query, (err, result) => {
       if (err) {
-         console.error('Erro ao inserir dados: ', err);
-         return;
+         console.error('Erro ao selecionar dados: ', err)
+         return
       }
-      console.log(result)
+      res.status(200).json(result)
+   })
+})
+
+app.get('/dashboard/frequency', (req, res) => {
+   const query = `
+                  SELECT 
+                     COUNT(*) AS total_by_day,
+                     DATE(i.dt_interaction) AS dt_interaction
+                  FROM interaction AS i
+                  JOIN user_data AS ud
+                  ON i.fk_user = ud.id_user
+                  GROUP BY DATE(i.dt_interaction);
+               `
+
+   connection.query(query, (err, result) => {
+      if (err) {
+         console.error('Erro ao selecionar dados: ', err)
+         return
+      }
+      res.status(200).json(result)
+   })
+})
+
+app.get('/dashboard/kpi', (req, res) => {
+   const query = `
+                  SELECT
+                     MAX(DATE_FORMAT(i.dt_interaction, '%d/%m/%Y %H:%i:%s')) AS last_interaction
+                  FROM interaction AS i
+                  JOIN user_data AS ud
+                  ON i.fk_user = ud.id_user;
+                  `
+   connection.query(query, (err, result) => {
+      if(err){
+         console.log('Erro ao selecionar dados: ', err)
+         return
+      }
+
       res.status(200).json(result)
    })
 })

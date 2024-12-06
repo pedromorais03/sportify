@@ -228,6 +228,27 @@ app.get('/rankings', (req, res) => {
    })
 })
 
+app.get('/dashboard/interactions', (req, res) => {
+   const query = `SELECT 
+                     MAX(i.dt_interaction) AS last_interaction,
+                     COUNT(i.type) AS total_by_type,
+                     i.type
+                  FROM interaction AS i
+                  JOIN user_data AS ud
+                  ON i.fk_user = ud.id_user
+                  GROUP BY i.type;
+                  `
+
+   connection.query(query, (err, result) => {
+      if (err) {
+         console.error('Erro ao inserir dados: ', err);
+         return;
+      }
+      console.log(result)
+      res.status(200).json(result)
+   })
+})
+
 app.post('/songs', async (req, res) => {
    const { genres } = req.body
    let playlist = await generatePlaylist(genres)

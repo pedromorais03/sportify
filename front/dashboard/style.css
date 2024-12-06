@@ -130,3 +130,40 @@
    padding-top: 2rem;
    margin-right: 10rem;
 }
+
+.container .container-main .container-slider{
+   position: relative;
+   width: 100%;
+   max-width: 100%;
+   overflow: hidden;
+   border: 2px solid var(--text-color);
+   border-radius: 10px;
+   background-color: var(--dark-gray);
+}
+
+.container .container-main .container-slider .change-section{
+   margin: 10px auto;
+   padding: 10px 20px;
+   border: none;
+   background-color: var(--light-secondary-color);
+   color: var(--text-color);
+   font-size: 16px;
+   border-radius: 5px;
+   cursor: pointer;
+   transition: .5s all ease;
+}
+
+.container .container-main .container-slider .change-section:hover{
+   scale: 1.1;
+}
+
+.container .container-main .container-slider .slider-slides{
+   display: flex;
+   transition: transform .5s ease-in-out;
+}
+
+.container .container-main .container-slider .slider-slides .slide{
+   min-width: 100%;
+   padding: 20px;
+   text-align: center;
+}

@@ -258,14 +258,15 @@ app.get('/rankings', (req, res) => {
    })
 })
 
-app.get('/dashboard/interactions', (req, res) => {
+app.get('/dashboard/interactions/:userId', (req, res) => {
+   const { userId } = req.params
    const query = `SELECT 
                      MAX(i.dt_interaction) AS last_interaction,
                      COUNT(i.type) AS total_by_type,
                      i.type
                   FROM interaction AS i
                   JOIN user_data AS ud
-                  ON i.fk_user = ud.id_user
+                  ON i.fk_user = ${userId}
                   GROUP BY i.type;
                   `
 
@@ -278,7 +279,8 @@ app.get('/dashboard/interactions', (req, res) => {
    })
 })
 
-app.get('/dashboard/frequency', (req, res) => {
+app.get('/dashboard/frequency/:userId', (req, res) => {
+   const { userId } = req.params
    const query = `
                   SELECT 
                      COUNT(*) AS total_by_day,
@@ -286,6 +288,7 @@ app.get('/dashboard/frequency', (req, res) => {
                   FROM interaction AS i
                   JOIN user_data AS ud
                   ON i.fk_user = ud.id_user
+                  WHERE ud.id_user = ${userId}
                   GROUP BY DATE(i.dt_interaction);
                `
 
@@ -298,14 +301,74 @@ app.get('/dashboard/frequency', (req, res) => {
    })
 })
 
-app.get('/dashboard/kpi', (req, res) => {
+app.get('/dashboard/kpi/:userId', (req, res) => {
+   const { userId } = req.params
    const query = `
                   SELECT
                      MAX(DATE_FORMAT(i.dt_interaction, '%d/%m/%Y %H:%i:%s')) AS last_interaction
                   FROM interaction AS i
                   JOIN user_data AS ud
-                  ON i.fk_user = ud.id_user;
+                  ON i.fk_user = ${userId};
                   `
+   connection.query(query, (err, result) => {
+      if(err){
+         console.log('Erro ao selecionar dados: ', err)
+         return
+      }
+
+      res.status(200).json(result)
+   })
+})
+
+app.get('/dashboard/game-kpi/:userId', (req, res) => {
+   const { userId } = req.params
+   const query = `
+                  SELECT 
+                     SUM(score) AS total_score, 
+                     MAX(score) AS max_score, 
+                     COUNT(*) AS tries, TRUNCATE(AVG(score), 2) AS avg_score,
+                     MAX(DATE_FORMAT(dt_run, '%d/%m/%Y %H:%i:%s')) AS last_run 
+                  FROM run_data WHERE fk_user = ${userId};
+                 `
+   connection.query(query, (err, result) => {
+      if(err){
+         console.log('Erro ao selecionar dados: ', err)
+         return
+      }
+
+      res.status(200).json(result)
+   })
+})
+
+app.get('/dashboard/score/:userId', (req, res) => {
+   const { userId } = req.params
+   const query = `
+                  SELECT 
+                     score
+                  FROM run_data WHERE fk_user = ${userId};
+                 `
+   connection.query(query, (err, result) => {
+      if(err){
+         console.log('Erro ao selecionar dados: ', err)
+         return
+      }
+
+      res.status(200).json(result)
+   })
+})
+
+app.get('/dashboard/rank', (req, res) => {
+   const query = `
+                  SELECT 
+                     MAX(rd.score) AS max_score_by_player,
+                     CONCAT(ud.name_user, ' ', ud.second_name_user) AS full_name,
+                     COUNT(*) AS total_tries
+                  FROM run_data AS rd
+                  JOIN user_data AS ud
+                  ON rd.fk_user = ud.id_user
+                  GROUP BY rd.fk_user
+                  ORDER BY rd.score DESC;
+               `
    connection.query(query, (err, result) => {
       if(err){
          console.log('Erro ao selecionar dados: ', err)

@@ -1,5 +1,6 @@
 const containerMain = document.querySelector('.container-main')
 const book = document.querySelector('.book')
+const hiddenBook = document.querySelector('.hidden-book')
 const firstPage= document.querySelector('.first-page')
 const previousButton = document.querySelector('#previous-recipe')
 const nextButton = document.querySelector('#next-recipe')
@@ -38,7 +39,6 @@ window.document.addEventListener('DOMContentLoaded', () => {
    xhr.onload = () => {
       if (xhr.status === 200) {
          const res = JSON.parse(xhr.responseText)
-         console.log(res)
          let counterPage = 1
          book.innerHTML += `
                               <div class='page first-page' id='page${counterPage}' style='z-index: ${res.length}'> 
@@ -51,6 +51,7 @@ window.document.addEventListener('DOMContentLoaded', () => {
          res.forEach(data => {
             var zindex = res.length - counterPage
             counterPage++
+            // console.log(data.description)
             book.innerHTML += `
                               <div class='page' id='page${counterPage}' style='z-index: ${zindex}'> 
                                  <div class="recipe">
@@ -64,7 +65,7 @@ window.document.addEventListener('DOMContentLoaded', () => {
                                     <div class="recipe-text">
                                        <div class="recipe-desc">
                                           <span>Descrição</span>
-                                          <p>${data.description}</p>
+                                          <span id="span_description">${data.description}</span>
                                        </div>
                                        <div class="recipe-ingredients">
                                           <span>Ingredientes</span>
@@ -78,8 +79,36 @@ window.document.addEventListener('DOMContentLoaded', () => {
                                  </div>
                                  <span class='current-page'> ${counterPage} </span>
                               </div>
-                              <div class='html2pdf__page-break'></div>
                               `
+
+            hiddenBook.innerHTML += `
+                                    <div class='page'> 
+                                       <div class="recipe">
+                                          <div class="recipe-header">
+                                             <div class="recipe-header-user">
+                                                <span>Postado por:</span>
+                                                <span class="user">${data.name_user} ${data.second_name_user}</span>
+                                             </div>
+                                             <span class="title">${data.name_recipe}</span>
+                                          </div>
+                                          <div class="recipe-text">
+                                             <div class="recipe-desc">
+                                                <span>Descrição</span>
+                                                <span id="span_description">${data.description}</span>
+                                             </div>
+                                             <div class="recipe-ingredients">
+                                                <span>Ingredientes</span>
+                                                <p>${data.ingredients_recipes}</p>
+                                             </div>
+                                             <div class="recipe-method">
+                                                <span>Modo de preparo</span>
+                                                <p>${data.prep_method}</p>
+                                             </div>
+                                          </div>
+                                       </div>
+                                    </div>
+                                    <div class='html2pdf__page-break'></div>
+                                 `
             pagesObject.push({
                user: `${data.name_user} ${data.second_name_user}`,
                title: data.name_recipe,
@@ -177,7 +206,7 @@ downloadButton.addEventListener('click', () => {
       html2canvas:  { scale: 2 },
       jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
    }
-   html2pdf().set(opt).from(book).save()
+   html2pdf().set(opt).from(hiddenBook).save()
 })
 
 const show_recipe_modal = () => {

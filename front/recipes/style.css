@@ -166,6 +166,13 @@
   perspective: 1000px;
 }
 
+.container .container-main .hidden-book{
+  display: none;
+  visibility: hidden;
+  background-color: var(--secondary-color);
+  color: black !important;
+}
+
 .container .container-main .book .page{
   position: absolute;
   width: 100%;

@@ -44,24 +44,16 @@
             </ul>
          </aside>
          <main class="container-main">
-            <div class="post">
-               <h1 class="post-title">Título do Post</h1>
-               <div class="post-content">
-                   <p>Este é o conteúdo do post. Aqui você pode adicionar texto, imagens ou qualquer outro elemento que desejar.</p>
+            <div class="add-comment">
+               <div class="input-container">
+                  <label for="ipt_title"><i data-lucide="captions" class="lucide-icons"></i></label>
+                  <input type="text" placeholder="Título do post" id="ipt_title">
                </div>
-               <div class="comments-section">
-                   <h2>Comentários</h2>
-                   <div class="comment">
-                       <p><strong>Usuário 1:</strong> Este é um comentário interessante!</p>
-                   </div>
-                   <div class="comment">
-                       <p><strong>Usuário 2:</strong> Concordo com o que foi dito!</p>
-                   </div>
-                   <form class="comment-form">
-                       <textarea placeholder="Deixe seu comentário..." required></textarea>
-                       <button type="submit">Comentar</button>
-                   </form>
+               <div class="input-container">
+                  <label for="ipt_description"><i data-lucide="podcast" class="lucide-icons"></i></label>
+                  <textarea type="text" placeholder="Descrição do post" id="ipt_description"></textarea>
                </div>
+               <button class="add-post" onclick="add_post()">Adicionar Post</button>
             </div>
          </main>
       </div>      

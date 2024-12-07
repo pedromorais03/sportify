@@ -129,33 +129,60 @@
    width: 80%;
    padding-top: 2rem;
    margin-right: 10rem;
+   display: flex;
+   flex-direction: column;
+   gap: 2rem;
 }
 
-.container .container-main .container-add-post {
-   position: fixed;
-   bottom: 50px;
-   right: 50px;
-
+.container .container-main .add-comment{
+   width: 100%;
+   box-shadow: 0 2px 5px var(--light-secondary-color);
+   padding: 20px;
    display: flex;
    flex-direction: column;
    align-items: center;
    justify-content: center;
-   width: 48px;
-   height: 48px;
-   border: 1px solid var(--light-secondary-color);
-   border-radius: 50%;
-   cursor: pointer;
-   transition: .5s all ease;
+   gap: 10px;
 }
 
-.container .container-main .container-add-post:hover {
+.container .container-main .add-comment .add-post{
+   width: 240px;
+   margin-top: 10px;
+   background-color: var(--light-secondary-color);
+   color: var(--text-color);
+   border: none;
+   border-radius: 4px;
+   padding: 10px 15px;
+   cursor: pointer;
+   transition: .5s all;
+   align-self: flex-end;
+}
+
+.container .container-main .add-comment .add-post:hover{
    scale: 1.1;
 }
 
-.container .container-main .container-add-post button {
-   background-color: transparent;
+.container .container-main .add-comment .input-container{
+   position: relative;
+   width: 80%;
+}
+
+.container .container-main .add-comment .input-container input, .container .container-main .add-comment .input-container textarea{
+   width: 100%;
+   padding: 10px 40px 10px 10px;
+   font-size: 16px;
    border: none;
-   padding-top: 4px;
+   border-radius: 4px;
+   color: var(--dark-gray);
+}
+
+.container .container-main .add-comment .input-container .lucide-icons{
+   position: absolute;
+   right: 10px; 
+   top: 50%;
+   transform: translateY(-50%);
+   font-size: 18px;
+   color: var(--text-color);
    cursor: pointer;
 }
 
@@ -168,9 +195,17 @@
 }
 
 .container .container-main .post .post-title {
-   font-size: 2em;
+   margin-top: 2rem;
+   font-size: 1.2em;
    margin-bottom: 10px;
    color: var(--text-color);
+}
+
+.container .container-main .post .post-owner{
+   margin: 10px 0;
+   padding: 10px;
+   background-color: var(--dark-gray);
+   border-left: 4px solid var(--light-secondary-color);
 }
 
 .container .container-main .post .post-content {
@@ -186,7 +221,7 @@
 }
 
 .container .container-main .post .comments-section h2 {
-   font-size: 1.5em;
+   font-size: 1.2em;
    color: var(--text-color);
 }
 

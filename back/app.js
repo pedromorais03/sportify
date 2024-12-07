@@ -72,7 +72,20 @@ app.get('/recipes/:id_user', (req, res) => {
 
 app.get('/posts', (req, res) => {
    let posts = []
-   connection.query('SELECT * FROM vw_post_user', (err, results, fields) => {
+   const query = `
+               SELECT 
+                  p.id_post,
+                  p.title,
+                  p.description,
+                  CONCAT(ud.name_user, ' ', ud.second_name_user) AS name_user,
+                  DATE_FORMAT(p.dt_post, '%d/%m/%Y %H:%i:%s') AS dt_post
+               FROM posts AS p
+               JOIN user_data AS ud
+               ON p.fk_user = ud.id_user
+               ORDER BY p.id_post DESC;
+               `
+               
+   connection.query(query, (err, results, fields) => {
       if(err){
          console.log('Erro ao executar select', err)
          return;
@@ -96,6 +109,23 @@ app.get('/posts/:id_user', (req, res) => {
 
       posts = results
       res.status(200).json(posts)
+   })
+})
+
+app.post('/posts', (req, res) => {
+   const { title } = req.body
+   const { description } = req.body
+   const { id_user } = req.body
+
+   const query = 'CALL p_insert_post_interaction (?, ?, ?)'
+   const values = [title, description, id_user]
+   connection.query(query, values, (err, results, fields) => {
+      if(err){
+         console.error('Erro ao executar select', err)
+         return;
+      }
+
+      res.status(200).json({ message: 'Post inserido com sucesso' })
    })
 })
 

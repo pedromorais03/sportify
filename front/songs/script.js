@@ -79,8 +79,15 @@ buttonGenerate.addEventListener("click", () => {
       if (xhr.status === 200) {
          const res = JSON.parse(xhr.responseText)
          let playlist = res.clearedPlaylist
+         playlist = playlist.slice(0, -1)
+         let counter = 1
 
          console.log(playlist)
+         playlist.forEach((song) => {
+            console.log(song)
+            gen_songs.innerHTML += `<span> <strong> ${counter}. ${song} </strong> </span>`
+            counter++
+         })
       }
    }
 

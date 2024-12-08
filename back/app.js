@@ -41,32 +41,52 @@ app.get('/', (req, res) => {
    })
 })
 
-app.get('/recipes', (req, res) => {
-   let recipes = []
-   connection.query('SELECT * FROM vw_recipe_user', (err, results, fields) => {
-      if(err){
-         console.error('Erro ao executar select', err)
-         return;
-      }
+app.post('/user', (req, res) => {
+   const { name_user } = req.body
+   const { second_name_user } = req.body
+   const { email_user } = req.body
+   const { username } = req.body
+   const { password } = req.body
+   const passwordHash = cryptPassword(password)
+   const query = 'CALL p_insert_data_login(?, ?, ?, ?, ?)'
+   const values = [name_user, second_name_user, email_user, username, passwordHash]
 
-      recipes = results
-      res.status(200).json(recipes)
+
+   connection.query(query, values, (err, results) => {
+      if (err) {
+         console.error('Erro ao inserir dados: ', err);
+         return;
+      }else{
+         res.status(200).json({ message: 'Usuário inserido com sucesso' })
+      }
    })
+
 })
 
-app.get('/recipes/:id_user', (req, res) => {
-   const { id_user } = req.params
-   let recipes = []
-   const query = 'SELECT name_recipe, ingredients_recipes, description, prep_method FROM recipes WHERE fk_user = ?'
-   const values = [id_user]
-   connection.query(query, values, (err, results, fields) => {
+app.get('/login/:username/:password', (req, res) => {
+   const { username } = req.params
+   const { password } = req.params
+   const query = `SELECT * FROM vw_user_data WHERE username = ?`
+   const value = [username]
+
+   connection.query(query, value, (err, result) => {
       if(err){
-         console.error('Erro ao executar select', err)
-         return;
+         return res.status(500).json({ message: err})
       }
 
-      recipes = results
-      res.status(200).json(recipes)
+      if(result.length === 0){
+         return res.status(404).json({ message: 'Usuário não encontrado' })
+      }
+
+      const user = result[0]
+      const cryptedPassword = cryptPassword(password)
+
+      if(user.password === cryptedPassword){
+         return res.status(200).json(user)
+      }else{
+         return res.status(401).json({ message: 'Senha inválida' })
+      }
+
    })
 })
 
@@ -127,8 +147,54 @@ app.post('/posts', (req, res) => {
 
       res.status(200).json({ message: 'Post inserido com sucesso' })
    })
+}) 
+
+app.post('/posts', (req, res) => {
+   const { title } = req.body
+   const { content } = req.body
+   const { id_user } = req.body 
+
+   const query = 'INSERT INTO posts VALUES(?, ?, ?)'
+   const values = [title, content, id_user]
+
+   connection.query(query, values, values, (err, results) => {
+      if(err){
+         console.log('Erro ao inserir post', err)
+         return
+      }else{
+         res.status.json({ message: 'Post inserido com sucesso' })
+      }
+   })
 })
 
+app.get('/recipes', (req, res) => {
+   let recipes = []
+   connection.query('SELECT * FROM vw_recipe_user', (err, results, fields) => {
+      if(err){
+         console.error('Erro ao executar select', err)
+         return;
+      }
+   
+      recipes = results
+      res.status(200).json(recipes)
+   })
+})
+
+app.get('/recipes/:id_user', (req, res) => {
+   const { id_user } = req.params
+   let recipes = []
+   const query = 'SELECT name_recipe, ingredients_recipes, description, prep_method FROM recipes WHERE fk_user = ?'
+   const values = [id_user]
+   connection.query(query, values, (err, results, fields) => {
+      if(err){
+         console.error('Erro ao executar select', err)
+         return;
+      }
+
+      recipes = results
+      res.status(200).json(recipes)
+   })
+})
 
 app.post('/recipes', (req, res) => {
    const { title }  = req.body 
@@ -151,72 +217,27 @@ app.post('/recipes', (req, res) => {
    })
 })
 
-app.post('/user', (req, res) => {
-   const { name_user } = req.body
-   const { second_name_user } = req.body
-   const { email_user } = req.body
-   const { username } = req.body
-   const { password } = req.body
-   const passwordHash = cryptPassword(password)
-   const query = 'CALL p_insert_data_login(?, ?, ?, ?, ?)'
-   const values = [name_user, second_name_user, email_user, username, passwordHash]
+// app.get('/posts/comments', (req, res) => {
+//    console.log("entramos aqui")
+//    const query = `
+//                   SELECT 
+//                      pc.fk_post AS id_post,
+//                      pc.comment AS comment,
+//                      CONCAT(ud.name_user, ' ', ud.second_name_user) AS full_name
+//                   FROM post_comments AS pc
+//                   JOIN user_data AS ud
+//                   ON pc.fk_user = ud.id_user;
+//                `
+//    connection.query(query, (err, results, fields) => {
+//       if(err){
+//          console.error('Erro ao executar select', err)
+//          res.status(500).json({error: "Erro ao executar a consulta"})
+//          return;
+//       }
+//       res.status(200).json(results)
+//    })
+// })
 
-
-   connection.query(query, values, (err, results) => {
-      if (err) {
-         console.error('Erro ao inserir dados: ', err);
-         return;
-      }else{
-         res.status(200).json({ message: 'Usuário inserido com sucesso' })
-      }
-   })
-
-})
-
-app.post('/posts', (req, res) => {
-   const { title } = req.body
-   const { content } = req.body
-   const { id_user } = req.body 
-
-   const query = 'INSERT INTO posts VALUES(?, ?, ?)'
-   const values = [title, content, id_user]
-
-   connection.query(query, values, values, (err, results) => {
-      if(err){
-         console.log('Erro ao inserir post', err)
-         return
-      }else{
-         res.status.json({ message: 'Post inserido com sucesso' })
-      }
-   })
-})
-
-app.get('/login/:username/:password', (req, res) => {
-   const { username } = req.params
-   const { password } = req.params
-   const query = `SELECT * FROM vw_user_data WHERE username = ?`
-   const value = [username]
-
-   connection.query(query, value, (err, result) => {
-      if(err){
-         return res.status(500).json({ message: err})
-      }
-
-      if(result.length === 0){
-         return res.status(404).json({ message: 'Usuário não encontrado' })
-      }
-
-      const user = result[0]
-      const cryptedPassword = cryptPassword(password)
-
-      if(user.password === cryptedPassword){
-         return res.status(200).json(user)
-      }else{
-         return res.status(401).json({ message: 'Senha inválida' })
-      }
-
-   })
-})
 
 app.post('/game', (req, res) => {
    const { score }  = req.body
@@ -304,12 +325,15 @@ app.get('/dashboard/frequency/:userId', (req, res) => {
 app.get('/dashboard/kpi/:userId', (req, res) => {
    const { userId } = req.params
    const query = `
-                  SELECT
-                     MAX(DATE_FORMAT(i.dt_interaction, '%d/%m/%Y %H:%i:%s')) AS last_interaction
+                   SELECT
+                     DATE_FORMAT(i.dt_interaction, '%d/%m/%Y %H:%i:%s') AS last_interaction
                   FROM interaction AS i
                   JOIN user_data AS ud
-                  ON i.fk_user = ${userId};
-                  `
+                  ON i.fk_user = ud.id_user
+                  WHERE ud.id_user = ${userId}
+                  ORDER BY id_interaction DESC
+                  LIMIT 1;
+               `
    connection.query(query, (err, result) => {
       if(err){
          console.log('Erro ao selecionar dados: ', err)

@@ -149,6 +149,22 @@
    color: var(--dark-gray);
 }
 
+.container .container-main .all-genres .generate-playlist{
+   width: 240px;
+   height: 40px;
+   padding: 10px 20px;
+   background-color: var(--light-secondary-color);
+   border: none;
+   border-radius: 5px;
+   color: var(--text-color);
+   transition: .5s all ease;
+}
+
+.container .container-main .all-genres .generate-playlist:hover{
+   scale: 1.1;
+   cursor: pointer;
+}
+
 .container .container-main .all-genres .column{
    width: 100%;
    display: flex;

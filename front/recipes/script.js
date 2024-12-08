@@ -9,6 +9,7 @@ const profileText = document.querySelector('#profile_text')
 const profile = document.querySelector('.profile')
 const profileOption = document.querySelector('.profile-option')
 const nameUser = localStorage.getItem('name_user')
+const language = localStorage.getItem('lang') ? localStorage.getItem('lang') : 'pt'
 
 const toast = document.querySelector('.toast')
 const toastText = document.querySelector('.toast-text')
@@ -123,6 +124,8 @@ window.document.addEventListener('DOMContentLoaded', () => {
    }
 
    xhr.send()
+
+   set_texts()
 })
 
 profile.addEventListener('click', () => {
@@ -228,4 +231,13 @@ const show_toast = (text, color) => {
 const logout = () => {
    localStorage.clear()
    window.location.href = '../index.html'
+}
+
+const set_texts = () => {
+   aside_item1.innerHTML += `${languages[language].aside_item1}`
+   aside_item2.innerHTML += `${languages[language].aside_item2}`
+   aside_item3.innerHTML += `${languages[language].aside_item3}`
+   aside_item4.innerHTML += `${languages[language].aside_item4}`
+   aside_item5.innerHTML += `${languages[language].aside_item5}`
+   aside_item6.innerHTML += `${languages[language].aside_item6}`
 }

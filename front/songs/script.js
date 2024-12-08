@@ -3,6 +3,7 @@ const profile = document.querySelector('.profile')
 const profileOption = document.querySelector('.profile-option')
 const buttonGenerate = document.querySelector('.generate-playlist')
 const nameUser = localStorage.getItem('name_user')
+const language = localStorage.getItem('lang') ? localStorage.getItem('lang') : 'pt'
 
 const columns = document.querySelectorAll('.column')
 
@@ -12,6 +13,17 @@ window.addEventListener('DOMContentLoaded', () => {
    } else {
       window.location.href = '../index.html'
    }
+
+   set_texts()
+})
+
+profile.addEventListener('click', () => {
+   if(getComputedStyle(profileOption).display == 'none'){
+      profileOption.style.display = 'block'
+   }else{
+      profileOption.style.display = 'none'
+   }
+   
 })
 
 document.addEventListener('dragstart', (e) => {
@@ -79,3 +91,29 @@ buttonGenerate.addEventListener("click", () => {
    xhr.send(data)
 
 })
+
+const logout = () => {
+   localStorage.clear()
+   window.location.href = '../index.html'
+}
+
+
+const set_texts = () => {
+   aside_item1.innerHTML += `${languages[language].aside_item1}`
+   aside_item2.innerHTML += `${languages[language].aside_item2}`
+   aside_item3.innerHTML += `${languages[language].aside_item3}`
+   aside_item4.innerHTML += `${languages[language].aside_item4}`
+   aside_item5.innerHTML += `${languages[language].aside_item5}`
+   aside_item6.innerHTML += `${languages[language].aside_item6}`
+   select_songs.innerHTML += `${languages[language].select_songs}`
+   selected_songs.innerText += `${languages[language].selected_songs}`
+   generated_songs.innerHTML += `${languages[language].generated_songs}`
+   genre_1.innerText += `${languages[language].genre_1}`
+   genre_2.innerText += `${languages[language].genre_2}`
+   genre_3.innerText += `${languages[language].genre_3}`
+   genre_4.innerText += `${languages[language].genre_4}`
+   genre_5.innerText += `${languages[language].genre_5}`
+   genre_6.innerText += `${languages[language].genre_6}`
+   genre_7.innerText += `${languages[language].genre_7}`
+   generate_playlist.innerText += `${languages[language].generate_playlist}`
+}

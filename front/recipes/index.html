@@ -13,10 +13,10 @@
          <nav class="navbar">
             <div class="input-search">
                <img src="../assets/images/sportify_logo.png" alt="Sportify Logo">
-               <div class="input-container">
+               <!-- <div class="input-container">
                   <i data-lucide="search" class="lucide-icons"></i>
                   <input type="text" placeholder="O que está procurando">
-               </div>
+               </div> -->
             </div>
             <div class="profile">
                <div id="profile_text"></div>
@@ -34,13 +34,12 @@
       <div class="container">
          <aside class="container-aside">
             <ul>
-               <li><a href="../feed/index.html"><i data-lucide="newspaper" class="lucide-icons aside-icons"></i>Feed</a></li>
-               <li><a href="../profile/index.html"><i data-lucide="user" class="lucide-icons aside-icons"></i>Perfil</a></li>
-               <li><a href="../dashboard/index.html"><i data-lucide="chart-spline" class="lucide-icons aside-icons"></i>Dashboard</a></li>
-               <li><a href=""><i data-lucide="biceps-flexed" class="lucide-icons aside-icons"></i>Treinos</a></li>
-               <li><a href="./index.html"><i data-lucide="cooking-pot" class="lucide-icons aside-icons"></i>Receitas</a></li>
-               <li><a href="../songs/index.html"><i data-lucide="music" class="lucide-icons aside-icons"></i>Músicas</a></li>
-               <li><a href="../../game_muscle_defenders/fase01/index.html"><i data-lucide="gamepad-2" class="lucide-icons aside-icons"></i>Jogos</a></li>
+               <li><a href="../feed/index.html" id="aside_item1"><i data-lucide="newspaper" class="lucide-icons aside-icons"></i></a></li>
+               <li><a href="../profile/index.html" id="aside_item2"><i data-lucide="user" class="lucide-icons aside-icons"></i></a></li>
+               <li><a href="../dashboard/index.html" id="aside_item3"><i data-lucide="chart-spline" class="lucide-icons aside-icons"></i></a></li>
+               <li><a href="./index.html" id="aside_item4"><i data-lucide="cooking-pot" class="lucide-icons aside-icons"></i></a></li>
+               <li><a href="../songs/index.html" id="aside_item5"><i data-lucide="music" class="lucide-icons aside-icons"></i></a></li>
+               <li><a href="../../game_muscle_defenders/fase01/index.html" id="aside_item6"><i data-lucide="gamepad-2" class="lucide-icons aside-icons"></i></a></li>
             </ul>
          </aside>
          <main class="container-main">
@@ -88,6 +87,7 @@
 </html>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="./script.js"></script>
+<script src="../languages.js"></script>
 <script src="https://unpkg.com/lucide@latest"></script>
 <script type="module">
    lucide.createIcons()

@@ -13,10 +13,10 @@
          <nav class="navbar">
             <div class="input-search">
                <img src="../assets/images/sportify_logo.png" alt="Sportify Logo">
-               <div class="input-container">
+               <!-- <div class="input-container">
                   <i data-lucide="search" class="lucide-icons"></i>
                   <input type="text" placeholder="O que está procurando">
-               </div>
+               </div> -->
             </div>
             <div class="profile">
                <div id="profile_text"></div>
@@ -34,13 +34,12 @@
       <div class="container">
          <aside class="container-aside">
             <ul>
-               <li><a href="../feed/index.html"><i data-lucide="newspaper" class="lucide-icons aside-icons"></i>Feed</a></li>
-               <li><a href="../profile/index.html"><i data-lucide="user" class="lucide-icons aside-icons"></i>Perfil</a></li>
-               <li><a href="./index.html"><i data-lucide="chart-spline" class="lucide-icons aside-icons"></i>Dashboard</a></li>
-               <li><a href=""><i data-lucide="biceps-flexed" class="lucide-icons aside-icons"></i>Treinos</a></li>
-               <li><a href="../recipes/index.html"><i data-lucide="cooking-pot" class="lucide-icons aside-icons"></i>Receitas</a></li>
-               <li><a href="../songs/index.html"><i data-lucide="music" class="lucide-icons aside-icons"></i>Músicas</a></li>
-               <li><a href="../../game_muscle_defenders/fase01/index.html"><i data-lucide="gamepad-2" class="lucide-icons aside-icons"></i>Jogos</a></li>
+               <li><a href="../feed/index.html" id="aside_item1"> <i data-lucide="newspaper" class="lucide-icons aside-icons"></i></a></li>
+               <li><a href="../profile/index.html" id="aside_item2"> <i data-lucide="user" class="lucide-icons aside-icons"></i></a></li>
+               <li><a href="./index.html" id="aside_item3"> <i data-lucide="chart-spline" class="lucide-icons aside-icons"></i></a></li>
+               <li><a href="../recipes/index.html" id="aside_item4"> <i data-lucide="cooking-pot" class="lucide-icons aside-icons"></i></a></li>
+               <li><a href="../songs/index.html" id="aside_item5"> <i data-lucide="music" class="lucide-icons aside-icons"></i></a></li>
+               <li><a href="../../game_muscle_defenders/fase01/index.html" id="aside_item6"> <i data-lucide="gamepad-2" class="lucide-icons aside-icons"></i></a></li>
             </ul>
          </aside>
          <main class="container-main">
@@ -50,15 +49,15 @@
                      <div class="content">
                         <div class="top">
                            <div class="kpi">
-                              <h2>Última interação</h2>
+                              <h2 id="dashboard_s1_kpi1"></h2>
                               <span id="span_last_interaction"></span>
                            </div>
                            <div class="kpi">
-                              <h2>Total interações</h2>
+                              <h2 id="dashboard_s1_kpi2"></h2>
                               <span id="span_total_interaction"></span>
                            </div>
                            <div class="kpi">
-                              <h2>Tipo mais usado</h2>
+                              <h2 id="dashboard_s1_kpi3"></h2>
                               <span id="span_most_used_type"></span>
                            </div>
                         </div>
@@ -72,23 +71,23 @@
                      <div class="content">
                         <div class="top">
                            <div class="kpi">
-                              <h2>Pontuação Total</h2>
+                              <h2 id="dashboard_s2_kpi1"></h2>
                               <span id="span_total_score"></span>
                            </div>
                            <div class="kpi">
-                              <h2>Pontuação Máxima</h2>
+                              <h2 id="dashboard_s2_kpi2"></h2>
                               <span id="span_max_score"></span>
                            </div>
                            <div class="kpi">
-                              <h2>Pontuação Média</h2>
+                              <h2 id="dashboard_s2_kpi3"></h2>
                               <span id="span_avg_score"></span>
                            </div>
                            <div class="kpi">
-                              <h2>Tentativas</h2>
+                              <h2 id="dashboard_s2_kpi4"></h2>
                               <span id="span_tries"></span>
                            </div>
                            <div class="kpi">
-                              <h2>Última tentativa</h2>
+                              <h2 id="dashboard_s2_kpi5"></h2>
                               <span id="span_last_run"></span>
                            </div>
                         </div>
@@ -100,7 +99,7 @@
                   </div>
                </div>
             </div>
-            <button class="change-section" id="toggleButton">Alternar Seção</button>
+            <button class="change-section" id="toggleButton"></button>
          </main>
       </div>
    </body>
@@ -111,4 +110,5 @@
    lucide.createIcons()
 </script>
 <script src="./script.js"></script>
+<script src="../languages.js"></script>
 <script src="./dashboard.js"></script>

@@ -2,6 +2,7 @@ const profileText = document.querySelector('#profile_text')
 const profile = document.querySelector('.profile')
 const profileOption = document.querySelector('.profile-option')
 const container = document.querySelector('.container-main')
+const language = localStorage.getItem('lang') ? localStorage.getItem('lang') : 'pt'
 
 const toast = document.querySelector('.toast')
 const toastText = document.querySelector('.toast-text')
@@ -15,6 +16,7 @@ window.document.addEventListener('DOMContentLoaded', () => {
    }
 
    load_posts()
+   set_texts()
 })
 
 profile.addEventListener('click', () => {
@@ -35,7 +37,7 @@ const load_posts = () => {
          const res = JSON.parse(xhr.responseText)
          res.forEach(data => {
             container.innerHTML += `
-                                 <div class="post">
+                                 <div class="post" data-id='${data.id_post}'>
                                     <div class="post-owner">
                                        <p><strong>${data.name_user}</strong></p>
                                        <br>
@@ -46,26 +48,51 @@ const load_posts = () => {
                                        <p>${data.description}</p>
                                     </div>
                                     <div class="comments-section">
-                                       <h2>Comentários</h2>
-                                       <div class="comment">
-                                          <p><strong>Usuário 1:</strong> Este é um comentário interessante!</p>
-                                       </div>
-                                       <div class="comment">
-                                          <p><strong>Usuário 2:</strong> Concordo com o que foi dito!</p>
-                                       </div>
-                                       <form class="comment-form">
-                                          <textarea placeholder="Deixe seu comentário..." required></textarea>
-                                          <button onclick='comment(${data.id_post})'>Comentar</button>
-                                       </form>
                                     </div>
+                                    
                                  </div>
                               `
          })
       }
    }  
 
+   // <h2> Comentários </h2>
+   // <div class="comments-section-button">
+   //    <form class="comment-form">
+   //       <textarea placeholder="Deixe seu comentário..." required></textarea>
+   //       <button onclick='comment(${data.id_post})'>Comentar</button>
+   //    </form>
+   // </div>
+
    xhr.send()
+   // load_comments()
 }
+
+
+// const load_comments = () => {
+//    console.log('Loading comments')
+//    const xhr = new XMLHttpRequest
+//    xhr.open('GET', `http://localhost:3000/posts/comments`, true)
+//    xhr.setRequestHeader('Content-Type', 'application/json')
+
+//    xhr.onload = () => {
+//       if (xhr.status === 200) {
+//          const res = JSON.parse(xhr.responseText)   
+//          console.log("comment", res)     
+         
+//          res.forEach((data) => {
+//             console.log(`Post ${data.id_post}`, data)
+//                let currentDiv = document.querySelector(`.post[data-id='${data.id_post}'] .comments-section`)
+//                currentDiv.innerHTML += `
+//                            <div class="comment">
+//                               <p><strong>${data2.full_name}:</strong> ${data.comment}</p>
+//                            </div>
+//                            `
+//          })
+//       }
+//    }
+//    xhr.send()  
+// }
 
 const add_post = () => {
    let postTitle = ipt_title.value
@@ -93,6 +120,7 @@ const add_post = () => {
    })
 
    xhr.send(data)
+   window.location.reload()
 }
 
 const comment = (post_id) => {
@@ -110,4 +138,14 @@ const show_toast = (text, color) => {
 const logout = () => {
    localStorage.clear()
    window.location.href = '../index.html'
+}
+
+const set_texts = () => {
+   aside_item1.innerHTML += `${languages[language].aside_item1}`
+   aside_item2.innerHTML += `${languages[language].aside_item2}`
+   aside_item3.innerHTML += `${languages[language].aside_item3}`
+   aside_item4.innerHTML += `${languages[language].aside_item4}`
+   aside_item5.innerHTML += `${languages[language].aside_item5}`
+   aside_item6.innerHTML += `${languages[language].aside_item6}`
+   add_post.innerHTML += `${languages[language].add_post_button}`
 }

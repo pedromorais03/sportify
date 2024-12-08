@@ -1,6 +1,7 @@
 const profileText = document.querySelector('#profile_text')
 const profile = document.querySelector('.profile')
 const profileOption = document.querySelector('.profile-option')
+const language = localStorage.getItem('lang') ? localStorage.getItem('lang') : 'pt'
 
 const divRecipes = document.querySelector('.profile-recipes')
 const divPosts = document.querySelector('.profile-posts')
@@ -21,6 +22,7 @@ window.document.addEventListener('DOMContentLoaded', () => {
 
    load_recipes()
    load_posts()
+   set_texts()
 })
 
 profile.addEventListener('click', () => {
@@ -110,4 +112,15 @@ const load_posts = () => {
 const logout = () => {
    localStorage.clear()
    window.location.href = '../index.html'
+}
+
+const set_texts = () => {
+   aside_item1.innerHTML += `${languages[language].aside_item1}`
+   aside_item2.innerHTML += `${languages[language].aside_item2}`
+   aside_item3.innerHTML += `${languages[language].aside_item3}`
+   aside_item4.innerHTML += `${languages[language].aside_item4}`
+   aside_item5.innerHTML += `${languages[language].aside_item5}`
+   aside_item6.innerHTML += `${languages[language].aside_item6}`
+   posts_title.innerText += `${languages[language].profile_recipes}`
+   recipes_title.innerText += `${languages[language].profile_posts}`
 }

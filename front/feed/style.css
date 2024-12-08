@@ -232,14 +232,14 @@
    border-left: 4px solid var(--light-primary-color);
 }
 
-.container .container-main .post .comments-section .comment-form {
+.container .container-main .post .comments-section-button .comment-form {
    margin-top: 20px;
    display: flex;
    flex-direction: column;
    align-items: flex-end;
 }
 
-.container .container-main .post .comments-section .comment-form textarea {
+.container .container-main .post .comments-section-button .comment-form textarea {
    width: 100%;
    height: 80px;
    border: 1px solid var(--text-color);
@@ -248,7 +248,7 @@
    resize: none;
 }
 
-.container .container-main .post .comments-section .comment-form button {
+.container .container-main .post .comments-section-button .comment-form button {
    width: 240px;
    margin-top: 10px;
    background-color: var(--light-secondary-color);

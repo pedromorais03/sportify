@@ -31,7 +31,7 @@ CREATE TABLE `interaction` (
   KEY `fk_user_interaction` (`fk_user`),
   CONSTRAINT `fk_user_interaction` FOREIGN KEY (`fk_user`) REFERENCES `user_data` (`id_user`),
   CONSTRAINT `interaction_chk_1` CHECK ((`type` in (_utf8mb4'post',_utf8mb4'recipe',_utf8mb4'game',_utf8mb4'like',_utf8mb4'comment')))
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -40,7 +40,7 @@ CREATE TABLE `interaction` (
 
 LOCK TABLES `interaction` WRITE;
 /*!40000 ALTER TABLE `interaction` DISABLE KEYS */;
-INSERT INTO `interaction` VALUES (1,'recipe',27,'2024-11-28 22:51:32'),(2,'game',27,'2024-11-29 22:32:39'),(3,'game',27,'2024-12-01 23:06:23'),(4,'game',27,'2024-12-06 01:04:13'),(5,'recipe',27,'2024-12-06 01:26:22');
+INSERT INTO `interaction` VALUES (1,'recipe',27,'2024-11-28 22:51:32'),(2,'game',27,'2024-11-29 22:32:39'),(3,'game',27,'2024-12-01 23:06:23'),(4,'game',27,'2024-12-06 01:04:13'),(5,'recipe',27,'2024-12-06 01:26:22'),(6,'post',27,'2024-12-07 00:05:09'),(7,'recipe',27,'2024-12-07 00:06:56'),(8,'recipe',27,'2024-12-07 13:57:20'),(9,'post',27,'2024-12-08 18:36:31'),(10,'post',27,'2024-12-08 18:36:46'),(11,'post',27,'2024-12-08 18:55:23');
 /*!40000 ALTER TABLE `interaction` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -53,4 +53,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-12-06  1:54:08
+-- Dump completed on 2024-12-08 19:41:15

@@ -168,8 +168,8 @@ CREATE DEFINER=`pedro_morais`@`%` PROCEDURE `p_insert_post_interaction`(
     IN id_user INT
 )
 BEGIN
-   INSERT INTO posts VALUES (default, post_title, post_description, id_user);
-   INSERT INTO interaction VALUES (default, 'post', id_user);
+   INSERT INTO posts VALUES (default, post_title, post_description, id_user, default);
+   INSERT INTO interaction VALUES (default, 'post', id_user, default);
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -212,4 +212,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-12-06  1:54:09
+-- Dump completed on 2024-12-08 19:41:15

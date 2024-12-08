@@ -33,7 +33,7 @@ CREATE TABLE `recipes` (
   PRIMARY KEY (`id_recipe`),
   KEY `fk_user_recipe` (`fk_user`),
   CONSTRAINT `fk_user_recipe` FOREIGN KEY (`fk_user`) REFERENCES `user_data` (`id_user`)
-) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -42,7 +42,7 @@ CREATE TABLE `recipes` (
 
 LOCK TABLES `recipes` WRITE;
 /*!40000 ALTER TABLE `recipes` DISABLE KEYS */;
-INSERT INTO `recipes` VALUES (1,'Teste','Teste ingrediente','Teste desc','Teste metodo',1,'2024-11-11 15:53:17'),(2,'Jabá do Romulo','Jaba, Romulo e Codeina','Um jaba bem gostoso que deixa relaxado','Pegue o jaba, pegue o romulo e misture com codeina',12,'2024-11-11 15:53:17'),(3,'AAA','cccc','BBBB','dddd',14,'2024-11-11 15:53:17'),(4,'testando2','teste ing2','teste desc2','teste metodo2',14,'2024-11-11 15:53:17'),(5,'teste pra ver toast','teste pra ver toast','teste pra ver toast','teste pra ver toast',14,'2024-11-11 15:53:17'),(6,'toast2','toast2','toast2','toast2',14,'2024-11-11 15:53:17'),(7,'farofa de macaco','macaco e farofa','uma fsarofa.','pegue o macaco e passe na farofa ',14,'2024-11-11 15:53:17'),(8,'farofa de macaco','macaco e farofa','uma fsarofa.','pegue o macaco e passe na farofa ',14,'2024-11-11 15:53:17'),(9,'farofa de macaco','macaco e farofa','uma fsarofa.','pegue o macaco e passe na farofa ',14,'2024-11-11 15:53:17'),(10,'jaba','jaba','jaba','jaba',14,'2024-11-11 15:53:17'),(11,'yogurt com granola','yogurt, whey e granola','yogurte delicio','JOGA DTUDO',14,'2024-11-11 15:53:17'),(12,'Brisadeiro','leite condenado\na verde\nmanteiga\ncacau 60%','Um brigadeiro alegre','faça um brigadeiro e adicione a verde',18,'2024-11-11 15:53:17'),(13,'file de mosquito','mosquito.','mosquito.','basta ler',21,'2024-11-11 15:53:17'),(14,'','','','',21,'2024-11-11 15:53:17'),(15,'','','','',21,'2024-11-11 15:53:17'),(16,'Brownie Fit','brownie e maconha','Brownie de maconha verde','faz o brownie e bota maconha',23,'2024-11-11 16:12:13'),(17,NULL,NULL,NULL,'teste',25,'2024-11-24 19:42:50'),(18,'abc','abc','abc','abc',25,'2024-11-24 19:45:16'),(19,'Batamn','batman','batamna','bataman',26,'2024-11-25 21:45:07'),(20,'aaa','aaa','aaa','aa',27,'2024-11-27 22:31:28'),(21,'Testadno','Apenas teste','testando procedure','testa',27,'2024-11-28 22:50:41'),(22,'AA','AAAAAAAAAAAAA','AAAAAA','2131',27,'2024-12-01 23:07:39'),(23,'AA','AAAAAAAAAAAAA','AAAAAA','2131',27,'2024-12-01 23:07:41'),(24,'AA','AAAAAAAAAAAAA','AAAAAA','2131',27,'2024-12-01 23:07:44'),(25,'teste','aaaaa','teste','aaaaaaaa',27,'2024-12-06 01:25:31'),(26,'aaaaa','aaaaaaa','aaaaa','aaaaaaa',27,'2024-12-06 01:26:22');
+INSERT INTO `recipes` VALUES (21,'Strogonoff fit com batata-doce','1/2 peito de frango, pimenta-do-reino a gosto, 1 fio de azeite, 1/2 cebola, 1 xícara de\nmolho de tomate, 1 tomate, 1 batata-doce, 1 copo de iogurte natural','Um strogonoff delicioso e com baixa caloria','Tempere o frango, refogue com cebola, tomate e molho; adicione iogurte, cozinhe batata-doce, tempere com sal e alecrim, doure e sirva com strogonoff.',27,'2024-11-28 22:50:41'),(26,'Mousse de Abacate com Cacau',' 1 abacate maduro, 3 colheres (sopa) de cacau em pó, 2 colheres (sopa) de mel, 1 colher (chá) de extrato de baunilha.','','Bata todos os ingredientes no liquidificador até ficar cremoso e leve à geladeira por 1 hora.',27,'2024-12-06 01:26:22'),(27,'Brownie Fit de Batata-Doce','1 xícara de batata-doce amassada, 2 colheres (sopa) de cacau em pó, 1/4 xícara de açúcar mascavo, 2 claras, 1/4 xícara de farinha de aveia, 1 colher (chá) de fermento.','Um delicioso brownie','Misture todos os ingredientes, coloque em uma forma untada e asse a 180°C por 25 minutos.',27,'2024-12-07 00:06:56'),(28,'Crepioca com Frango e Cottage','2 colheres (sopa) de goma de tapioca, 1 ovo, 100g de frango desfiado, 2 colheres (sopa) de cottage, sal e temperos a gosto.','','Misture o ovo com a tapioca, faça a massa em frigideira antiaderente, recheie com o frango e o cottage e dobre ao meio.',27,'2024-12-07 13:57:20');
 /*!40000 ALTER TABLE `recipes` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -55,4 +55,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-12-06  1:54:08
+-- Dump completed on 2024-12-08 19:41:15

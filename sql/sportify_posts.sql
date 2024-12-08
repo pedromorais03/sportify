@@ -27,10 +27,11 @@ CREATE TABLE `posts` (
   `title` varchar(45) DEFAULT NULL,
   `description` varchar(500) DEFAULT NULL,
   `fk_user` int DEFAULT NULL,
+  `dt_post` datetime DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id_post`),
   KEY `fk_user_post` (`fk_user`),
   CONSTRAINT `fk_user_post` FOREIGN KEY (`fk_user`) REFERENCES `user_data` (`id_user`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -39,6 +40,7 @@ CREATE TABLE `posts` (
 
 LOCK TABLES `posts` WRITE;
 /*!40000 ALTER TABLE `posts` DISABLE KEYS */;
+INSERT INTO `posts` VALUES (3,'Boas-Vindas','Fala galera, muito ansioso em estar aqui!',27,'2024-12-07 00:05:09'),(4,'Receitas','Explorando o livro de receitas, que divertido!',27,'2024-12-08 18:36:31'),(5,'Muscle Defenders','Que joguinho massa!',27,'2024-12-08 18:36:46'),(6,'Dashboard','Muito legal poder acompanhar minhas estatísticas',27,'2024-12-08 18:55:23');
 /*!40000 ALTER TABLE `posts` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -51,4 +53,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-12-06  1:54:08
+-- Dump completed on 2024-12-08 19:41:15

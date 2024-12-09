@@ -56,12 +56,12 @@
                         <input type="email" placeholder="email@email.com" id="ipt_email">
                      </div>
                      <div class="input-container">
-                        <label for="ipt_c_password" id="label-c-password"><i data-lucide="eye" class="lucide-icons"></i></label>
-                        <input oninput="verify_requirements()" type="text" placeholder="Senha" id="ipt_c_password">
+                        <label for="ipt_c_password" id="label-c-password"><i data-lucide="eye" class="lucide-icons" onclick="toggle_password_icon()"></i></label>
+                        <input oninput="verify_requirements()"  type="password" placeholder="Senha" id="ipt_c_password">
                      </div>
                      <div class="input-container">
-                        <label for="ipt_conf_password" id="label-conf-password"><i data-lucide="eye" class="lucide-icons"></i></label>
-                        <input type="text" onchange="verify_password()" placeholder="Confirmar Senha" id="ipt_conf_password">
+                        <label for="ipt_conf_password" id="label-conf-password"><i data-lucide="eye" class="lucide-icons" onclick="toggle_password_icon()"></i></label>
+                        <input type="password" onchange="verify_password()"  placeholder="Confirmar Senha" id="ipt_conf_password">
                      </div>
                   </div>
                </div>
